@@ -249,6 +249,14 @@ dialog::backdrop{ background:rgba(10,20,16,.5); }
 .sky p{ color:#cfe3da; max-width:46ch; }
 .sky .mx{ color:#ffe3a3; }
 .kicker.light{ color:#f2c766; }
+
+/* sky school info */
+.sky-school{ display:flex; gap:14px; align-items:center; margin-bottom:14px; }
+.sky-logo{ width:70px; height:70px; border-radius:50%; border:3px solid rgba(255,255,255,.3); background:#fff; }
+.sky-school b{ display:block; font-size:1.1rem; color:#fff; }
+.sky-school span{ display:block; font-size:.85rem; color:#cfe3da; }
+.sky-sub{ font-size:1.05rem; color:#f2c766; font-weight:500; margin-bottom:4px; }
+.path-label{ margin:14px 0 2px; font-weight:500; color:var(--ink); font-size:.92rem; }
 .sky-canvas{ position:relative; height:330px; } #fw{ width:100%; height:100%; display:block; }
 .launch{ display:grid; grid-template-columns:1fr auto; gap:6px 12px; align-items:center; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); border-radius:16px; padding:12px 14px; margin:14px 0 10px; max-width:420px; }
 .launch label{ grid-column:1 / -1; font-size:.92rem; color:#e5f2ec; } .launch b{ color:#f2c766; font-size:1.1rem; }
@@ -387,9 +395,9 @@ const SETTINGS = {
   preTimer: 120,       // pre-assessment time limit in seconds (2 minutes)
   postTimer: 240,      // post-assessment time limit in seconds (4 minutes)
   // Paste your Google Apps Script web app link here (see results-script.gs).
-  resultsUrl: "",
+  resultsUrl: "https://script.google.com/macros/s/AKfycbxbY4Yyfb6hymI6NwlkzvF2qdHOcjIC4RqoCPKqFt9g-nZjkRP5NQfcUfMI_M0MzybWiA/exec",
   // Optional: your Outlook address. Students get an "Email my result" button.
-  teacherEmail: ""
+  teacherEmail: "ruaaalabadi23@gmail.com"
 };
 
 const COURSE = [
@@ -838,6 +846,270 @@ const COURSE = [
   }
   ]
 }
+,
+{
+  id: "U2",
+  code: "Module 2",
+  title: "Polynomial Functions",
+  weeks: "Weeks 5–6",
+  blurb: "Polynomial functions, their graphs, operations, and dividing polynomials.",
+  lessons: [
+
+  {
+    id: "M2L1", code: "2-1", title: "Polynomial Functions", enrichment: false,
+    goal: "Classify polynomials by degree and number of terms. Evaluate polynomials. Describe end behaviour using the leading coefficient and degree.",
+    summary: [
+      "A polynomial function is a function with one or more terms, where each term has a variable raised to a whole-number power: $f(x) = a_nx^n + a_{n-1}x^{n-1} + ... + a_1x + a_0$.",
+      "The degree is the highest power. The leading coefficient is the number in front of that power. The constant term is $a_0$.",
+      "Names by degree: 0 = constant, 1 = linear, 2 = quadratic, 3 = cubic, 4 = quartic, 5 = quintic.",
+      "Names by terms: 1 term = monomial, 2 = binomial, 3 = trinomial, 4 or more = polynomial.",
+      "End behaviour: if the degree is even, both ends go the same way. If the degree is odd, the ends go in opposite directions. A positive leading coefficient means the right end goes up."
+    ],
+    visuals: [],
+    terms: [
+      ["Polynomial", "a sum of terms with whole-number powers of a variable"],
+      ["Degree", "the highest power of the variable in the polynomial"],
+      ["Leading coefficient", "the number in front of the highest-power term"],
+      ["End behaviour", "what happens to $f(x)$ as $x$ gets very large or very small"]
+    ],
+    examples: [
+      { q: "Classify $3x^4 - 2x^2 + 7$ by degree and number of terms.", steps: ["Highest power is $4$, so the degree is $4$ (quartic).", "It has $3$ terms, so it is a trinomial.", "It is a quartic trinomial."] },
+      { q: "Describe the end behaviour of $f(x) = -2x^3 + x^2 - 5$.", steps: ["Degree $3$ (odd) and leading coefficient $-2$ (negative).", "Odd degree means the ends go in opposite directions.", "Negative leading coefficient means the right end goes down.", "As $x -> +infinity$, $f(x) -> -infinity$. As $x -> -infinity$, $f(x) -> +infinity$."] },
+      { q: "Evaluate $f(x) = 2x^3 - x + 4$ at $x = -1$.", steps: ["$f(-1) = 2(-1)^3 - (-1) + 4$", "$= 2(-1) + 1 + 4$", "$= -2 + 1 + 4 = 3$"] }
+    ],
+    videos: [
+      { title: "Polynomial end behaviour", url: "https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:poly-graphs/x2ec2f6f830c9fb89:poly-end-behavior/v/polynomial-end-behavior" },
+      { title: "Intro to polynomials", url: "https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:poly-arithmetic/x2ec2f6f830c9fb89:poly-intro/v/polynomials-intro" }
+    ],
+    pre: [
+      { q: "What is the degree of $5x^3 + 2x - 1$?", o: ["$3$", "$5$", "$2$", "$1$"], why: "The highest power of $x$ is $3$." },
+      { q: "Evaluate $f(x) = x^2 + 1$ at $x = 3$.", o: ["$10$", "$7$", "$9$", "$4$"], why: "$3^2 + 1 = 10$." },
+      { q: "What is the leading coefficient of $-4x^5 + x^3$?", o: ["$-4$", "$5$", "$1$", "$4$"], why: "The leading coefficient is the number in front of $x^5$." }
+    ],
+    practice: [
+      { q: "Classify $7x^2 - 3x + 1$ by degree and number of terms.", o: ["quadratic trinomial", "cubic trinomial", "quadratic binomial", "linear trinomial"], why: "Degree $2$ (quadratic) and $3$ terms (trinomial)." },
+      { q: "Classify $-5x^3$ by degree and number of terms.", o: ["cubic monomial", "cubic binomial", "quartic monomial", "quintic monomial"], why: "Degree $3$ (cubic) and $1$ term (monomial)." },
+      { q: "What is the degree of $4x^5 - x^3 + 2x^7 - 6$?", o: ["$7$", "$5$", "$4$", "$3$"], why: "The highest power is $x^7$, so the degree is $7$." },
+      { q: "The end behaviour of $f(x) = 2x^4 - x + 3$ is…", o: ["both ends go up", "both ends go down", "left up, right down", "left down, right up"], why: "Even degree, positive leading coefficient: both ends go up." },
+      { q: "The end behaviour of $f(x) = -x^3 + 5x$ is…", o: ["left end up, right end down", "both ends up", "both ends down", "left end down, right end up"], why: "Odd degree, negative leading coefficient: left up, right down." },
+      { q: "Evaluate $f(x) = x^3 - 2x^2 + x$ at $x = 2$.", o: ["$2$", "$0$", "$4$", "$6$"], why: "$8 - 8 + 2 = 2$." },
+      { q: "Which is NOT a polynomial?", o: ["$y = 3x^{-2} + 1$", "$y = x^3 - 4x$", "$y = 5$", "$y = x^4 + x^2 + x$"], why: "A polynomial cannot have negative exponents." },
+      { q: "What is the constant term of $2x^3 - 7x + 9$?", o: ["$9$", "$2$", "$-7$", "$3$"], why: "The constant term is the one without $x$." }
+    ],
+    worksheet: [
+      { q: "Classify $-x^5 + 3x^2 - x + 8$ by degree and number of terms.", a: "Quintic polynomial (degree $5$, $4$ terms)" },
+      { q: "Describe the end behaviour of $g(x) = 3x^4 - x^2 + 2$.", a: "Even degree, positive leading coefficient: both ends go up." },
+      { q: "Evaluate $h(x) = -x^3 + 4x - 2$ at $x = -2$.", a: "$-(-8) + 4(-2) - 2 = 8 - 8 - 2 = -2$" },
+      { q: "Write a cubic polynomial with a negative leading coefficient.", a: "Any answer like $-2x^3 + x - 1$ (degree $3$, leading coefficient negative)." }
+    ],
+    realWorld: [
+      { title: "Roller coaster design", text: "A roller coaster track over $0 <= x <= 6$ metres follows $h(x) = -x^3 + 9x^2 - 15x + 20$. Evaluate $h(3)$ to find the height at $x = 3$ m.", a: "$h(3) = -27 + 81 - 45 + 20 = 29$ metres." }
+    ],
+    activity: { type: "sort", title: "Classify the polynomial", prompt: "Choose the correct classification.",
+      categories: ["quadratic", "cubic", "quartic", "quintic"],
+      items: [ { t: "$x^2 + 5$", c: 0 }, { t: "$-3x^3 + x$", c: 1 }, { t: "$x^4 - 1$", c: 2 }, { t: "$2x^5$", c: 3 }, { t: "$4x^2 - x + 7$", c: 0 }, { t: "$x^3$", c: 1 } ] }
+  },
+
+  {
+    id: "M2L2", code: "2-2", title: "Analyzing Graphs of Polynomial Functions", enrichment: false,
+    goal: "Find the zeros, turning points and relative maxima and minima of a polynomial function from its graph.",
+    summary: [
+      "A zero (or root) of a polynomial is an x-value where $f(x) = 0$. On the graph, it is where the curve crosses or touches the x-axis.",
+      "A turning point is where the graph changes from going up to going down, or the other way around.",
+      "A relative maximum is a turning point that is higher than the points near it. A relative minimum is lower than the points near it.",
+      "A polynomial of degree $n$ has at most $n$ real zeros and at most $n - 1$ turning points."
+    ],
+    visuals: [],
+    terms: [
+      ["Zero (root)", "an x-value where $f(x) = 0$"],
+      ["Turning point", "a point where the graph changes direction"],
+      ["Relative maximum", "a peak, higher than the nearby points"],
+      ["Relative minimum", "a valley, lower than the nearby points"]
+    ],
+    examples: [
+      { q: "A cubic graph crosses the x-axis at $-3$, $0$ and $2$, and has a peak at $(-1, 4)$ and a valley at $(1, -2)$. Describe it.", steps: ["Zeros: $x = -3$, $x = 0$, $x = 2$.", "Turning points: $2$ (which is $3 - 1$, one less than the degree).", "Relative maximum: $(-1, 4)$. Relative minimum: $(1, -2)$."] }
+    ],
+    videos: [
+      { title: "Zeros of polynomials and their graphs", url: "https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:poly-graphs/x2ec2f6f830c9fb89:poly-zeros/v/zeros-of-polynomials-and-their-graphs" },
+      { title: "Positive and negative intervals", url: "https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:poly-graphs/x2ec2f6f830c9fb89:poly-intervals/v/positive-and-negative-polynomials" }
+    ],
+    pre: [
+      { q: "Where does a graph cross the x-axis?", o: ["where $f(x) = 0$", "where $x = 0$", "at the vertex", "at a turning point"], why: "On the x-axis, $y = 0$." },
+      { q: "A quadratic has degree $2$. What is the most turning points it can have?", o: ["$1$", "$2$", "$3$", "$0$"], why: "At most $n - 1 = 1$ turning point." }
+    ],
+    practice: [
+      { q: "A polynomial of degree $4$ can have at most how many real zeros?", o: ["$4$", "$3$", "$5$", "$8$"], why: "At most $n = 4$ real zeros." },
+      { q: "A polynomial of degree $4$ can have at most how many turning points?", o: ["$3$", "$4$", "$2$", "$5$"], why: "At most $n - 1 = 3$ turning points." },
+      { q: "A cubic function crosses the x-axis at $x = -2$, $x = 1$ and $x = 4$. How many zeros does it have?", o: ["$3$", "$2$", "$1$", "$4$"], why: "It crosses $3$ times, so $3$ real zeros." },
+      { q: "At a relative maximum, the graph…", o: ["changes from going up to going down", "changes from going down to going up", "crosses the x-axis", "has a zero"], why: "A peak is where the graph stops going up and starts going down." },
+      { q: "If a graph touches the x-axis at $x = 2$ but does not cross it, then…", o: ["$x = 2$ is a zero with even multiplicity", "$x = 2$ is not a zero", "$x = 2$ is a turning point only", "the function is linear"], why: "When the graph touches but does not cross, the zero has an even multiplicity (it appears an even number of times in the factored form)." },
+      { q: "A polynomial has zeros at $x = -1$, $x = 0$ and $x = 3$, and it goes up on the far right. What is its minimum possible degree?", o: ["$3$", "$2$", "$4$", "$1$"], why: "It has $3$ zeros, so the degree is at least $3$. An odd degree with positive leading coefficient goes up on the right." }
+    ],
+    worksheet: [
+      { q: "Sketch a cubic with zeros at $-2$, $1$ and $3$, and a positive leading coefficient.", a: "The graph starts low on the left, crosses at $-2$, turns, crosses at $1$, turns, crosses at $3$, and goes up on the right." },
+      { q: "A degree-$4$ polynomial has turning points at $(-1, 5)$, $(1, -3)$ and $(3, 2)$. Find the relative maxima and minima.", a: "Relative maxima: $(-1, 5)$ and $(3, 2)$. Relative minimum: $(1, -3)$." },
+      { q: "How many turning points does $f(x) = x^5 - x$ have at most?", a: "At most $4$." }
+    ],
+    realWorld: [
+      { title: "UAE temperature model", text: "A polynomial models the temperature in Abu Dhabi over $12$ months. If the model is degree $4$, what is the maximum number of times the temperature can change direction (from rising to falling)?", a: "At most $3$ turning points, so the temperature can change direction at most $3$ times." }
+    ],
+    activity: { type: "sort", title: "Maximum zeros and turning points", prompt: "Choose the maximum number of real zeros for each degree.",
+      categories: ["$2$", "$3$", "$4$", "$5$"],
+      items: [ { t: "Degree $2$ polynomial: max zeros", c: 0 }, { t: "Degree $3$ polynomial: max zeros", c: 1 }, { t: "Degree $4$ polynomial: max zeros", c: 2 }, { t: "Degree $5$ polynomial: max zeros", c: 3 }, { t: "Degree $3$ polynomial: max turning points", c: 0 }, { t: "Degree $4$ polynomial: max turning points", c: 1 } ] }
+  },
+
+  {
+    id: "M2L3", code: "2-3", title: "Operations with Polynomials", enrichment: false,
+    goal: "Add, subtract and multiply polynomials.",
+    summary: [
+      "To add polynomials, combine like terms (terms with the same variable and the same power).",
+      "To subtract, change every sign in the polynomial being subtracted, then add.",
+      "To multiply, use the distributive property: multiply every term in the first polynomial by every term in the second, then combine like terms.",
+      "The degree of the product equals the sum of the degrees of the two polynomials."
+    ],
+    visuals: [],
+    terms: [
+      ["Like terms", "terms with the same variable raised to the same power"],
+      ["Distributive property", "multiplying each term inside brackets by the term outside"]
+    ],
+    examples: [
+      { q: "Add $(3x^2 + 5x - 1) + (x^2 - 2x + 4)$.", steps: ["Combine like terms: $3x^2 + x^2 = 4x^2$", "$5x + (-2x) = 3x$", "$-1 + 4 = 3$", "Answer: $4x^2 + 3x + 3$"] },
+      { q: "Subtract $(4x^3 - x) - (2x^3 + 3x - 5)$.", steps: ["Change signs: $-(2x^3 + 3x - 5) = -2x^3 - 3x + 5$", "$4x^3 - 2x^3 = 2x^3$", "$-x - 3x = -4x$", "$0 + 5 = 5$", "Answer: $2x^3 - 4x + 5$"] },
+      { q: "Multiply $(2x + 3)(x^2 - x + 4)$.", steps: ["$2x * x^2 = 2x^3$", "$2x * (-x) = -2x^2$", "$2x * 4 = 8x$", "$3 * x^2 = 3x^2$", "$3 * (-x) = -3x$", "$3 * 4 = 12$", "Combine: $2x^3 + (-2x^2 + 3x^2) + (8x - 3x) + 12$", "Answer: $2x^3 + x^2 + 5x + 12$"] }
+    ],
+    videos: [
+      { title: "Adding and subtracting polynomials", url: "https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:poly-arithmetic/x2ec2f6f830c9fb89:poly-add-sub/v/adding-and-subtracting-polynomials-1" },
+      { title: "Multiplying binomials and polynomials", url: "https://www.khanacademy.org/math/algebra-basics/alg-basics-expressions-with-exponents/alg-basics-multiplying-binomials/v/multiplying-binomials-and-polynomials" }
+    ],
+    pre: [
+      { q: "Combine: $3x + 5x$.", o: ["$8x$", "$15x$", "$35x$", "$8x^2$"], why: "Like terms: $3x + 5x = 8x$." },
+      { q: "Expand $2(x + 3)$.", o: ["$2x + 6$", "$2x + 3$", "$x + 6$", "$6x$"], why: "$2 * x + 2 * 3 = 2x + 6$." },
+      { q: "What is $(-1)(4x - 7)$?", o: ["$-4x + 7$", "$4x + 7$", "$-4x - 7$", "$4x - 7$"], why: "Multiply each term by $-1$." }
+    ],
+    practice: [
+      { q: "$(5x^2 + 3x - 2) + (2x^2 - x + 6) = $", o: ["$7x^2 + 2x + 4$", "$7x^2 + 4x + 4$", "$3x^2 + 2x - 8$", "$7x^2 + 2x - 8$"], why: "$5x^2 + 2x^2 = 7x^2$, $3x - x = 2x$, $-2 + 6 = 4$." },
+      { q: "$(4x^3 + x - 3) - (x^3 - 2x + 1) = $", o: ["$3x^3 + 3x - 4$", "$3x^3 - x - 4$", "$5x^3 + 3x - 2$", "$3x^3 + 3x - 2$"], why: "$4x^3 - x^3 = 3x^3$, $x - (-2x) = 3x$, $-3 - 1 = -4$." },
+      { q: "$(x + 4)(x^2 - 3x + 2) = $", o: ["$x^3 + x^2 - 10x + 8$", "$x^3 - x^2 + 10x + 8$", "$x^3 + x^2 + 10x + 8$", "$x^3 + 7x^2 - 10x + 8$"], why: "$x * (x^2 - 3x + 2) + 4 * (x^2 - 3x + 2) = x^3 - 3x^2 + 2x + 4x^2 - 12x + 8$." },
+      { q: "$(2x - 1)(3x + 5) = $", o: ["$6x^2 + 7x - 5$", "$6x^2 - 7x - 5$", "$6x^2 + 7x + 5$", "$5x^2 + 7x - 5$"], why: "$6x^2 + 10x - 3x - 5 = 6x^2 + 7x - 5$." },
+      { q: "What is the degree of the product of a degree-$2$ and a degree-$3$ polynomial?", o: ["$5$", "$6$", "$3$", "$2$"], why: "The degrees add: $2 + 3 = 5$." },
+      { q: "$(x^2 + 2)(x^2 - 2) = $", o: ["$x^4 - 4$", "$x^4 + 4$", "$x^4 - 2$", "$2x^2 - 4$"], why: "Difference of squares: $(a + b)(a - b) = a^2 - b^2$, so $x^4 - 4$." },
+      { q: "$(3x^2 - x + 4) + (-3x^2 + x - 4) = $", o: ["$0$", "$6x^2 - 2x + 8$", "$6x^2$", "$-2x + 8$"], why: "Every pair of like terms cancels out." },
+      { q: "$(x + 1)^3 = $", o: ["$x^3 + 3x^2 + 3x + 1$", "$x^3 + 1$", "$x^3 + 3x + 1$", "$x^3 + x^2 + x + 1$"], why: "$(x + 1)(x + 1)(x + 1)$. First $(x + 1)^2 = x^2 + 2x + 1$. Then $(x^2 + 2x + 1)(x + 1) = x^3 + 3x^2 + 3x + 1$." }
+    ],
+    worksheet: [
+      { q: "$(2x^3 - x^2 + 3) + (x^3 + 4x^2 - x - 1)$", a: "$3x^3 + 3x^2 - x + 2$" },
+      { q: "$(5x^2 + 2x - 7) - (3x^2 - x + 4)$", a: "$2x^2 + 3x - 11$" },
+      { q: "$(x + 2)(x^2 + x - 3)$", a: "$x^3 + 3x^2 - x - 6$" },
+      { q: "$(2x - 3)^2$", a: "$4x^2 - 12x + 9$" },
+      { q: "$(x^2 + 1)(x^2 - 1)$", a: "$x^4 - 1$" }
+    ],
+    realWorld: [
+      { title: "Garden border", text: "A square garden has side $x$ metres. A border $2$ metres wide is added all around. Write a polynomial for the area of the garden with its border.", a: "New side is $(x + 4)$ metres. Area $= (x + 4)^2 = x^2 + 8x + 16$ m²." }
+    ],
+    activity: { type: "sort", title: "Add or subtract?", prompt: "Choose the correct result.",
+      categories: ["$5x^2 + x$", "$x^2 + 5x$", "$3x^2 - x$", "$x^2 - 5x$"],
+      items: [ { t: "$(3x^2 + 2x) + (2x^2 - x)$", c: 0 }, { t: "$(3x^2 + 2x) - (2x^2 - 3x)$", c: 1 }, { t: "$(4x^2 + x) - (x^2 + 2x)$", c: 2 }, { t: "$(3x^2 - x) - (2x^2 + 4x)$", c: 3 } ] }
+  },
+
+  {
+    id: "M2L4", code: "2-4", title: "Dividing Polynomials", enrichment: false,
+    goal: "Divide polynomials using long division and synthetic division.",
+    summary: [
+      "Polynomial long division works like number long division: divide, multiply, subtract, bring down, repeat.",
+      "Synthetic division is a shortcut that works only when dividing by $(x - c)$. Use $c$ (not $-c$) at the left.",
+      "The result is the quotient [the answer to the division] plus a remainder. If the remainder is $0$, the divisor is a factor.",
+      "Remainder Theorem: the remainder when $f(x)$ is divided by $(x - c)$ is $f(c)$."
+    ],
+    visuals: [],
+    terms: [
+      ["Quotient", "the result of a division"],
+      ["Remainder", "what is left over after dividing"],
+      ["Synthetic division", "a shortcut for dividing by $(x - c)$"],
+      ["Remainder Theorem", "the remainder of $f(x) div (x - c)$ equals $f(c)$"]
+    ],
+    examples: [
+      { q: "Divide $(x^3 + 2x^2 - 5x + 3)$ by $(x - 1)$ using synthetic division.", steps: ["Use $c = 1$. Write coefficients: $1, 2, -5, 3$.", "Bring down $1$. Multiply $1 * 1 = 1$, add to $2$: $3$.", "Multiply $1 * 3 = 3$, add to $-5$: $-2$.", "Multiply $1 * (-2) = -2$, add to $3$: $1$.", "Quotient: $x^2 + 3x - 2$, remainder $1$."] },
+      { q: "Find the remainder when $f(x) = 2x^3 - x + 4$ is divided by $(x + 2)$.", steps: ["By the Remainder Theorem, the remainder is $f(-2)$.", "$f(-2) = 2(-8) - (-2) + 4 = -16 + 2 + 4 = -10$.", "The remainder is $-10$."] }
+    ],
+    videos: [
+      { title: "Dividing polynomials by linear expressions", url: "https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:poly-div/x2ec2f6f830c9fb89:poly-long-div/v/dividing-polynomials-1" },
+      { title: "Synthetic division", url: "https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:poly-div/x2ec2f6f830c9fb89:syn-div/v/synthetic-division" }
+    ],
+    pre: [
+      { q: "In $15 div 4 = 3$ remainder $3$, what is the quotient?", o: ["$3$", "$4$", "$15$", "$0$"], why: "The quotient is $3$ (the result of the division)." },
+      { q: "If $(x - 2)$ is a factor of $f(x)$, then $f(2) = $", o: ["$0$", "$2$", "$-2$", "cannot tell"], why: "A factor gives a zero, so $f(2) = 0$." }
+    ],
+    practice: [
+      { q: "Divide $(x^2 + 5x + 6)$ by $(x + 2)$.", o: ["$x + 3$", "$x + 2$", "$x^2 + 3$", "$x - 3$"], why: "$(x + 2)(x + 3) = x^2 + 5x + 6$, so the quotient is $x + 3$." },
+      { q: "Divide $(2x^3 - 3x^2 + x - 6)$ by $(x - 2)$ using synthetic division. What is the remainder?", o: ["$0$", "$-6$", "$2$", "$4$"], why: "$f(2) = 16 - 12 + 2 - 6 = 0$. The remainder is $0$, so $(x - 2)$ is a factor." },
+      { q: "Find the remainder when $f(x) = x^3 + 1$ is divided by $(x + 1)$.", o: ["$0$", "$2$", "$1$", "$-1$"], why: "$f(-1) = (-1)^3 + 1 = -1 + 1 = 0$." },
+      { q: "If the remainder when dividing $f(x)$ by $(x - 3)$ is $0$, then…", o: ["$(x - 3)$ is a factor of $f(x)$", "$f(x) = 0$", "$x = 0$ is a root", "$f(3) != 0$"], why: "Zero remainder means the divisor divides evenly, so it is a factor." },
+      { q: "Divide $(x^3 - 8)$ by $(x - 2)$.", o: ["$x^2 + 2x + 4$", "$x^2 - 2x + 4$", "$x^2 + 4$", "$x^2 - 4$"], why: "$(x - 2)(x^2 + 2x + 4) = x^3 - 8$ (difference of cubes)." },
+      { q: "In synthetic division of $f(x)$ by $(x + 3)$, what value of $c$ do you use?", o: ["$-3$", "$3$", "$0$", "$1$"], why: "$(x + 3) = (x - (-3))$, so $c = -3$." }
+    ],
+    worksheet: [
+      { q: "Divide $(x^3 + 4x^2 + x - 6)$ by $(x + 2)$ using synthetic division.", a: "Quotient $x^2 + 2x - 3$, remainder $0$. So $(x + 2)$ is a factor." },
+      { q: "Find the remainder when $f(x) = 3x^2 - x + 5$ is divided by $(x - 1)$.", a: "$f(1) = 3 - 1 + 5 = 7$." },
+      { q: "Divide $(2x^3 + x^2 - 13x + 6)$ by $(x - 2)$.", a: "Quotient $2x^2 + 5x - 3$, remainder $0$." },
+      { q: "Is $(x + 1)$ a factor of $x^3 + 3x^2 + 3x + 1$?", a: "$f(-1) = -1 + 3 - 3 + 1 = 0$. Yes, it is a factor." }
+    ],
+    realWorld: [
+      { title: "Sharing equally", text: "A factory makes $x^3 + 6x^2 + 11x + 6$ items and packs them into $(x + 1)$ boxes equally. How many items per box?", a: "Divide: quotient is $x^2 + 5x + 6 = (x + 2)(x + 3)$ items per box." }
+    ],
+    activity: { type: "sort", title: "Factor or not?", prompt: "Use the Remainder Theorem to check if $(x - c)$ is a factor of $f(x)$.",
+      categories: ["Yes, it is a factor", "No, it is not a factor"],
+      items: [ { t: "$f(x) = x^2 - 4$, divisor $(x - 2)$", c: 0 }, { t: "$f(x) = x^3 + 1$, divisor $(x + 1)$", c: 0 }, { t: "$f(x) = x^2 + 1$, divisor $(x - 1)$", c: 1 }, { t: "$f(x) = x^3 - 8$, divisor $(x + 2)$", c: 1 }, { t: "$f(x) = x^2 - 5x + 6$, divisor $(x - 3)$", c: 0 } ] }
+  },
+
+  {
+    id: "M2L5", code: "2-5", title: "Powers of Binomials", enrichment: false,
+    goal: "Expand powers of binomials using Pascal's triangle and the Binomial Theorem.",
+    summary: [
+      "Pascal's triangle gives the coefficients for expanding $(a + b)^n$. Each row starts and ends with $1$, and each number inside is the sum of the two numbers above it.",
+      "Row $0$: $1$. Row $1$: $1, 1$. Row $2$: $1, 2, 1$. Row $3$: $1, 3, 3, 1$. Row $4$: $1, 4, 6, 4, 1$.",
+      "In $(a + b)^n$: powers of $a$ go down from $n$ to $0$. Powers of $b$ go up from $0$ to $n$. The coefficients come from row $n$ of Pascal's triangle.",
+      "Example: $(a + b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$."
+    ],
+    visuals: [],
+    terms: [
+      ["Pascal's triangle", "a triangle of numbers where each number is the sum of the two above it"],
+      ["Binomial Theorem", "a rule that gives every term when you expand $(a + b)^n$"],
+      ["Binomial coefficient", "the numbers from Pascal's triangle that go in front of each term"]
+    ],
+    examples: [
+      { q: "Expand $(x + 2)^4$.", steps: ["Row $4$ of Pascal's triangle: $1, 4, 6, 4, 1$.", "$= 1 * x^4 * 2^0 + 4 * x^3 * 2^1 + 6 * x^2 * 2^2 + 4 * x^1 * 2^3 + 1 * x^0 * 2^4$", "$= x^4 + 8x^3 + 24x^2 + 32x + 16$"] },
+      { q: "Expand $(3x - 1)^3$.", steps: ["Row $3$: $1, 3, 3, 1$. Here $a = 3x$ and $b = -1$.", "$= (3x)^3 + 3(3x)^2(-1) + 3(3x)(-1)^2 + (-1)^3$", "$= 27x^3 - 27x^2 + 9x - 1$"] }
+    ],
+    videos: [
+      { title: "Pascal's triangle and binomial expansion", url: "https://www.khanacademy.org/math/precalculus/x9e81a4f98389efdf:series/x9e81a4f98389efdf:binomial/v/binomial-theorem" }
+    ],
+    pre: [
+      { q: "What is $2^3$?", o: ["$8$", "$6$", "$9$", "$16$"], why: "$2 * 2 * 2 = 8$." },
+      { q: "Expand $(x + 1)^2$.", o: ["$x^2 + 2x + 1$", "$x^2 + 1$", "$2x + 1$", "$x^2 + x + 1$"], why: "$(x + 1)(x + 1) = x^2 + 2x + 1$." }
+    ],
+    practice: [
+      { q: "What is row $3$ of Pascal's triangle?", o: ["$1, 3, 3, 1$", "$1, 2, 1$", "$1, 4, 6, 4, 1$", "$1, 3, 1$"], why: "Row $3$: $1, 3, 3, 1$." },
+      { q: "Expand $(x + 1)^3$.", o: ["$x^3 + 3x^2 + 3x + 1$", "$x^3 + 1$", "$x^3 + 3x + 1$", "$3x^3 + 3x + 1$"], why: "Using row $3$: $1, 3, 3, 1$." },
+      { q: "Expand $(a - b)^2$.", o: ["$a^2 - 2ab + b^2$", "$a^2 + 2ab + b^2$", "$a^2 - b^2$", "$a^2 + b^2$"], why: "$(a + (-b))^2 = a^2 + 2a(-b) + (-b)^2 = a^2 - 2ab + b^2$." },
+      { q: "In $(x + 3)^4$, the coefficient of $x^3$ is…", o: ["$12$", "$4$", "$3$", "$81$"], why: "The term is $4 * x^3 * 3^1 = 12x^3$." },
+      { q: "How many terms does $(a + b)^5$ have?", o: ["$6$", "$5$", "$4$", "$10$"], why: "$(a + b)^n$ has $n + 1$ terms, so $5 + 1 = 6$." },
+      { q: "Expand $(2x - 1)^3$.", o: ["$8x^3 - 12x^2 + 6x - 1$", "$8x^3 + 12x^2 + 6x + 1$", "$2x^3 - 1$", "$8x^3 - 6x^2 + 3x - 1$"], why: "$(2x)^3 + 3(2x)^2(-1) + 3(2x)(-1)^2 + (-1)^3 = 8x^3 - 12x^2 + 6x - 1$." }
+    ],
+    worksheet: [
+      { q: "Expand $(x + 2)^3$.", a: "$x^3 + 6x^2 + 12x + 8$" },
+      { q: "Expand $(x - 3)^4$.", a: "$x^4 - 12x^3 + 54x^2 - 108x + 81$" },
+      { q: "Find the coefficient of $x^2$ in $(x + 5)^4$.", a: "$6 * 5^2 = 150$" },
+      { q: "Write row $5$ of Pascal's triangle.", a: "$1, 5, 10, 10, 5, 1$" }
+    ],
+    realWorld: [
+      { title: "Investment growth", text: "If $1000$ AED grows by a fraction $r$ each year, after $4$ years it is $1000(1 + r)^4$. Use Pascal's triangle to expand $(1 + r)^4$.", a: "$(1 + r)^4 = 1 + 4r + 6r^2 + 4r^3 + r^4$. So the amount is $1000(1 + 4r + 6r^2 + 4r^3 + r^4)$." }
+    ],
+    activity: { type: "sort", title: "Pascal's triangle rows", prompt: "Match each expansion to the correct row of Pascal's triangle.",
+      categories: ["Row 2: $1, 2, 1$", "Row 3: $1, 3, 3, 1$", "Row 4: $1, 4, 6, 4, 1$"],
+      items: [ { t: "$(a + b)^2$", c: 0 }, { t: "$(x - 1)^3$", c: 1 }, { t: "$(2x + y)^4$", c: 2 }, { t: "$(m + n)^3$", c: 1 }, { t: "$(p - q)^2$", c: 0 } ] }
+  }
+  ]
+}
 /* To add Module 2: copy the whole { id: "U1", ... } block above,
    paste it after this line with a comma, and change id to "U2". */
 ];
@@ -995,7 +1267,7 @@ const LOGO = "data:image/webp;base64,UklGRiY+AABXRUJQVlA4WAoAAAAQAAAAZwEAZwEAQUx
 
   /* ---------- home ---------- */
   function archSVG() {
-    const u = COURSE[0], ls = u.lessons, done = studied(), n = ls.length;
+    const u = COURSE.length === 1 ? COURSE[0] : COURSE[0], ls = u.lessons, done = studied(), n = ls.length;
     const pts = ls.map((l, i) => { const t = -0.92 + (1.84 * i) / (n - 1); return { l, x: 300 + t * 270, y: 206 - 168 * (1 - t * t) }; });
     let d = ""; for (let i = 0; i <= 60; i++) { const t = -1 + i / 30; d += (i ? "L" : "M") + (300 + t * 270).toFixed(1) + " " + (206 - 168 * (1 - t * t)).toFixed(1); }
     return `<svg viewBox="0 0 600 236" class="arch" role="img" aria-label="Your path through ${esc(u.code)}">
@@ -1009,18 +1281,49 @@ const LOGO = "data:image/webp;base64,UklGRiY+AABXRUJQVlA4WAoAAAAQAAAAZwEAZwEAQUx
     const order = [0, 1, 2, 3].slice(0, q.o.length).sort((x, y) => ((x * 7 + seed) % 5) - ((y * 7 + seed) % 5));
     return { q, order };
   }
+  
+  function pathSVGs() {
+    const done = studied();
+    return COURSE.map(u => {
+      const ls = u.lessons, n = ls.length;
+      const pts = ls.map((l, i) => { const t = -0.92 + (1.84 * i) / (n - 1); return { l, x: 300 + t * 270, y: 206 - 168 * (1 - t * t) }; });
+      let d = ""; for (let i = 0; i <= 60; i++) { const t = -1 + i / 30; d += (i ? "L" : "M") + (300 + t * 270).toFixed(1) + " " + (206 - 168 * (1 - t * t)).toFixed(1); }
+      const nodes = pts.map(p => {
+        const badge = postPassed(p.l.id), st = done.includes(p.l.id);
+        return '<a href="#/study/' + p.l.id + '"><circle cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="17" class="node ' + (badge ? "badge" : st ? "done" : "") + " " + (p.l.enrichment ? "extra" : "") + '"/><text x="' + p.x.toFixed(1) + '" y="' + (p.y + 4).toFixed(1) + '" class="nlab">' + (badge ? "★" : esc(p.l.code)) + '</text></a>';
+      }).join("");
+      return '<p class="muted small path-label">' + esc(u.code) + ': ' + esc(u.title) + '</p>' +
+        '<svg viewBox="0 0 600 236" class="arch" role="img"><line x1="10" y1="206" x2="590" y2="206" class="axis"/><path d="' + d + '" class="curve"/>' + nodes + '</svg>';
+    }).join("");
+  }
+
+  
+  const step = (ok, title, txt, link) => '<li class="' + (ok ? "got" : "") + '"><span class="dot">' + (ok ? "✓" : "") + '</span><div><b>' + title + '</b><p>' + txt + '</p>' + (link || "") + '</div></li>';
+
+  function ladderSteps() {
+    return COURSE.map((u, i) => {
+      const su = moduleStatus(u);
+      const ok = su.ok;
+      const title = (i + 2) + ". " + esc(u.code) + " certificate";
+      const txt = "Earn every lesson badge, then pass the unit test. " + (su.missing.length ? su.missing.length + " badge" + (su.missing.length > 1 ? "s" : "") + " left." : "All badges earned!");
+      const link = ok ? '<a href="#/cert/' + u.id + '">View certificate</a>' : "";
+      return step(ok, title, txt, link);
+    }).join("");
+  }
+
   function viewHome() {
     const p = profile(), core = coreLessons(), done = studied();
     const badges = core.filter((l) => postPassed(l.id)).length, studiedN = core.filter((l) => done.includes(l.id)).length;
     const t = termStatus(), certs = store.get("certs", {});
     const dq = dailyQ();
-    const step = (ok, title, txt, link) => `<li class="${ok ? "got" : ""}"><span class="dot">${ok ? "✓" : ""}</span><div><b>${title}</b><p>${txt}</p>${link || ""}</div></li>`;
+    
     const m1 = COURSE[0], s1 = moduleStatus(m1);
     return `
     <section class="sky">
       <div class="sky-txt">
-        <p class="kicker light">${esc(SETTINGS.subject)}</p>
-        <h1>${p ? "Ready, " + esc(firstName()) + "?" : "Every launch is a parabola."}</h1>
+        <div class="sky-school"><img src="${LOGO}" alt="" class="sky-logo"><div><b>${esc(SETTINGS.school)}</b><span>${esc(SETTINGS.teacher)}, Teacher</span><span>${esc(SETTINGS.principal)}, Principal</span></div></div>
+        <h1>${p ? "Ready, " + esc(firstName()) + "?" : "Learn it. Practise it. Earn it."}</h1>
+        <p class="sky-sub">${esc(SETTINGS.subject)} — ${esc(SETTINGS.book)}</p>
         <p>Choose a launch speed and watch the firework follow ${m("$h(t) = -5t^2 + vt$")}. Where does it burst? At the vertex.</p>
         <div class="launch">
           <label for="vRange">Launch speed <b id="vOut">30</b> m/s</label>
@@ -1029,7 +1332,7 @@ const LOGO = "data:image/webp;base64,UklGRiY+AABXRUJQVlA4WAoAAAAQAAAAZwEAZwEAQUx
         </div>
         <p class="readout" id="readout"></p>
       </div>
-      <div class="sky-canvas"><canvas id="fw" aria-label="Firework following a parabola over a UAE skyline" role="img"></canvas></div>
+      <div class="sky-canvas"><canvas id="fw" aria-label="Interactive parabola over a UAE skyline" role="img"></canvas></div>
     </section>
 
     <section class="prog-row">
@@ -1041,8 +1344,8 @@ const LOGO = "data:image/webp;base64,UklGRiY+AABXRUJQVlA4WAoAAAAQAAAAZwEAZwEAQUx
 
     <section class="home-grid">
       <div class="card path">
-        <h2>Your path through ${esc(m1.code)}</h2>
-        ${archSVG()}
+        <h2>Your path</h2>
+        ${pathSVGs()}
         <p class="legend"><span class="lg s"></span>studied <span class="lg b"></span>badge earned <span class="lg e"></span>challenge lesson</p>
       </div>
       <div class="card dq" id="dq">
@@ -1059,7 +1362,7 @@ const LOGO = "data:image/webp;base64,UklGRiY+AABXRUJQVlA4WAoAAAAQAAAAZwEAZwEAQUx
       <h2>How you earn certificates</h2>
       <ol class="steps">
         ${step(badges === core.length, "1. Lesson badges", `Pass the post-assessment of a lesson with ${P()}% or more. You have ${badges} of ${core.length}.`)}
-        ${step(s1.ok, `2. ${esc(m1.code)} certificate`, `Earn every lesson badge in the module, then pass the unit test. Levels: Achievement, Merit (${SETTINGS.meritMark}%+), Distinction (${SETTINGS.distinctionMark}%+).`, s1.ok ? `<a href="#/cert/${m1.id}">View certificate</a>` : "")}
+        ${ladderSteps()}
         ${step(t.ok, "3. Term certificate", "Earn every module certificate, then pass the final exam.", t.ok ? `<a href="#/cert/TERM">View certificate</a>` : "")}
       </ol>
     </section>
