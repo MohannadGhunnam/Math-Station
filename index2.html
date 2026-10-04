@@ -1,0 +1,1518 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Grade 12 Math Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#ffffff; --mist:#eef5f1; --ghaf:#00684a; --ghaf-ink:#ffffff; --ink:#14231e; --soft:#4d625a;
+  --gold:#a8771e; --gold-bg:#f8efdc; --red:#c8102e; --red-bg:#fbe9ec; --ok-bg:#e3f3ea; --line:#d5e2db;
+  --shadow:0 1px 0 rgba(20,35,30,.06);
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light dark;
+}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  --paper:#0f1915; --mist:#16241e; --ghaf:#3fbf8f; --ghaf-ink:#0b1410; --ink:#e7f1ec; --soft:#a3b8ae;
+  --gold:#e2b556; --gold-bg:#2c2414; --red:#ff6b7d; --red-bg:#3a1a20; --ok-bg:#15352a; --line:#2a3d35; }}
+:root[data-theme="dark"]{ --paper:#0f1915; --mist:#16241e; --ghaf:#3fbf8f; --ghaf-ink:#0b1410; --ink:#e7f1ec; --soft:#a3b8ae; --gold:#e2b556; --gold-bg:#2c2414; --red:#ff6b7d; --red-bg:#3a1a20; --ok-bg:#15352a; --line:#2a3d35; }
+html{ scroll-padding-top:env(safe-area-inset-top,0px); }
+*,*::before,*::after{ box-sizing:border-box; }
+body{ margin:0; background:var(--paper); color:var(--ink); font:400 17px/1.6 "Readex Pro", "Segoe UI", Tahoma, sans-serif; -webkit-font-smoothing:antialiased; }
+a{ color:var(--ghaf); }
+img{ max-width:100%; }
+:focus-visible{ outline:3px solid var(--gold); outline-offset:2px; border-radius:6px; }
+h1,h2,h3{ line-height:1.2; margin:0 0 .5em; font-weight:600; }
+h1.pg{ font-size:clamp(1.7rem,4.5vw,2.4rem); letter-spacing:-.01em; }
+h2{ font-size:1.3rem; } h3{ font-size:1.08rem; }
+p{ margin:0 0 .8em; }
+.muted{ color:var(--soft); } .small{ font-size:.88rem; }
+.lead{ font-size:1.08rem; color:var(--soft); max-width:62ch; }
+.kicker{ color:var(--gold); font-weight:500; font-size:.92rem; margin-bottom:.4em; }
+
+/* header */
+.top{ position:sticky; top:env(safe-area-inset-top,0px); z-index:5; background:var(--paper); border-bottom:1px solid var(--line); }
+.brand{ display:flex; align-items:center; gap:12px; max-width:1100px; margin:0 auto; padding:10px 18px 6px; }
+.brand img{ width:46px; height:46px; border-radius:50%; background:#fff; border:2px solid var(--gold); }
+.brand .bname{ flex:1; min-width:0; }
+.brand b{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.brand b{ display:block; font-size:1rem; font-weight:600; }
+.brand small{ display:block; color:var(--soft); font-size:.8rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.chip{ font:inherit; font-size:.85rem; border:1px solid var(--line); background:var(--mist); color:var(--ink); border-radius:999px; padding:6px 12px; cursor:pointer; max-width:46vw; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.nav{ display:flex; gap:4px; max-width:1100px; margin:0 auto; padding:0 12px; overflow-x:auto; scrollbar-width:none; }
+.nav a{ text-decoration:none; color:var(--soft); padding:10px 12px 12px; font-weight:500; white-space:nowrap; border-bottom:3px solid transparent; }
+.nav a.on{ color:var(--ink); border-bottom-color:var(--ghaf); }
+main{ max-width:1100px; margin:0 auto; padding:26px 18px 60px; }
+footer{ border-top:1px solid var(--line); color:var(--soft); font-size:.82rem; text-align:center; padding:20px 18px 30px; }
+
+/* buttons */
+.btns{ display:flex; flex-wrap:wrap; gap:10px; margin:14px 0; align-items:center; }
+.btn{ display:inline-flex; align-items:center; justify-content:center; font:inherit; font-weight:500; border:2px solid var(--ghaf); background:var(--ghaf); color:var(--ghaf-ink); text-decoration:none; border-radius:12px; padding:10px 18px; cursor:pointer; min-height:46px; }
+.btn.ghost{ background:transparent; color:var(--ghaf); }
+.btn.gold{ background:var(--gold); border-color:var(--gold); color:#fff; }
+.btn.small{ min-height:38px; padding:6px 12px; font-size:.9rem; }
+.btn:disabled{ opacity:.45; cursor:not-allowed; }
+.back{ display:inline-block; margin-bottom:12px; text-decoration:none; font-weight:500; }
+.back::before{ content:"‹ "; }
+
+/* home */
+.hero{ display:grid; grid-template-columns:1fr 1.15fr; gap:28px; align-items:center; padding:8px 0 22px; }
+.hero h1{ font-size:clamp(2rem,5.5vw,3.2rem); font-weight:700; letter-spacing:-.02em; }
+.hero-arch{ background:var(--mist); border-radius:24px; padding:16px 14px 8px; }
+.arch{ width:100%; height:auto; display:block; }
+.arch .axis{ stroke:var(--soft); stroke-width:1.5; }
+.arch .sym{ stroke:var(--gold); stroke-width:1.2; stroke-dasharray:4 5; }
+.arch .curve{ fill:none; stroke:var(--ghaf); stroke-width:5; stroke-linecap:round; stroke-dasharray:900; stroke-dashoffset:900; animation:draw 1.4s .2s ease-out forwards; }
+@keyframes draw{ to{ stroke-dashoffset:0; } }
+.arch .node{ fill:var(--paper); stroke:var(--ghaf); stroke-width:3; }
+.arch .node.extra{ stroke:var(--gold); }
+.arch .node.done{ fill:var(--ghaf); }
+.arch .nlab{ font-size:11px; font-weight:600; text-anchor:middle; fill:var(--ink); pointer-events:none; }
+.arch a:hover .node{ stroke-width:5; }
+.cap{ font-size:.82rem; color:var(--soft); margin:6px 6px 4px; }
+.stats{ display:flex; gap:12px; flex-wrap:wrap; margin:6px 0 26px; }
+.stats div{ flex:1 1 140px; border-left:4px solid var(--ghaf); padding:2px 14px; }
+.stats b{ display:block; font-size:1.7rem; font-weight:700; }
+.stats span{ color:var(--soft); font-size:.9rem; }
+.grid4{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.tile{ display:block; text-decoration:none; color:var(--ink); border:1px solid var(--line); border-radius:16px; padding:18px; border-top:5px solid var(--ghaf); }
+.tile:nth-child(2){ border-top-color:var(--gold); } .tile:nth-child(3){ border-top-color:var(--red); } .tile:nth-child(4){ border-top-color:var(--ink); }
+.tile p{ color:var(--soft); font-size:.94rem; margin:0; }
+.note{ margin-top:26px; background:var(--gold-bg); border-radius:16px; padding:18px 20px; }
+.note p{ margin:0; max-width:75ch; }
+
+/* lists */
+.unit{ margin:24px 0; }
+.lessons{ list-style:none; padding:0; margin:12px 0; border-top:1px solid var(--line); }
+.lessons a{ display:flex; align-items:center; gap:12px; padding:13px 6px; border-bottom:1px solid var(--line); text-decoration:none; color:var(--ink); }
+.lessons a:hover{ background:var(--mist); }
+.code{ font-weight:600; color:var(--ghaf); min-width:2.6em; }
+.lessons .t{ flex:1; }
+.tag{ font-size:.75rem; padding:2px 9px; border-radius:999px; white-space:nowrap; }
+.tag.gold{ background:var(--gold-bg); color:var(--gold); } .tag.ok{ background:var(--ok-bg); color:var(--ghaf); }
+.best{ font-weight:600; color:var(--ghaf); }
+.exam{ display:flex; align-items:center; gap:14px; text-decoration:none; color:var(--ink); background:var(--mist); border-radius:16px; padding:16px 18px; margin-top:14px; }
+.exam div{ flex:1; } .exam p{ margin:0; color:var(--soft); font-size:.94rem; } .exam h3{ margin:0 0 4px; }
+.exam.final{ background:var(--gold-bg); margin:26px 0 10px; }
+.soon{ margin-top:18px; font-size:.9rem; }
+
+/* lesson */
+.lhead{ margin-bottom:10px; }
+.goal{ font-size:1.08rem; max-width:65ch; }
+.block{ margin:28px 0; }
+.ideas{ padding-left:1.2em; max-width:70ch; } .ideas li{ margin:.45em 0; }
+.terms{ display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:10px; margin:0; }
+.terms div{ background:var(--mist); border-radius:12px; padding:12px 14px; }
+.terms dt{ font-weight:600; } .terms dd{ margin:0; color:var(--soft); font-size:.94rem; }
+.ex{ border:1px solid var(--line); border-radius:14px; margin:10px 0; padding:0 16px; }
+.ex summary{ cursor:pointer; padding:14px 0; font-weight:500; }
+.exn{ color:var(--gold); margin-right:6px; }
+.ex ol{ margin:0 0 14px; padding-left:1.3em; } .ex li{ margin:.3em 0; }
+.vid{ position:relative; aspect-ratio:16/9; border-radius:14px; overflow:hidden; background:#000; }
+.vid iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+.sticky-actions{ border-top:1px solid var(--line); padding-top:16px; }
+
+/* class */
+.tabs{ display:flex; gap:6px; overflow-x:auto; margin:10px 0 18px; scrollbar-width:none; }
+.tabs a{ white-space:nowrap; text-decoration:none; color:var(--ink); background:var(--mist); border-radius:999px; padding:8px 14px; font-size:.92rem; }
+.tabs a.on{ background:var(--ghaf); color:var(--ghaf-ink); }
+.panel{ border:1px solid var(--line); border-radius:18px; padding:20px; }
+.rw{ border-left:4px solid var(--gold); padding:4px 0 4px 14px; margin:16px 0; }
+.rw summary{ cursor:pointer; color:var(--ghaf); font-weight:500; }
+.ws-head{ display:flex; gap:14px; align-items:center; border-bottom:2px solid var(--ghaf); padding-bottom:10px; margin-bottom:10px; font-size:.92rem; }
+.ws-head img{ width:62px; height:62px; border-radius:50%; }
+.wsq li{ margin:12px 0; } .wsq .space{ height:70px; border-bottom:1px dashed var(--line); }
+.ans{ color:var(--ghaf); font-weight:500; }
+
+/* lab */
+.lab{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:18px; margin-top:10px; }
+#labSvg{ width:100%; height:auto; background:var(--paper); border:1px solid var(--line); border-radius:14px; overflow:hidden; }
+#labSvg .g{ stroke:var(--line); stroke-width:.6; } #labSvg .g.ax{ stroke:var(--soft); stroke-width:1.4; }
+#labSvg .pc{ fill:none; stroke:var(--ghaf); stroke-width:3; }
+#labSvg .symd{ stroke:var(--gold); stroke-dasharray:4 4; stroke-width:1.4; }
+#labSvg .vx{ fill:var(--gold); } #labSvg .root{ fill:var(--red); }
+.lab-ctrl label{ display:block; font-weight:600; margin:6px 0; }
+.lab-ctrl input[type=range]{ width:100%; accent-color:var(--ghaf); height:30px; }
+.eq{ font-size:1.25rem; font-weight:600; color:var(--ghaf); }
+.labout{ display:grid; grid-template-columns:1fr; gap:6px; margin:10px 0 0; font-size:.92rem; }
+.labout div{ display:flex; gap:10px; border-bottom:1px solid var(--line); padding:4px 0; } .labout dt{ min-width:9.5em; color:var(--soft); } .labout dd{ margin:0; font-weight:500; }
+
+/* sort */
+.sort{ display:grid; gap:10px; margin:12px 0; }
+.sitem{ border:1px solid var(--line); border-radius:14px; padding:12px 14px; }
+.sitem.right{ background:var(--ok-bg); border-color:var(--ghaf); }
+.st{ font-weight:600; margin-bottom:8px; }
+.sopts{ display:flex; flex-wrap:wrap; gap:8px; }
+.sopts button{ font:inherit; font-size:.9rem; border:1px solid var(--line); background:var(--paper); color:var(--ink); border-radius:10px; padding:7px 12px; cursor:pointer; min-height:40px; }
+.sopts button.yes{ background:var(--ghaf); color:var(--ghaf-ink); border-color:var(--ghaf); }
+.sopts button.no{ background:var(--red-bg); border-color:var(--red); color:var(--red); }
+.sscore{ font-weight:600; }
+
+/* quiz */
+.quiz{ max-width:720px; }
+.prog{ height:8px; background:var(--mist); border-radius:9px; overflow:hidden; margin:8px 0; }
+.prog span{ display:block; height:100%; background:var(--ghaf); transition:width .3s; }
+.qtext{ font-size:1.35rem; font-weight:500; margin:14px 0 18px; }
+.opts{ display:grid; gap:10px; }
+.opt{ text-align:left; font:inherit; font-size:1.05rem; padding:14px 16px; border:2px solid var(--line); background:var(--paper); color:var(--ink); border-radius:14px; cursor:pointer; min-height:54px; }
+.opt.sel{ border-color:var(--ghaf); background:var(--mist); }
+.opt.yes{ border-color:var(--ghaf); background:var(--ok-bg); } .opt.no{ border-color:var(--red); background:var(--red-bg); }
+.opt:disabled{ cursor:default; color:var(--ink); }
+.fb{ margin-top:14px; padding:12px 14px; border-radius:12px; } .fb.good{ background:var(--ok-bg); } .fb.bad{ background:var(--red-bg); }
+.qnav{ margin-top:20px; }
+
+/* result */
+.result{ max-width:820px; }
+.score{ display:flex; align-items:center; gap:18px; margin:6px 0 10px; }
+.score .ring{ width:104px; height:104px; }
+.score b{ display:block; font-size:2.2rem; font-weight:700; line-height:1; } .score span{ color:var(--soft); }
+.fbtext{ font-size:1.1rem; max-width:65ch; background:var(--mist); border-radius:14px; padding:14px 16px; }
+.support{ display:grid; gap:12px; } .support article{ border:1px solid var(--line); border-left:5px solid var(--gold); border-radius:12px; padding:14px; }
+.support .btns{ margin:6px 0 0; }
+.bars{ display:grid; gap:8px; } .bar{ display:flex; align-items:center; gap:10px; }
+.bl{ width:2.8em; font-weight:600; } .btr{ flex:1; height:12px; background:var(--mist); border-radius:9px; overflow:hidden; } .btr i{ display:block; height:100%; } .btr i.ok{ background:var(--ghaf); } .btr i.lo{ background:var(--red); } .bv{ width:3em; text-align:right; }
+.review{ padding-left:1.2em; } .review li{ margin:12px 0; padding-left:6px; } .review li p{ margin:.2em 0; } .review li.lo{ border-left:3px solid var(--red); } .review li.ok{ border-left:3px solid var(--ghaf); }
+.hist{ list-style:none; padding:0; border-top:1px solid var(--line); }
+.hist a{ display:flex; gap:12px; align-items:center; padding:12px 4px; border-bottom:1px solid var(--line); text-decoration:none; color:var(--ink); flex-wrap:wrap; }
+.hist .t{ flex:1 1 240px; }
+.pill{ font-weight:600; padding:2px 10px; border-radius:999px; background:var(--mist); }
+.pill.pass{ background:var(--ok-bg); color:var(--ghaf); } .pill.fail{ background:var(--red-bg); color:var(--red); } .pill.almost{ background:var(--gold-bg); color:var(--gold); }
+.certs{ display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:10px; }
+.certcard{ display:block; text-decoration:none; color:var(--ink); background:var(--gold-bg); border-radius:14px; padding:14px 16px; border:1px solid var(--gold); }
+.certcard span{ display:block; color:var(--soft); font-size:.88rem; }
+
+/* certificate (always light) */
+.cert{ position:relative; display:flex; background:#fffdf8; color:#14231e; border:3px solid #a8771e; border-radius:6px; overflow:hidden; aspect-ratio:1.414/1; max-width:1000px; margin:10px auto; }
+.flag{ display:flex; width:7%; flex:none; } .flag i{ width:30%; background:#c8102e; } .flag span{ flex:1; display:flex; flex-direction:column; } .flag b{ flex:1; } .flag b:nth-child(1){ background:#00732f; } .flag b:nth-child(2){ background:#fff; } .flag b:nth-child(3){ background:#000; }
+.cert-in{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:3% 5%; outline:1px solid #e3d3ad; outline-offset:-14px; }
+.clogo{ width:clamp(60px,13%,130px); border-radius:50%; }
+.cschool{ font-weight:600; color:#00684a; margin:.4em 0 .2em; font-size:clamp(.8rem,2vw,1.15rem); }
+.cert h1{ font-size:clamp(1.2rem,4.4vw,2.6rem); font-weight:700; color:#a8771e; margin:.1em 0 .3em; }
+.cfor{ font-size:clamp(.75rem,1.7vw,1rem); margin:0; color:#4d625a; }
+.cname{ font-size:clamp(1.4rem,5vw,3rem); font-weight:600; margin:.1em 0 0; border-bottom:2px solid #a8771e; padding:0 .6em; }
+.cgrade{ font-size:clamp(.75rem,1.7vw,1rem); color:#4d625a; margin:.3em 0; }
+.cwhy{ font-size:clamp(.78rem,1.9vw,1.1rem); max-width:44em; margin:.3em 0 .8em; }
+.csign{ display:flex; justify-content:space-between; align-items:flex-end; width:100%; gap:4%; font-size:clamp(.62rem,1.5vw,.92rem); }
+.csign div{ display:flex; flex-direction:column; align-items:center; flex:1; } .csign small{ color:#4d625a; }
+.sl{ display:block; width:80%; border-bottom:1px solid #14231e; height:2.2em; margin-bottom:4px; }
+
+/* dialog */
+dialog{ border:0; border-radius:20px; padding:0; width:min(440px,92vw); background:var(--paper); color:var(--ink); box-shadow:0 20px 60px rgba(0,0,0,.25); }
+dialog::backdrop{ background:rgba(10,20,16,.5); }
+.dlg-body{ padding:22px; }
+.dlg-body label{ display:block; font-weight:500; margin:10px 0; }
+.dlg-body input,.dlg-body select{ display:block; width:100%; font:inherit; padding:10px 12px; margin-top:4px; border:1px solid var(--line); border-radius:10px; background:var(--paper); color:var(--ink); }
+.row2{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.actions{ display:flex; justify-content:flex-end; gap:10px; margin-top:14px; }
+
+
+/* math */
+.mx{ font-family:"STIX Two Text","Cambria Math","Times New Roman",serif; font-size:1.12em; white-space:nowrap; letter-spacing:.01em; }
+.mx i{ font-style:italic; padding:0 .03em; }
+.mx sup{ font-size:.68em; line-height:0; vertical-align:.62em; margin-left:.04em; }
+.fr{ display:inline-flex; flex-direction:column; vertical-align:middle; text-align:center; margin:0 .12em; font-size:.92em; line-height:1.15; }
+.fr .nu{ border-bottom:1px solid currentColor; padding:0 .2em .05em; } .fr .de{ padding:.05em .2em 0; }
+.rad{ display:inline-flex; align-items:flex-start; } .rs{ font-size:1.05em; } .ri{ border-top:1px solid currentColor; padding:0 .12em; margin-top:.18em; line-height:1.2; }
+.ideas li .mx, p .mx{ line-height:1.5; }
+/* graphs */
+.graph{ width:100%; height:auto; display:block; background:var(--paper); border:1px solid var(--line); border-radius:14px; }
+.graph .gl{ stroke:var(--line); stroke-width:.6; } .graph .ga{ stroke:var(--soft); stroke-width:1.3; }
+.graph .gt{ font:10px "Readex Pro",sans-serif; fill:var(--soft); }
+.graph .gc{ fill:none; stroke:var(--ghaf); stroke-width:3; stroke-linecap:round; }
+.graph .gline{ stroke:var(--gold); stroke-width:2.5; }
+.graph .gsym{ stroke:var(--gold); stroke-width:1.4; stroke-dasharray:5 4; }
+.graph .gv{ fill:var(--gold); } .graph .gp{ fill:var(--red); }
+.graph .gl2{ font:600 11px "Readex Pro",sans-serif; fill:var(--ink); paint-order:stroke; stroke:var(--paper); stroke-width:3px; }
+.graph .gsh{ fill:var(--ghaf); opacity:.16; } .graph .gseg{ stroke:var(--ghaf); stroke-width:6; opacity:.85; }
+.graph .gopen{ fill:var(--paper); stroke:var(--ghaf); stroke-width:2.5; }
+.graph.small{ max-width:260px; }
+.tiles .t1{ fill:var(--ok-bg); stroke:var(--ghaf); stroke-width:2; } .tiles .t2{ fill:var(--mist); stroke:var(--ghaf); stroke-width:2; } .tiles .t3{ fill:var(--gold-bg); stroke:var(--gold); stroke-width:2; stroke-dasharray:6 4; }
+.tiles .tt{ font:italic 600 18px "STIX Two Text",serif; text-anchor:middle; fill:var(--ink); } .tiles .tt.gold{ fill:var(--gold); font-style:normal; } .tiles .ts{ font:italic 14px "STIX Two Text",serif; text-anchor:middle; fill:var(--soft); }
+.cyc{ fill:none; stroke:var(--line); stroke-width:3; } .cyn{ fill:var(--mist); stroke:var(--ghaf); stroke-width:2; } .cyt{ font:italic 600 18px "STIX Two Text",serif; text-anchor:middle; fill:var(--ghaf); } .cys{ font:11px "Readex Pro",sans-serif; text-anchor:middle; fill:var(--soft); }
+.vis{ margin:0; } .vis figcaption{ font-size:.9rem; color:var(--soft); margin-top:6px; }
+.ideas-wrap{ display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); gap:24px; align-items:start; }
+.visuals{ display:grid; gap:12px; } .visuals.n3{ grid-template-columns:repeat(3,1fr); } .visuals.n3 .vis figcaption{ font-size:.8rem; }
+.ideas-wrap:has(.visuals.n3){ grid-template-columns:1fr; }
+.exb{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,300px); gap:16px; align-items:start; padding-bottom:14px; } .exb ol{ margin:0; }
+.qg{ max-width:340px; margin:0 0 16px; }
+/* videos */
+.vids{ display:grid; gap:12px; }
+.vcard{ display:flex; gap:14px; align-items:center; text-decoration:none; color:var(--ink); border:1px solid var(--line); border-radius:14px; padding:14px 16px; }
+.vcard:hover{ background:var(--mist); } .vcard small{ display:block; color:var(--soft); }
+.play{ width:44px; height:44px; flex:none; border-radius:50%; background:var(--ghaf); color:var(--ghaf-ink); display:grid; place-items:center; font-size:1.1rem; }
+/* hero sky */
+.sky{ position:relative; display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:20px; align-items:center; margin:-8px -6px 24px; padding:26px 26px 22px; border-radius:26px; color:#eef7f3; background:radial-gradient(120% 90% at 80% 0%, #1d4a5c 0%, #0d2a2c 45%, #071615 100%); overflow:hidden; }
+.sky h1{ font-size:clamp(2rem,5vw,3rem); font-weight:700; letter-spacing:-.02em; color:#fff; }
+.sky p{ color:#cfe3da; max-width:46ch; }
+.sky .mx{ color:#ffe3a3; }
+.kicker.light{ color:#f2c766; }
+.sky-canvas{ position:relative; height:330px; } #fw{ width:100%; height:100%; display:block; }
+.launch{ display:grid; grid-template-columns:1fr auto; gap:6px 12px; align-items:center; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); border-radius:16px; padding:12px 14px; margin:14px 0 10px; max-width:420px; }
+.launch label{ grid-column:1 / -1; font-size:.92rem; color:#e5f2ec; } .launch b{ color:#f2c766; font-size:1.1rem; }
+.launch input{ accent-color:#f2c766; width:100%; height:30px; }
+.readout{ min-height:2.6em; font-size:.95rem; }
+/* progress */
+.prog-row{ display:flex; flex-wrap:wrap; gap:14px; align-items:center; margin:0 0 22px; }
+.ring-wrap{ display:flex; align-items:center; gap:12px; flex:1 1 220px; } .ring-wrap b{ display:block; font-size:1.25rem; } .ring-wrap span{ color:var(--soft); font-size:.9rem; }
+.ring{ width:84px; height:84px; flex:none; } .ring .rb{ fill:none; stroke:var(--mist); stroke-width:11; } .ring .rf{ fill:none; stroke:var(--ghaf); stroke-width:11; stroke-linecap:round; transform:rotate(-90deg); transform-origin:60px 60px; }
+.ring .rt{ font:700 22px "Readex Pro",sans-serif; text-anchor:middle; fill:var(--ink); }
+.result.almost .ring .rf{ stroke:var(--gold); } .result.fail .ring .rf{ stroke:var(--red); }
+.mini{ flex:1 1 110px; border-left:4px solid var(--ghaf); padding:2px 12px; } .mini b{ display:block; font-size:1.5rem; } .mini span{ color:var(--soft); font-size:.88rem; }
+.home-grid{ display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:16px; margin-bottom:16px; }
+.card{ border:1px solid var(--line); border-radius:20px; padding:18px 20px; }
+.path{ background:var(--mist); border:0; }
+.legend{ font-size:.84rem; color:var(--soft); display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin:6px 0 0; }
+.lg{ width:14px; height:14px; border-radius:50%; display:inline-block; border:2px solid var(--ghaf); } .lg.s{ background:var(--ghaf); } .lg.b{ background:var(--gold); border-color:var(--gold); } .lg.e{ border-color:var(--gold); background:var(--paper); }
+.arch .node.badge{ fill:var(--gold); stroke:var(--gold); } .arch .node.badge + .nlab{ fill:#fff; font-size:15px; }
+.arch .node.done + .nlab{ fill:var(--ghaf-ink); }
+.dq .dqq{ font-weight:500; font-size:1.05rem; } .dqo{ display:grid; gap:8px; } .dqo .opt{ min-height:46px; padding:10px 14px; font-size:1rem; } .dqf{ margin-top:10px; font-size:.95rem; }
+.ladder{ margin-bottom:18px; } .steps{ list-style:none; padding:0; margin:6px 0 0; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.steps li{ display:flex; gap:12px; } .steps p{ margin:2px 0 4px; color:var(--soft); font-size:.92rem; }
+.steps .dot{ width:30px; height:30px; flex:none; border-radius:50%; border:2px solid var(--gold); display:grid; place-items:center; font-weight:700; color:#fff; } .steps li.got .dot{ background:var(--gold); }
+.tile .ico{ display:block; width:34px; height:34px; margin-bottom:8px; } .tile .ico svg, .banner svg, .seal svg{ width:100%; height:100%; fill:none; stroke:currentColor; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+.tile{ border-top-width:1px !important; } .tile .ico{ color:var(--ghaf); } .tile:nth-child(2) .ico{ color:var(--gold); } .tile:nth-child(3) .ico{ color:var(--red); }
+/* results */
+.banner{ display:flex; gap:12px; align-items:center; border:1px solid var(--line); border-radius:14px; padding:12px 14px; margin:10px 0; } .banner svg{ width:34px; height:34px; flex:none; color:var(--ghaf); }
+.banner.gold-b{ background:var(--gold-bg); border-color:var(--gold); } .banner.gold-b svg{ color:var(--gold); }
+.badges{ display:flex; flex-wrap:wrap; gap:10px; }
+.bdg{ width:64px; height:64px; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-decoration:none; color:var(--soft); border:2px dashed var(--line); font-weight:600; font-size:.85rem; }
+.bdg span{ font-size:1.1rem; line-height:1; } .bdg.on{ background:var(--gold); color:#fff; border:2px solid var(--gold); }
+.certcard{ display:flex; flex-direction:column; gap:2px; border:1px dashed var(--line); background:transparent; color:var(--soft); }
+.certcard.got{ border:1px solid var(--gold); background:var(--gold-bg); color:var(--ink); } .seal{ width:36px; height:36px; color:var(--gold); } .seal.off{ color:var(--line); }
+/* teacher */
+.narrow{ max-width:520px; } .narrow label{ display:block; font-weight:500; } .narrow input{ display:block; width:100%; font:inherit; padding:10px 12px; margin-top:4px; border:1px solid var(--line); border-radius:10px; background:var(--paper); color:var(--ink); }
+.linkbtn{ font:inherit; color:var(--ghaf); background:none; border:0; padding:0; text-decoration:underline; cursor:pointer; text-align:left; }
+.dash-top{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; } .dash-top h1{ margin:0; }
+.filters{ display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 16px; } .filters select,.filters input{ font:inherit; padding:8px 12px; border:1px solid var(--line); border-radius:10px; background:var(--paper); color:var(--ink); min-height:42px; }
+.kpis{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; } .kpis div{ background:var(--mist); border-radius:14px; padding:12px 14px; } .kpis b{ display:block; font-size:1.6rem; } .kpis span{ color:var(--soft); font-size:.88rem; }
+.bnm{ margin:-4px 0 6px 3.6em; font-size:.82rem; color:var(--soft); }
+.tbl{ overflow-x:auto; } table{ border-collapse:collapse; width:100%; font-size:.92rem; } th,td{ text-align:left; padding:9px 10px; border-bottom:1px solid var(--line); white-space:nowrap; } th{ color:var(--soft); font-weight:500; }
+.att{ border-top:1px solid var(--line); } .arow summary{ display:flex; gap:12px; align-items:center; padding:10px 4px; cursor:pointer; border-bottom:1px solid var(--line); list-style:none; } .arow summary::-webkit-details-marker{ display:none; }
+.an{ flex:1; min-width:0; } .adet{ padding:10px 6px 14px; font-size:.92rem; background:var(--mist); border-radius:0 0 12px 12px; } .adet p{ margin:.3em 0; }
+.pill.baseline{ background:var(--mist); color:var(--soft); }
+footer a{ color:var(--soft); }
+
+/* timer */
+.timer{ text-align:center; font-size:1.5rem; font-weight:700; color:var(--ghaf); padding:6px 0; letter-spacing:.04em; }
+.timer.warn{ color:var(--red); animation:pulse 1s infinite; }
+@keyframes pulse{ 50%{ opacity:.5; } }
+/* pre-post progress */
+.progress-compare{ background:var(--mist); border-radius:16px; padding:16px 18px; margin:14px 0; }
+.progress-compare h3{ margin:0 0 10px; }
+.pc-bars{ display:grid; gap:10px; }
+.pc-bar{ display:flex; align-items:center; gap:10px; }
+.pc-label{ width:7em; font-size:.88rem; color:var(--soft); }
+.pc-fill{ height:28px; border-radius:8px; background:var(--line); display:flex; align-items:center; padding:0 10px; min-width:40px; transition:width .6s; font-size:.85rem; }
+.pc-fill.post{ background:var(--ghaf); color:var(--ghaf-ink); }
+.pc-fill b{ font-weight:600; }
+.pc-msg{ margin:10px 0 0; font-size:.95rem; }
+td.ok{ color:var(--ghaf); font-weight:600; } td.lo{ color:var(--red); font-weight:600; }
+
+@media (max-width:900px){ .home-grid,.ideas-wrap,.exb{ grid-template-columns:1fr; } .steps{ grid-template-columns:1fr; } .kpis{ grid-template-columns:1fr 1fr; } }
+@media (max-width:820px){ .sky{ grid-template-columns:1fr; padding:20px 16px; } .sky-canvas{ height:250px; } }
+@media (max-width:560px){ .visuals.n3{ grid-template-columns:1fr 1fr; } }
+
+@media (max-width:820px){
+  .hero{ grid-template-columns:1fr; } .grid4{ grid-template-columns:1fr 1fr; } .lab{ grid-template-columns:1fr; }
+}
+@media (max-width:480px){ .grid4{ grid-template-columns:1fr; } body{ font-size:16px; } .brand small{ display:none; } .brand b{ font-size:.9rem; } .chip{ font-size:.78rem; max-width:40vw; } }
+@media (prefers-reduced-motion:reduce){ .arch .curve{ animation:none; stroke-dashoffset:0; } .prog span{ transition:none; } }
+
+@media print{
+  @page{ margin:12mm; }
+  @page cert{ size:A4 landscape; margin:8mm; }
+  #cert{ page:cert; }
+  .top,footer,.noprint,.back,.tabs,.lhead{ display:none !important; }
+  body{ background:#fff; color:#000; }
+  main{ padding:0; max-width:none; }
+  body.print-cert main > *:not(#cert){ display:none !important; }
+  body.print-cert #cert{ margin:0 auto; width:100%; max-width:none; }
+  body.print-ws main > *:not(.panel){ display:none !important; }
+  .panel{ border:0; padding:0; }
+}
+body.print-cert{ }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <img class="logo" alt="Al Bahya Educational Complex logo">
+    <div class="bname"><b id="brandSchool"></b><small id="brandTeacher"></small></div>
+    <div id="who"></div>
+  </div>
+  <nav class="nav" aria-label="Main">
+    <a href="#/home" data-s="home">Home</a>
+    <a href="#/study" data-s="study">Study</a>
+    <a href="#/practice" data-s="practice">Practise</a>
+    <a href="#/class" data-s="class">In class</a>
+    <a href="#/results" data-s="results">My results</a>
+  </nav>
+</header>
+<main id="app"></main>
+<footer id="foot"></footer>
+<dialog id="dlg"></dialog>
+<script>
+/* =====================================================================
+   EDIT HERE — SETTINGS AND COURSE CONTENT
+   ---------------------------------------------------------------------
+   HOW TO WRITE MATH: put math between dollar signs, like $x^2 + 3x - 4 = 0$
+     x^2      → x with a small raised 2      x^{10} → raised 10
+     sqrt{5}  → square root of 5             frac{1}{2} → one half
+     +-  → ±     <=  → ≤     >=  → ≥     !=  → ≠     *  → ·     approx → ≈
+   MULTIPLE CHOICE: the FIRST option is always the correct one.
+     The website mixes the order for students automatically.
+   VIDEOS: paste Khan Academy or YouTube links in videos: [ ... ]
+     videos: [ { title: "Video name", url: "https://www.khanacademy.org/..." } ]
+   GRAPHS (optional): g: { f: [a, b, c] } draws y = ax^2 + bx + c
+     extra: line: [m, k] (y = mx + k), pts: [[x, y, "label"]],
+            vertex: true, axis: true, sign: ">" or "<", xr: [min, max], yr: [min, max]
+   ===================================================================== */
+
+const SETTINGS = {
+  siteTitle: "Grade 12 Math Hub",
+  school: "Al Bahya Educational Complex",
+  teacher: "Ms. Roaa Alabbadi",
+  principal: "Ms. Mariam Alzaabi",
+  subject: "Mathematics, Grade 12 General",
+  book: "Reveal Math Integrated III",
+  term: "Term 1, 2026–2027",
+  passMark: 60,        // percent needed to pass
+  almostMark: 50,      // from here up to passMark = "almost there"
+  meritMark: 75,       // certificate level: Merit
+  distinctionMark: 90, // certificate level: Distinction
+  grades: ["12", "11"],
+  preTimer: 120,       // pre-assessment time limit in seconds (2 minutes)
+  postTimer: 240,      // post-assessment time limit in seconds (4 minutes)
+  // Paste your Google Apps Script web app link here (see results-script.gs).
+  resultsUrl: "",
+  // Optional: your Outlook address. Students get an "Email my result" button.
+  teacherEmail: ""
+};
+
+const COURSE = [
+{
+  id: "U1",
+  code: "Module 1",
+  title: "Quadratic Functions and Equations",
+  weeks: "Weeks 1–4",
+  blurb: "Parabolas, roots, and four ways to solve a quadratic equation.",
+  lessons: [
+
+  /* ================= LESSON 1-1 ================= */
+  {
+    id: "M1L1", code: "1-1", title: "Graphing Quadratic Functions", enrichment: false,
+    goal: "Find the vertex, axis of symmetry, maximum or minimum, domain and range of a quadratic function, and sketch its graph.",
+    summary: [
+      "A quadratic function has the form $f(x) = ax^2 + bx + c$, where $a != 0$. Its graph is a U-shaped curve called a parabola.",
+      "The axis of symmetry is the line $x = frac{-b}{2a}$. It cuts the parabola into two mirror halves.",
+      "The vertex is the turning point. Its x-value is $frac{-b}{2a}$. Put this value into $f(x)$ to find the y-value.",
+      "If $a > 0$ the parabola opens up and the vertex is a minimum. If $a < 0$ it opens down and the vertex is a maximum.",
+      "The y-intercept is $c$. The domain is all real numbers. The range is $y >= k$ (minimum) or $y <= k$ (maximum), where $k$ is the y-value of the vertex."
+    ],
+    visuals: [
+      { g: { f: [1, 2, -3], vertex: true, axis: true, pts: [[0, -3, "y-intercept"], [-1, -4, "vertex"]] }, cap: "$f(x) = x^2 + 2x - 3$: opens up, vertex $(-1, -4)$, axis $x = -1$." }
+    ],
+    terms: [
+      ["Parabola", "the U-shaped graph of a quadratic function"],
+      ["Vertex", "the highest or lowest point of a parabola"],
+      ["Axis of symmetry", "the vertical line through the vertex"],
+      ["Domain", "all the x-values a function can use"],
+      ["Range", "all the y-values a function can give"]
+    ],
+    examples: [
+      { q: "$f(x) = x^2 + 2x - 3$. Find the vertex, axis of symmetry, minimum, domain and range.",
+        steps: ["$a = 1$, $b = 2$, $c = -3$", "Axis: $x = frac{-2}{2(1)} = -1$", "$f(-1) = 1 - 2 - 3 = -4$, so the vertex is $(-1, -4)$", "$a > 0$, so it opens up. Minimum value: $-4$", "Domain: all real numbers. Range: $y >= -4$"],
+        g: { f: [1, 2, -3], vertex: true, axis: true } },
+      { q: "$f(x) = -x^2 - 2x + 2$. Find the vertex and the maximum value.",
+        steps: ["$a = -1$, $b = -2$", "Axis: $x = frac{-(-2)}{2(-1)} = -1$", "$f(-1) = -1 + 2 + 2 = 3$, so the vertex is $(-1, 3)$", "$a < 0$, so it opens down. Maximum value: $3$", "Range: $y <= 3$"],
+        g: { f: [-1, -2, 2], vertex: true, axis: true } }
+    ],
+    videos: [
+      { title: "Finding the vertex of a parabola", url: "https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:quadratic-functions-equations/x2f8bb11595b61c86:standard-form-quadratic/v/ex3-completing-the-square" },
+      { title: "Graphing quadratics: standard form", url: "https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:quadratic-functions-equations/x2f8bb11595b61c86:standard-form-quadratic/v/graphs-of-quadratic-functions" }
+    ],
+    pre: [
+      { q: "If $f(x) = x^2 - 3x$, what is $f(-2)$?", o: ["$10$", "$-2$", "$2$", "$-10$"], why: "$(-2)^2 - 3(-2) = 4 + 6 = 10$" },
+      { q: "Solve $2x + 6 = 0$.", o: ["$x = -3$", "$x = 3$", "$x = -6$", "$x = 6$"], why: "$2x = -6$, so $x = -3$." },
+      { q: "Which is a quadratic function?", o: ["$y = 3x^2 - 1$", "$y = 3x - 1$", "$y = frac{3}{x}$", "$y = 3^x$"], why: "A quadratic has $x^2$ as its highest power." }
+    ],
+    practice: [
+      { q: "What is the axis of symmetry of $f(x) = x^2 + 6x + 8$?", o: ["$x = -3$", "$x = 3$", "$x = -6$", "$x = 8$"], why: "$x = frac{-b}{2a} = frac{-6}{2} = -3$" },
+      { q: "What is the vertex of $f(x) = 2x^2 - 4x + 3$?", o: ["$(1, 1)$", "$(-1, 9)$", "$(1, 3)$", "$(2, 3)$"], why: "$x = frac{4}{4} = 1$ and $f(1) = 2 - 4 + 3 = 1$." },
+      { q: "Which statement is true for $f(x) = -3x^2 + 12x - 5$?", o: ["It has a maximum value of $7$.", "It has a minimum value of $7$.", "It has a maximum value of $2$.", "It has a minimum value of $-5$."], why: "$a < 0$, so there is a maximum. $x = frac{-12}{-6} = 2$ and $f(2) = -12 + 24 - 5 = 7$." },
+      { q: "What is the range of $f(x) = x^2 - 4x + 1$?", o: ["$y >= -3$", "$y <= -3$", "all real numbers", "$y >= 2$"], why: "The vertex is $(2, -3)$ and the graph opens up." },
+      { q: "What is the y-intercept of $f(x) = 4x^2 - x + 9$?", o: ["$9$", "$4$", "$-1$", "$0$"], why: "The y-intercept is $c = 9$." },
+      { q: "Which parabola opens downward?", o: ["$f(x) = -0.5x^2 + 3x$", "$f(x) = 2x^2 - 7$", "$f(x) = x^2 + 10x$", "$f(x) = 3 + x^2$"], why: "A parabola opens down when $a$ is negative." },
+      { q: "Use the graph. What is the vertex?", g: { f: [-1, 4, -1] }, o: ["$(2, 3)$", "$(3, 2)$", "$(0, -1)$", "$(-2, 3)$"], why: "The highest point of the graph is at $x = 2$, $y = 3$." },
+      { q: "Use the graph. What is the minimum value of the function?", g: { f: [1, -2, -3] }, o: ["$-4$", "$1$", "$-3$", "$3$"], why: "The lowest point is $(1, -4)$, so the minimum value is $-4$." }
+    ],
+    worksheet: [
+      { q: "$f(x) = x^2 + 4x + 1$. Find the axis, vertex, minimum and range.", a: "$x = -2$; vertex $(-2, -3)$; minimum $-3$; range $y >= -3$" },
+      { q: "$f(x) = -2x^2 + 8x - 5$. Find the vertex, maximum and range.", a: "Vertex $(2, 3)$; maximum $3$; range $y <= 3$" },
+      { q: "$f(x) = 3x^2 - 6x$. Find the vertex and the y-intercept.", a: "Vertex $(1, -3)$; y-intercept $0$" },
+      { q: "$f(x) = -x^2 + 9$. Find the vertex, maximum and range.", a: "Vertex $(0, 9)$; maximum $9$; range $y <= 9$" },
+      { q: "Sketch $f(x) = x^2 - 6x + 5$. Mark the vertex and both x-intercepts.", a: "Vertex $(3, -4)$; x-intercepts $1$ and $5$; y-intercept $5$" }
+    ],
+    realWorld: [
+      { title: "Global Village fireworks", text: "A firework's height is $h(t) = -5t^2 + 40t + 2$ metres, where $t$ is time in seconds. When does it reach its highest point, and how high is it?", a: "$t = frac{-40}{-10} = 4$ seconds. $h(4) = -80 + 160 + 2 = 82$ metres." },
+      { title: "A bridge arch", text: "Suppose a bridge arch in Abu Dhabi is modelled by $y = -0.02x^2 + 1.6x$ (in metres). How tall is the arch, and how wide is it at ground level?", a: "$x = frac{1.6}{0.04} = 40$, so the height is $y = -32 + 64 = 32$ metres. The roots are $x = 0$ and $x = 80$, so it is $80$ metres wide.", g: { f: [-0.02, 1.6, 0], vertex: true, xr: [-10, 90], yr: [-5, 40] } }
+    ],
+    activity: { type: "lab", title: "Parabola lab", prompt: "Move the sliders. Watch how $a$, $b$ and $c$ change the vertex, the axis of symmetry and the direction." }
+  },
+
+  /* ================= LESSON 1-2 ================= */
+  {
+    id: "M1L2", code: "1-2", title: "Solving Quadratic Equations by Graphing", enrichment: false,
+    goal: "Solve a quadratic equation by finding where its graph meets the x-axis.",
+    summary: [
+      "The solutions of $ax^2 + bx + c = 0$ are the x-intercepts of the graph of $y = ax^2 + bx + c$. They are also called roots or zeros.",
+      "A parabola can cross the x-axis twice (2 real solutions), touch it once (1 real solution), or not reach it (no real solutions).",
+      "If a root is not a whole number, find the two whole numbers it lies between. In a table, look for where $f(x)$ changes sign."
+    ],
+    visuals: [
+      { g: { f: [1, -2, -3], pts: [[-1, 0, ""], [3, 0, ""]] }, cap: "Two real solutions" },
+      { g: { f: [1, -4, 4], pts: [[2, 0, ""]] }, cap: "One real solution" },
+      { g: { f: [1, 0, 2] }, cap: "No real solutions" }
+    ],
+    terms: [
+      ["Root", "a solution of an equation"],
+      ["Zero of a function", "an x-value that makes $f(x) = 0$"],
+      ["x-intercept", "a point where a graph meets the x-axis"]
+    ],
+    examples: [
+      { q: "Solve $x^2 - 2x - 8 = 0$ by graphing.", steps: ["Graph $y = x^2 - 2x - 8$.", "It crosses the x-axis at $x = -2$ and $x = 4$.", "Check: $(-2)^2 - 2(-2) - 8 = 0$ and $4^2 - 2(4) - 8 = 0$.", "Solutions: $x = -2$ and $x = 4$."], g: { f: [1, -2, -8], pts: [[-2, 0, "-2"], [4, 0, "4"]], yr: [-10, 6] } },
+      { q: "Solve $x^2 + 4x + 4 = 0$ by graphing.", steps: ["The vertex is $(-2, 0)$.", "The graph only touches the x-axis at $x = -2$.", "One real solution: $x = -2$."], g: { f: [1, 4, 4], pts: [[-2, 0, "-2"]] } },
+      { q: "Solve $x^2 + 3 = 0$ by graphing.", steps: ["The vertex is $(0, 3)$ and the graph opens up.", "It never reaches the x-axis.", "No real solutions."], g: { f: [1, 0, 3] } }
+    ],
+    videos: [
+      { title: "Graphing quadratics in factored form", url: "https://www.khanacademy.org/v/graphing-quadratics-in-factored-form" },
+      { title: "Solving quadratics by graphing", url: "https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:quadratic-functions-equations/x2f8bb11595b61c86:quad-solving-graphing/v/graphing-a-quadratic-function" }
+    ],
+    pre: [
+      { q: "An x-intercept is a point where…", o: ["$y = 0$", "$x = 0$", "$x = y$", "the graph turns"], why: "Every point on the x-axis has $y = 0$." },
+      { q: "If $f(x) = x^2 - 4$, what is $f(2)$?", o: ["$0$", "$4$", "$-4$", "$8$"], why: "$2^2 - 4 = 0$" },
+      { q: "Between which two whole numbers is $sqrt{10}$?", o: ["$3$ and $4$", "$2$ and $3$", "$4$ and $5$", "$9$ and $10$"], why: "$3^2 = 9$ and $4^2 = 16$, and $10$ is between them." }
+    ],
+    practice: [
+      { q: "On a graph, the real solutions of a quadratic equation are…", o: ["the x-intercepts", "the y-intercept", "the vertex", "the axis of symmetry"], why: "A solution makes $y = 0$, so it is on the x-axis." },
+      { q: "Use the graph of $y = x^2 - x - 6$. What are the solutions of $x^2 - x - 6 = 0$?", g: { f: [1, -1, -6], yr: [-8, 6] }, o: ["$x = -2$ and $x = 3$", "$x = 2$ and $x = -3$", "$x = -6$ and $x = 1$", "$x = 6$ and $x = -1$"], why: "The graph crosses the x-axis at $-2$ and $3$. Check: $(x - 3)(x + 2) = x^2 - x - 6$." },
+      { q: "How many real solutions does $x^2 - 6x + 9 = 0$ have?", o: ["one", "two", "none", "three"], why: "The vertex $(3, 0)$ is on the x-axis, so the graph touches it once." },
+      { q: "A parabola opens up and its vertex is $(-1, 4)$. How many real solutions does its equation have?", o: ["none", "one", "two", "You cannot tell."], why: "The lowest point is above the x-axis, so the graph never reaches it." },
+      { q: "The positive root of $x^2 - 3 = 0$ is between…", o: ["$1$ and $2$", "$2$ and $3$", "$0$ and $1$", "$3$ and $4$"], why: "$sqrt{3} approx 1.73$" },
+      { q: "In a table, $f(2) = -1$ and $f(3) = 2$. Where is a root?", o: ["between $x = 2$ and $x = 3$", "at $x = 2$", "at $x = 3$", "There is no root."], why: "$f(x)$ changes from negative to positive, so the graph crosses the x-axis between $2$ and $3$." },
+      { q: "Use the graph. How many real solutions does this equation have?", g: { f: [-1, 2, -4] }, o: ["none", "one", "two", "four"], why: "The parabola opens down and its highest point $(1, -3)$ is below the x-axis." }
+    ],
+    worksheet: [
+      { q: "Solve $x^2 - 4x - 5 = 0$ by graphing.", a: "$x = -1$ and $x = 5$" },
+      { q: "Solve $x^2 - 9 = 0$ by graphing.", a: "$x = -3$ and $x = 3$" },
+      { q: "Solve $x^2 + 6x + 9 = 0$ by graphing.", a: "$x = -3$ (one solution)" },
+      { q: "Solve $x^2 + x + 4 = 0$ by graphing.", a: "No real solutions" },
+      { q: "Between which whole numbers are the roots of $x^2 - 5 = 0$?", a: "Between $2$ and $3$, and between $-3$ and $-2$ ($x approx +-2.24$)" }
+    ],
+    realWorld: [
+      { title: "Fountain show", text: "A fountain jet's height is $h(t) = -5t^2 + 30t$ metres. After how many seconds does the water fall back to the pool?", a: "$-5t(t - 6) = 0$, so $t = 6$ seconds.", g: { f: [-5, 30, 0], vertex: true, xr: [-1, 7], yr: [-5, 50] } },
+      { title: "School football match", text: "A ball's height is $h(t) = -5t^2 + 10t + 15$ metres. When does it hit the ground?", a: "$-5(t - 3)(t + 1) = 0$. Time cannot be negative, so $t = 3$ seconds." }
+    ],
+    activity: { type: "sort", title: "How many real solutions?", prompt: "Read each description. Choose the number of real solutions.",
+      categories: ["2 solutions", "1 solution", "no real solutions"],
+      items: [
+        { t: "Opens up, vertex $(2, -5)$", c: 0 },
+        { t: "Opens down, vertex $(1, 3)$", c: 0 },
+        { t: "Opens up, vertex $(-4, 0)$", c: 1 },
+        { t: "Opens up, vertex $(0, 6)$", c: 2 },
+        { t: "Opens down, vertex $(3, -2)$", c: 2 },
+        { t: "$y = x^2 - 10x + 25$", c: 1 }
+      ] }
+  },
+
+  /* ================= LESSON 1-3 (CHALLENGE) ================= */
+  {
+    id: "M1L3", code: "1-3", title: "Complex Numbers", enrichment: true,
+    goal: "Use the imaginary unit $i$ to simplify, add, subtract and multiply complex numbers.",
+    summary: [
+      "The imaginary unit is $i = sqrt{-1}$, so $i^2 = -1$.",
+      "A complex number has the form $a + bi$. The real part is $a$ and the imaginary part is $bi$.",
+      "To add or subtract, combine the real parts and the imaginary parts. To multiply, expand the brackets and then replace $i^2$ with $-1$.",
+      "Powers of $i$ repeat in a cycle of four: $i$, $-1$, $-i$, $1$."
+    ],
+    visuals: [ { cycle: true, cap: "Powers of $i$ repeat every four steps." } ],
+    terms: [
+      ["Imaginary unit $i$", "the number whose square is $-1$"],
+      ["Complex number", "a number written as $a + bi$"],
+      ["Complex conjugate", "$a + bi$ and $a - bi$; their product is a real number"]
+    ],
+    examples: [
+      { q: "Simplify $sqrt{-49}$.", steps: ["$sqrt{-49} = sqrt{49} * sqrt{-1}$", "$= 7i$"] },
+      { q: "Multiply $(3 + 2i)(1 - 4i)$.", steps: ["$= 3 - 12i + 2i - 8i^2$", "$= 3 - 10i + 8$ because $i^2 = -1$", "$= 11 - 10i$"] },
+      { q: "Simplify $i^{23}$.", steps: ["$23 div 4 = 5$ remainder $3$", "$i^3 = -i$", "So $i^{23} = -i$"] }
+    ],
+    videos: [
+      { title: "Introduction to i and imaginary numbers", url: "https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:complex/x2ec2f6f830c9fb89:complex-num/v/introduction-to-i-and-imaginary-numbers" },
+      { title: "Adding and subtracting complex numbers", url: "https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:complex/x2ec2f6f830c9fb89:complex-add-sub/v/adding-complex-numbers" }
+    ],
+    pre: [
+      { q: "Expand $(x + 3)(x - 3)$.", o: ["$x^2 - 9$", "$x^2 + 9$", "$x^2 - 6x - 9$", "$x^2 + 6x - 9$"], why: "This is a difference of squares." },
+      { q: "Simplify $sqrt{48}$.", o: ["$4sqrt{3}$", "$16sqrt{3}$", "$4sqrt{12}$", "$6sqrt{2}$"], why: "$48 = 16 * 3$, so $sqrt{48} = 4sqrt{3}$." }
+    ],
+    practice: [
+      { q: "Simplify $sqrt{-36}$.", o: ["$6i$", "$-6$", "$6$", "$36i$"], why: "$sqrt{36} * sqrt{-1} = 6i$" },
+      { q: "What is $(4 + 3i) + (2 - 5i)$?", o: ["$6 - 2i$", "$6 + 8i$", "$2 + 8i$", "$8 - 15i$"], why: "Real parts: $4 + 2 = 6$. Imaginary parts: $3i - 5i = -2i$." },
+      { q: "What is $(2 + i)(2 - i)$?", o: ["$5$", "$3$", "$4 - i$", "$4$"], why: "$4 - i^2 = 4 + 1 = 5$" },
+      { q: "Simplify $i^{10}$.", o: ["$-1$", "$1$", "$i$", "$-i$"], why: "$10 div 4$ leaves remainder $2$, and $i^2 = -1$." },
+      { q: "Solve $x^2 + 16 = 0$.", o: ["$x = +-4i$", "$x = +-4$", "$x = 4i$ only", "no solution"], why: "$x^2 = -16$, so $x = +-sqrt{-16} = +-4i$." },
+      { q: "What is the conjugate of $5 - 7i$?", o: ["$5 + 7i$", "$-5 + 7i$", "$-5 - 7i$", "$7 - 5i$"], why: "Change the sign of the imaginary part only." }
+    ],
+    worksheet: [
+      { q: "$(6 - 2i) - (1 + 3i)$", a: "$5 - 5i$" },
+      { q: "$(1 + 2i)(3 + i)$", a: "$1 + 7i$" },
+      { q: "Simplify $i^{15}$.", a: "$-i$" },
+      { q: "Solve $x^2 + 25 = 0$.", a: "$x = +-5i$" }
+    ],
+    realWorld: [
+      { title: "Electrical engineers", text: "Engineers who design the UAE power network use complex numbers for alternating current circuits. Two parts joined in a line have values $3 + 4i$ and $2 - i$ ohms. What is the total?", a: "Add them: $(3 + 4i) + (2 - i) = 5 + 3i$ ohms." }
+    ],
+    activity: { type: "sort", title: "Powers of i", prompt: "Choose the value of each power of $i$.",
+      categories: ["$i$", "$-1$", "$-i$", "$1$"],
+      items: [ { t: "$i^5$", c: 0 }, { t: "$i^6$", c: 1 }, { t: "$i^7$", c: 2 }, { t: "$i^8$", c: 3 }, { t: "$i^{13}$", c: 0 }, { t: "$i^{22}$", c: 1 } ] }
+  },
+
+  /* ================= LESSON 1-4 ================= */
+  {
+    id: "M1L4", code: "1-4", title: "Solving Quadratic Equations by Factoring", enrichment: false,
+    goal: "Solve quadratic equations by factoring and the Zero Product Property.",
+    summary: [
+      "Zero Product Property: if $a * b = 0$, then $a = 0$ or $b = 0$.",
+      "Step 1: write the equation as $ax^2 + bx + c = 0$. Step 2: factor. Step 3: set each factor equal to $0$ and solve.",
+      "Useful patterns: a greatest common factor, $x^2 + bx + c$, $ax^2 + bx + c$, the difference of squares $a^2 - b^2 = (a + b)(a - b)$, and perfect squares."
+    ],
+    visuals: [
+      { g: { f: [1, 5, -14], pts: [[-7, 0, "-7"], [2, 0, "2"]], xr: [-9, 5], yr: [-22, 8] }, cap: "$x^2 + 5x - 14 = (x + 7)(x - 2)$. The factors give the x-intercepts $-7$ and $2$." }
+    ],
+    terms: [
+      ["Factor", "to write an expression as a product"],
+      ["Zero Product Property", "if a product is $0$, at least one factor is $0$"],
+      ["Difference of squares", "$a^2 - b^2$, which factors as $(a + b)(a - b)$"]
+    ],
+    examples: [
+      { q: "Solve $x^2 + 5x - 14 = 0$.", steps: ["Find two numbers that multiply to $-14$ and add to $5$: $7$ and $-2$.", "$(x + 7)(x - 2) = 0$", "$x = -7$ or $x = 2$"] },
+      { q: "Solve $3x^2 - 12x = 0$.", steps: ["Take out the common factor: $3x(x - 4) = 0$", "$x = 0$ or $x = 4$"] },
+      { q: "Solve $2x^2 + 7x + 3 = 0$.", steps: ["$(2x + 1)(x + 3) = 0$", "$2x + 1 = 0$ gives $x = -frac{1}{2}$", "$x + 3 = 0$ gives $x = -3$"] }
+    ],
+    videos: [
+      { title: "Solving quadratics by factoring", url: "https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:quadratic-functions-equations/x2f8bb11595b61c86:solving-quadratics-factoring/v/example-1-solving-a-quadratic-equation-by-factoring" },
+      { title: "Zero product property", url: "https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:quadratic-functions-equations/x2f8bb11595b61c86:solving-quadratics-factoring/v/zero-product-property" }
+    ],
+    pre: [
+      { q: "Factor $6x + 9$.", o: ["$3(2x + 3)$", "$6(x + 9)$", "$3(2x + 9)$", "$9(x + 1)$"], why: "The greatest common factor is $3$." },
+      { q: "Expand $(x + 2)(x + 5)$.", o: ["$x^2 + 7x + 10$", "$x^2 + 10x + 7$", "$x^2 + 7x + 7$", "$x^2 + 10$"], why: "$x^2 + 5x + 2x + 10 = x^2 + 7x + 10$" },
+      { q: "Which two numbers multiply to $12$ and add to $7$?", o: ["$3$ and $4$", "$2$ and $6$", "$1$ and $12$", "$-3$ and $-4$"], why: "$3 * 4 = 12$ and $3 + 4 = 7$." }
+    ],
+    practice: [
+      { q: "Solve $x^2 - 7x + 10 = 0$.", o: ["$x = 2$ or $x = 5$", "$x = -2$ or $x = -5$", "$x = 1$ or $x = 10$", "$x = -1$ or $x = -10$"], why: "$(x - 2)(x - 5) = 0$" },
+      { q: "Solve $x^2 - 49 = 0$.", o: ["$x = +-7$", "$x = 7$ only", "$x = +-49$", "no real solution"], why: "$(x + 7)(x - 7) = 0$" },
+      { q: "Solve $4x^2 + 8x = 0$.", o: ["$x = 0$ or $x = -2$", "$x = 0$ or $x = 2$", "$x = -2$ only", "$x = 4$ or $x = 8$"], why: "$4x(x + 2) = 0$" },
+      { q: "Factor $x^2 + x - 12$.", o: ["$(x + 4)(x - 3)$", "$(x - 4)(x + 3)$", "$(x + 6)(x - 2)$", "$(x + 12)(x - 1)$"], why: "$4 * (-3) = -12$ and $4 + (-3) = 1$." },
+      { q: "Solve $2x^2 - 5x - 3 = 0$.", o: ["$x = -frac{1}{2}$ or $x = 3$", "$x = frac{1}{2}$ or $x = -3$", "$x = -3$ or $x = 5$", "$x = 2$ or $x = 3$"], why: "$(2x + 1)(x - 3) = 0$" },
+      { q: "Solve $x^2 - 10x + 25 = 0$.", o: ["$x = 5$", "$x = -5$", "$x = +-5$", "$x = 25$"], why: "$(x - 5)^2 = 0$" },
+      { q: "The graph of $y = x^2 + 2x - 8$ is shown. Which factored form matches it?", g: { f: [1, 2, -8], yr: [-10, 6] }, o: ["$(x + 4)(x - 2)$", "$(x - 4)(x + 2)$", "$(x + 8)(x - 1)$", "$(x - 8)(x + 1)$"], why: "The x-intercepts are $-4$ and $2$, so the factors are $(x + 4)$ and $(x - 2)$." }
+    ],
+    worksheet: [
+      { q: "$x^2 + 3x - 18 = 0$", a: "$x = -6$ or $x = 3$" },
+      { q: "$x^2 - 16 = 0$", a: "$x = +-4$" },
+      { q: "$5x^2 - 20x = 0$", a: "$x = 0$ or $x = 4$" },
+      { q: "$3x^2 + 10x + 8 = 0$", a: "$x = -frac{4}{3}$ or $x = -2$" },
+      { q: "$x^2 + 8x + 16 = 0$", a: "$x = -4$" }
+    ],
+    realWorld: [
+      { title: "A garden in Al Ain", text: "A rectangular garden has an area of $96$ m². Its length is $4$ m more than its width. Find the width and the length.", a: "$w(w + 4) = 96$, so $w^2 + 4w - 96 = 0$ and $(w + 12)(w - 8) = 0$. The width is $8$ m and the length is $12$ m." },
+      { title: "Majlis carpet", text: "A carpet's length is $2$ m more than its width, and its area is $15$ m². Find its size.", a: "$w^2 + 2w - 15 = 0$, so $(w + 5)(w - 3) = 0$. The carpet is $3$ m by $5$ m." }
+    ],
+    activity: { type: "sort", title: "Match the factors", prompt: "Choose the factored form of each expression.",
+      categories: ["$(x + 3)(x + 2)$", "$(x - 3)(x + 2)$", "$(x + 3)(x - 2)$", "$(x - 3)(x - 2)$"],
+      items: [ { t: "$x^2 + 5x + 6$", c: 0 }, { t: "$x^2 - x - 6$", c: 1 }, { t: "$x^2 + x - 6$", c: 2 }, { t: "$x^2 - 5x + 6$", c: 3 } ] }
+  },
+
+  /* ================= LESSON 1-5 ================= */
+  {
+    id: "M1L5", code: "1-5", title: "Solving Quadratic Equations by Completing the Square", enrichment: false,
+    goal: "Solve quadratic equations by making a perfect square trinomial.",
+    summary: [
+      "To make $x^2 + bx$ a perfect square, add $(frac{b}{2})^2$. Then $x^2 + bx + (frac{b}{2})^2 = (x + frac{b}{2})^2$.",
+      "Steps: move $c$ to the other side. If $a != 1$, divide every term by $a$. Add $(frac{b}{2})^2$ to both sides. Write the left side as a square. Take the square root of both sides (remember $+-$). Solve.",
+      "This method works for every quadratic equation, even when it does not factor."
+    ],
+    visuals: [ { tiles: 6, cap: "Completing the square for $x^2 + 6x$: split $6x$ into two strips of $3x$. The missing corner is $3^2 = 9$." } ],
+    terms: [
+      ["Perfect square trinomial", "a trinomial like $x^2 + 6x + 9$ that equals $(x + 3)^2$"],
+      ["Completing the square", "adding a number to make a perfect square trinomial"]
+    ],
+    examples: [
+      { q: "Solve $x^2 + 6x - 7 = 0$.", steps: ["$x^2 + 6x = 7$", "Add $(frac{6}{2})^2 = 9$ to both sides: $x^2 + 6x + 9 = 16$", "$(x + 3)^2 = 16$", "$x + 3 = +-4$", "$x = 1$ or $x = -7$"] },
+      { q: "Solve $x^2 - 4x - 1 = 0$.", steps: ["$x^2 - 4x = 1$", "Add $4$ to both sides: $(x - 2)^2 = 5$", "$x - 2 = +-sqrt{5}$", "$x = 2 +- sqrt{5}$"] },
+      { q: "Solve $2x^2 + 8x - 10 = 0$.", steps: ["Divide by $2$: $x^2 + 4x - 5 = 0$", "$x^2 + 4x = 5$. Add $4$: $(x + 2)^2 = 9$", "$x + 2 = +-3$", "$x = 1$ or $x = -5$"] }
+    ],
+    videos: [
+      { title: "Completing the square intro", url: "https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:quadratic-functions-equations/x2f8bb11595b61c86:completing-square-quadratics/v/ex1-completing-the-square" },
+      { title: "Solving by completing the square", url: "https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:quadratic-functions-equations/x2f8bb11595b61c86:completing-square-quadratics/v/solving-quadratics-by-completing-the-square" }
+    ],
+    pre: [
+      { q: "What is $sqrt{49}$?", o: ["$7$", "$14$", "$24.5$", "$49$"], why: "$7 * 7 = 49$" },
+      { q: "Expand $(x + 4)^2$.", o: ["$x^2 + 8x + 16$", "$x^2 + 16$", "$x^2 + 4x + 16$", "$x^2 + 8x + 8$"], why: "$(x + 4)(x + 4) = x^2 + 8x + 16$" },
+      { q: "What is half of $-10$?", o: ["$-5$", "$5$", "$-20$", "$20$"], why: "$-10 div 2 = -5$" }
+    ],
+    practice: [
+      { q: "What value of $c$ makes $x^2 + 10x + c$ a perfect square trinomial?", o: ["$25$", "$10$", "$100$", "$5$"], why: "$(frac{10}{2})^2 = 25$" },
+      { q: "What value of $c$ makes $x^2 - 8x + c$ a perfect square trinomial?", o: ["$16$", "$-16$", "$64$", "$4$"], why: "$(frac{-8}{2})^2 = 16$" },
+      { q: "$x^2 + 12x + 36$ can be written as…", o: ["$(x + 6)^2$", "$(x + 12)^2$", "$(x - 6)^2$", "$(x + 36)^2$"], why: "Half of $12$ is $6$, and $6^2 = 36$." },
+      { q: "Solve $(x - 5)^2 = 9$.", o: ["$x = 8$ or $x = 2$", "$x = 14$ or $x = -4$", "$x = 8$ only", "$x = -8$ or $x = -2$"], why: "$x - 5 = +-3$, so $x = 5 + 3 = 8$ or $x = 5 - 3 = 2$." },
+      { q: "Solve $x^2 + 2x - 3 = 0$ by completing the square.", o: ["$x = 1$ or $x = -3$", "$x = -1$ or $x = 3$", "$x = 2$ or $x = -2$", "$x = 3$ or $x = 1$"], why: "$x^2 + 2x = 3$, so $(x + 1)^2 = 4$ and $x + 1 = +-2$." },
+      { q: "Solve $x^2 - 6x + 4 = 0$.", o: ["$x = 3 +- sqrt{5}$", "$x = -3 +- sqrt{5}$", "$x = 3 +- sqrt{13}$", "$x = 6 +- sqrt{5}$"], why: "$x^2 - 6x = -4$. Add $9$: $(x - 3)^2 = 5$." }
+    ],
+    worksheet: [
+      { q: "$x^2 + 4x - 12 = 0$", a: "$(x + 2)^2 = 16$, so $x = 2$ or $x = -6$" },
+      { q: "$x^2 - 10x + 21 = 0$", a: "$(x - 5)^2 = 4$, so $x = 7$ or $x = 3$" },
+      { q: "$x^2 + 2x - 1 = 0$", a: "$(x + 1)^2 = 2$, so $x = -1 +- sqrt{2}$" },
+      { q: "$3x^2 - 12x - 15 = 0$", a: "$x^2 - 4x - 5 = 0$, $(x - 2)^2 = 9$, so $x = 5$ or $x = -1$" }
+    ],
+    realWorld: [
+      { title: "Souvenir shop profit", text: "A shop's daily profit is $P(x) = -x^2 + 20x - 64$ hundred AED, where $x$ is hundreds of items sold. At what sales does the shop break even ($P = 0$)?", a: "$x^2 - 20x = -64$. Add $100$: $(x - 10)^2 = 36$, so $x = 16$ or $x = 4$. That is $400$ or $1600$ items." }
+    ],
+    activity: { type: "sort", title: "Find the missing number", prompt: "Choose the number that completes each square.",
+      categories: ["$4$", "$9$", "$16$", "$25$"],
+      items: [ { t: "$x^2 + 4x + ?$", c: 0 }, { t: "$x^2 - 6x + ?$", c: 1 }, { t: "$x^2 + 8x + ?$", c: 2 }, { t: "$x^2 - 10x + ?$", c: 3 }, { t: "$x^2 - 4x + ?$", c: 0 } ] }
+  },
+
+  /* ================= LESSON 1-6 ================= */
+  {
+    id: "M1L6", code: "1-6", title: "Using the Quadratic Formula and the Discriminant", enrichment: false,
+    goal: "Solve any quadratic equation with the Quadratic Formula, and use the discriminant to describe its solutions.",
+    summary: [
+      "Quadratic Formula: for $ax^2 + bx + c = 0$, $x = frac{-b +- sqrt{b^2 - 4ac}}{2a}$.",
+      "The discriminant is $b^2 - 4ac$. It tells you the type of solutions before you solve.",
+      "If $b^2 - 4ac > 0$: two real solutions (rational if it is a perfect square). If $b^2 - 4ac = 0$: one real solution. If $b^2 - 4ac < 0$: no real solutions (two complex solutions)."
+    ],
+    visuals: [
+      { g: { f: [1, -2, -3] }, cap: "$b^2 - 4ac > 0$: two real solutions" },
+      { g: { f: [1, -4, 4] }, cap: "$b^2 - 4ac = 0$: one real solution" },
+      { g: { f: [1, 0, 2] }, cap: "$b^2 - 4ac < 0$: two complex solutions" }
+    ],
+    terms: [
+      ["Quadratic Formula", "a formula that solves every quadratic equation"],
+      ["Discriminant", "$b^2 - 4ac$, the expression under the square root"]
+    ],
+    examples: [
+      { q: "Solve $2x^2 - 5x - 3 = 0$.", steps: ["$a = 2$, $b = -5$, $c = -3$", "$b^2 - 4ac = 25 + 24 = 49$", "$x = frac{5 +- 7}{4}$", "$x = 3$ or $x = -frac{1}{2}$"] },
+      { q: "Solve $x^2 + 4x + 1 = 0$.", steps: ["$b^2 - 4ac = 16 - 4 = 12$", "$x = frac{-4 +- sqrt{12}}{2} = frac{-4 +- 2sqrt{3}}{2}$", "$x = -2 +- sqrt{3}$"] },
+      { q: "Describe the solutions of $x^2 + 2x + 5 = 0$.", steps: ["$b^2 - 4ac = 4 - 20 = -16$", "It is negative, so there are no real solutions.", "The complex solutions are $x = frac{-2 +- 4i}{2} = -1 +- 2i$."] }
+    ],
+    videos: [
+      { title: "Using the quadratic formula", url: "https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:quadratic-functions-equations/x2f8bb11595b61c86:quadratic-formula-a1/v/using-the-quadratic-formula" },
+      { title: "Discriminant: types of solutions", url: "https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:quadratic-functions-equations/x2f8bb11595b61c86:quadratic-formula-a1/v/discriminant-for-types-of-solutions-for-a-quadratic" }
+    ],
+    pre: [
+      { q: "What is $sqrt{64}$?", o: ["$8$", "$32$", "$16$", "$6$"], why: "$8 * 8 = 64$" },
+      { q: "If $a = 1$, $b = 3$ and $c = 2$, what is $b^2 - 4ac$?", o: ["$1$", "$17$", "$-1$", "$5$"], why: "$9 - 8 = 1$" },
+      { q: "Write $3x^2 = 5x - 2$ in standard form.", o: ["$3x^2 - 5x + 2 = 0$", "$3x^2 + 5x - 2 = 0$", "$3x^2 - 5x - 2 = 0$", "$5x - 3x^2 - 2 = 0$"], why: "Subtract $5x$ and add $2$ on both sides." }
+    ],
+    practice: [
+      { q: "The discriminant of $x^2 - 6x + 9 = 0$ is $0$. What does this mean?", o: ["There is one real solution.", "There are two real solutions.", "There are no solutions at all.", "There are three solutions."], why: "$36 - 36 = 0$, so there is exactly one real solution." },
+      { q: "Describe the solutions of $3x^2 + 2x + 1 = 0$.", o: ["two complex solutions", "two real solutions", "one real solution", "two rational solutions"], why: "$b^2 - 4ac = 4 - 12 = -8$, which is negative." },
+      { q: "Solve $x^2 - 2x - 15 = 0$ with the Quadratic Formula.", o: ["$x = 5$ or $x = -3$", "$x = -5$ or $x = 3$", "$x = 15$ or $x = -1$", "$x = 1 +- sqrt{15}$"], why: "$b^2 - 4ac = 4 + 60 = 64$, so $x = frac{2 +- 8}{2}$." },
+      { q: "$x^2 + 5x + 2 = 0$ has a discriminant of $17$. Its solutions are…", o: ["two real irrational numbers", "two real rational numbers", "one real number", "two complex numbers"], why: "$17$ is positive but not a perfect square." },
+      { q: "For $4x^2 - 7 = 3x$, what are $a$, $b$ and $c$?", o: ["$a = 4$, $b = -3$, $c = -7$", "$a = 4$, $b = 3$, $c = -7$", "$a = 4$, $b = -7$, $c = 3$", "$a = -4$, $b = 3$, $c = 7$"], why: "In standard form: $4x^2 - 3x - 7 = 0$." },
+      { q: "Solve $x^2 + 6x + 7 = 0$.", o: ["$x = -3 +- sqrt{2}$", "$x = 3 +- sqrt{2}$", "$x = -6 +- sqrt{8}$", "$x = -3 +- sqrt{8}$"], why: "$b^2 - 4ac = 36 - 28 = 8$, so $x = frac{-6 +- 2sqrt{2}}{2} = -3 +- sqrt{2}$." },
+      { q: "The graph shows $y = ax^2 + bx + c$. What can you say about $b^2 - 4ac$?", g: { f: [1, 2, 1] }, o: ["$b^2 - 4ac = 0$", "$b^2 - 4ac > 0$", "$b^2 - 4ac < 0$", "You cannot tell."], why: "The graph touches the x-axis once, so there is one real solution." }
+    ],
+    worksheet: [
+      { q: "$3x^2 + 5x - 2 = 0$", a: "Discriminant $49$, so $x = frac{1}{3}$ or $x = -2$" },
+      { q: "$x^2 - 4x + 2 = 0$", a: "Discriminant $8$, so $x = 2 +- sqrt{2}$" },
+      { q: "$x^2 + x + 1 = 0$", a: "Discriminant $-3$, so $x = frac{-1 +- isqrt{3}}{2}$" },
+      { q: "$2x^2 + 4x + 2 = 0$", a: "Discriminant $0$, so $x = -1$" },
+      { q: "Describe the solutions of $5x^2 - 3x + 4 = 0$.", a: "Discriminant $-71$, so two complex solutions" }
+    ],
+    realWorld: [
+      { title: "Diving at a water park", text: "A diver's height is $h(t) = -5t^2 + 5t + 10$ metres. When does she reach the water?", a: "$-5t^2 + 5t + 10 = 0$ gives $t^2 - t - 2 = 0$, so $t = 2$ seconds (time cannot be negative)." },
+      { title: "School science fair rocket", text: "A model rocket's height is $h(t) = -5t^2 + 40t + 1.5$ metres. Will it reach $100$ m?", a: "Solve $-5t^2 + 40t + 1.5 = 100$, which is $5t^2 - 40t + 98.5 = 0$. The discriminant is $1600 - 1970 = -370 < 0$, so no. Its highest point is $81.5$ m." }
+    ],
+    activity: { type: "sort", title: "Discriminant sort", prompt: "Work out $b^2 - 4ac$, then choose the type of solutions.",
+      categories: ["2 real", "1 real", "2 complex"],
+      items: [ { t: "$x^2 + 4x + 4 = 0$", c: 1 }, { t: "$x^2 - 5x + 6 = 0$", c: 0 }, { t: "$x^2 + x + 3 = 0$", c: 2 }, { t: "$2x^2 - 3x - 1 = 0$", c: 0 }, { t: "$x^2 - 2x + 7 = 0$", c: 2 }, { t: "$9x^2 - 6x + 1 = 0$", c: 1 } ] }
+  },
+
+  /* ================= LESSON 1-7 ================= */
+  {
+    id: "M1L7", code: "1-7", title: "Quadratic Inequalities", enrichment: false,
+    goal: "Solve quadratic inequalities with a graph or a number line.",
+    summary: [
+      "First solve the related equation (change the inequality sign to $=$) to find the roots.",
+      "The roots split the number line into parts. Test one number from each part, or look at the graph.",
+      "For a parabola that opens up: $f(x) > 0$ outside the roots, and $f(x) < 0$ between the roots.",
+      "Use $<=$ or $>=$ to include the roots. Use $<$ or $>$ to leave them out."
+    ],
+    visuals: [
+      { g: { f: [1, -1, -6], sign: ">", yr: [-8, 6] }, cap: "$x^2 - x - 6 > 0$ where the graph is above the x-axis: $x < -2$ or $x > 3$." },
+      { g: { f: [1, -1, -6], sign: "<", yr: [-8, 6] }, cap: "$x^2 - x - 6 < 0$ where the graph is below the x-axis: $-2 < x < 3$." }
+    ],
+    terms: [
+      ["Quadratic inequality", "an inequality such as $x^2 - x - 6 > 0$"],
+      ["Test point", "a number you put into the inequality to check if a part works"]
+    ],
+    examples: [
+      { q: "Solve $x^2 - x - 6 > 0$.", steps: ["Roots: $(x - 3)(x + 2) = 0$, so $x = -2$ or $x = 3$.", "The parabola opens up, so it is above the x-axis outside the roots.", "Test $x = 0$: $-6 > 0$ is false, so the middle part does not work.", "Solution: $x < -2$ or $x > 3$"], g: { f: [1, -1, -6], sign: ">", yr: [-8, 6] } },
+      { q: "Solve $x^2 - 4x - 5 <= 0$.", steps: ["Roots: $(x - 5)(x + 1) = 0$, so $x = -1$ or $x = 5$.", "The graph is below or on the x-axis between the roots.", "Solution: $-1 <= x <= 5$"], g: { f: [1, -4, -5], sign: "<", yr: [-10, 6] } }
+    ],
+    videos: [
+      { title: "Quadratic inequalities", url: "https://www.khanacademy.org/math/algebra-home/alg-quadratics/alg-quadratic-inequalities/v/quadratic-inequality-example" },
+      { title: "Quadratic inequalities: graphical approach", url: "https://www.khanacademy.org/math/algebra-home/alg-quadratics/alg-quadratic-inequalities/v/quadratic-inequalities-visual-explanation" }
+    ],
+    pre: [
+      { q: "Solve $x + 3 > 5$.", o: ["$x > 2$", "$x < 2$", "$x > 8$", "$x = 2$"], why: "Subtract $3$ from both sides." },
+      { q: "Is $x = 0$ a solution of $x^2 - 4 < 0$?", o: ["Yes", "No"], why: "$0 - 4 = -4$, and $-4 < 0$ is true." },
+      { q: "On a number line, $x >= 3$ is shown with…", o: ["a closed (filled) dot at $3$", "an open dot at $3$", "no dot", "a dot at $0$"], why: "$>=$ includes $3$, so the dot is filled." }
+    ],
+    practice: [
+      { q: "Solve $x^2 - 9 < 0$.", o: ["$-3 < x < 3$", "$x < -3$ or $x > 3$", "$x < 3$", "$x > -3$"], why: "The roots are $+-3$. Between them the graph is below the x-axis." },
+      { q: "Solve $x^2 + 2x - 8 >= 0$.", o: ["$x <= -4$ or $x >= 2$", "$-4 <= x <= 2$", "$x >= 2$", "$x <= -2$ or $x >= 4$"], why: "$(x + 4)(x - 2) >= 0$ outside the roots, including the roots." },
+      { q: "Solve $x^2 - 7x + 6 <= 0$.", o: ["$1 <= x <= 6$", "$x <= 1$ or $x >= 6$", "$-6 <= x <= -1$", "$1 < x < 6$"], why: "The roots are $1$ and $6$, and $<=$ includes them." },
+      { q: "Which value is a solution of $x^2 - 5x + 4 < 0$?", o: ["$x = 2$", "$x = 0$", "$x = 4$", "$x = 5$"], why: "The solution is $1 < x < 4$. $x = 4$ gives $0$, which is not less than $0$." },
+      { q: "Solve $x^2 + 1 > 0$.", o: ["all real numbers", "no solution", "$x > -1$", "$x > 1$"], why: "$x^2 + 1$ is always at least $1$, so it is always positive." },
+      { q: "Solve $-x^2 + 4 > 0$.", o: ["$-2 < x < 2$", "$x < -2$ or $x > 2$", "$x > 2$", "$x < 4$"], why: "This means $x^2 < 4$." },
+      { q: "Use the graph of $y = x^2 - 2x - 3$. Where is $y < 0$?", g: { f: [1, -2, -3] }, o: ["$-1 < x < 3$", "$x < -1$ or $x > 3$", "$-3 < x < 1$", "$x > 3$"], why: "The graph is below the x-axis between its x-intercepts $-1$ and $3$." }
+    ],
+    worksheet: [
+      { q: "$x^2 - 16 >= 0$", a: "$x <= -4$ or $x >= 4$" },
+      { q: "$x^2 - 3x - 10 < 0$", a: "$-2 < x < 5$" },
+      { q: "$x^2 + 6x + 9 > 0$", a: "all real numbers except $x = -3$" },
+      { q: "$2x^2 - 8x <= 0$", a: "$0 <= x <= 4$" }
+    ],
+    realWorld: [
+      { title: "Food truck at Global Village", text: "A food truck's profit is $P(x) = -x^2 + 14x - 40$ hundred AED, where $x$ is hundreds of meals sold. For which $x$ is the profit positive?", a: "$-x^2 + 14x - 40 > 0$ means $(x - 4)(x - 10) < 0$, so $4 < x < 10$: between $400$ and $1000$ meals.", g: { f: [-1, 14, -40], sign: ">", xr: [0, 14], yr: [-12, 12] } },
+      { title: "National Day fireworks", text: "A firework's height is $h(t) = -5t^2 + 40t$ metres. When is it higher than $60$ m?", a: "$-5t^2 + 40t > 60$ means $t^2 - 8t + 12 < 0$, so $(t - 2)(t - 6) < 0$: between $2$ and $6$ seconds." }
+    ],
+    activity: { type: "lab", title: "Inequality lab", prompt: "Choose $a$, $b$ and $c$. Read where $f(x) > 0$ and where $f(x) < 0$ from the roots." }
+  },
+
+  /* ================= LESSON 1-8 (CHALLENGE) ================= */
+  {
+    id: "M1L8", code: "1-8", title: "Solving Linear-Nonlinear Systems", enrichment: true,
+    goal: "Find where a line and a parabola meet.",
+    summary: [
+      "A system with one linear equation and one quadratic equation can have $0$, $1$ or $2$ solutions.",
+      "Substitution: set the two expressions for $y$ equal, solve the quadratic for $x$, then find each $y$.",
+      "On a graph, the solutions are the points where the line and the parabola meet."
+    ],
+    visuals: [ { g: { f: [1, 0, -1], line: [1, 1], pts: [[2, 3, "(2, 3)"], [-1, 0, "(-1, 0)"]] }, cap: "$y = x^2 - 1$ and $y = x + 1$ meet at two points." } ],
+    terms: [
+      ["System of equations", "two or more equations solved together"],
+      ["Substitution", "replacing a variable with an equal expression"]
+    ],
+    examples: [
+      { q: "Solve $y = x^2 - 1$ and $y = x + 1$.", steps: ["$x^2 - 1 = x + 1$", "$x^2 - x - 2 = 0$, so $(x - 2)(x + 1) = 0$", "$x = 2$ gives $y = 3$. $x = -1$ gives $y = 0$.", "Solutions: $(2, 3)$ and $(-1, 0)$"] },
+      { q: "Solve $y = x^2$ and $y = 2x - 1$.", steps: ["$x^2 = 2x - 1$, so $x^2 - 2x + 1 = 0$", "$(x - 1)^2 = 0$, so $x = 1$ and $y = 1$", "One solution: $(1, 1)$. The line touches the parabola."], g: { f: [1, 0, 0], line: [2, -1], pts: [[1, 1, "(1, 1)"]] } }
+    ],
+    videos: [
+      { title: "Systems of nonlinear equations", url: "https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:eq/x2ec2f6f830c9fb89:quad-sys/v/non-linear-systems-of-equations-1" }
+    ],
+    pre: [
+      { q: "Solve $x^2 - x - 2 = 0$.", o: ["$x = 2$ or $x = -1$", "$x = -2$ or $x = 1$", "$x = 2$ or $x = 1$", "$x = -2$ or $x = -1$"], why: "$(x - 2)(x + 1) = 0$" }
+    ],
+    practice: [
+      { q: "Solve $y = x^2$ and $y = 4$.", o: ["$(2, 4)$ and $(-2, 4)$", "$(4, 2)$ and $(4, -2)$", "$(2, 4)$ only", "$(16, 4)$"], why: "$x^2 = 4$ gives $x = +-2$." },
+      { q: "How many solutions do $y = x^2 + 1$ and $y = x$ have?", o: ["none", "one", "two", "three"], why: "$x^2 - x + 1 = 0$ has discriminant $1 - 4 = -3 < 0$." },
+      { q: "Solve $y = x^2 - 3$ and $y = 2x$.", o: ["$(3, 6)$ and $(-1, -2)$", "$(-3, -6)$ and $(1, 2)$", "$(3, 6)$ only", "$(1, -2)$ and $(3, 6)$"], why: "$x^2 - 2x - 3 = 0$, so $x = 3$ or $x = -1$." },
+      { q: "A line and a parabola can meet at most…", o: ["$2$ times", "$1$ time", "$3$ times", "$4$ times"], why: "Substitution gives a quadratic equation, which has at most $2$ solutions." },
+      { q: "Solve $y = x^2 + 2x$ and $y = 3$.", o: ["$(-3, 3)$ and $(1, 3)$", "$(3, -3)$ and $(-1, 3)$", "$(1, 3)$ only", "$(-1, 3)$ and $(3, 3)$"], why: "$x^2 + 2x - 3 = 0$, so $(x + 3)(x - 1) = 0$." },
+      { q: "Use the graph. How many solutions does the system have?", g: { f: [-1, 0, 4], line: [0, 5] }, o: ["none", "one", "two", "infinitely many"], why: "The line $y = 5$ is above the highest point of the parabola, so they never meet." }
+    ],
+    worksheet: [
+      { q: "$y = x^2 - 4$ and $y = -3x$", a: "$(-4, 12)$ and $(1, -3)$" },
+      { q: "$y = x^2 + 2$ and $y = 2x + 1$", a: "$(1, 3)$" }
+    ],
+    realWorld: [
+      { title: "Drone show", text: "A drone flies along the line $y = x + 4$ and a ball follows the path $y = -x^2 + 6x$. Where do the paths meet?", a: "$-x^2 + 6x = x + 4$ gives $x^2 - 5x + 4 = 0$, so $x = 1$ or $x = 4$. The points are $(1, 5)$ and $(4, 8)$.", g: { f: [-1, 6, 0], line: [1, 4], pts: [[1, 5, "(1, 5)"], [4, 8, "(4, 8)"]], xr: [-1, 7], yr: [-2, 10] } }
+    ],
+    activity: { type: "lab", title: "Parabola lab", prompt: "Use the lab to see where the parabola meets the x-axis." }
+  }
+  ]
+}
+/* To add Module 2: copy the whole { id: "U1", ... } block above,
+   paste it after this line with a comma, and change id to "U2". */
+];
+
+</script>
+<script>
+const LOGO = "data:image/webp;base64,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";
+/* =====================================================================
+   WEBSITE LOGIC — you do not need to edit below this line.
+   ===================================================================== */
+(function () {
+  "use strict";
+
+  /* ---------- helpers ---------- */
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const esc = (t) => String(t == null ? "" : t).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const store = {
+    get(k, d) { try { const v = localStorage.getItem("bahya_" + k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
+    set(k, v) { try { localStorage.setItem("bahya_" + k, JSON.stringify(v)); } catch (e) { /* storage blocked */ } }
+  };
+  const ses = {
+    get(k) { try { return sessionStorage.getItem("bahya_" + k); } catch (e) { return null; } },
+    set(k, v) { try { if (v == null) sessionStorage.removeItem("bahya_" + k); else sessionStorage.setItem("bahya_" + k, v); } catch (e) { /* blocked */ } }
+  };
+  const allLessons = () => COURSE.flatMap((u) => u.lessons.map((l) => Object.assign({ unit: u }, l)));
+  const coreLessons = (u) => (u ? u.lessons : allLessons()).filter((l) => !l.enrichment);
+  const findLesson = (id) => allLessons().find((l) => l.id === id);
+  const findUnit = (id) => COURSE.find((u) => u.id === id);
+  const profile = () => store.get("profile", null);
+  const firstName = () => ((profile() || {}).name || "").trim().split(/\s+/)[0] || "there";
+  const studied = () => store.get("studied", []);
+  const history = () => store.get("history", []);
+  const ytId = (u) => { const mm = String(u || "").match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/); return mm ? mm[1] : ""; };
+  const fmtDate = (t) => new Date(t).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+  const P = () => SETTINGS.passMark;
+  let raf = 0;
+
+  /* ---------- math writing:  $x^2 + frac{1}{2}$  ---------- */
+  function group(s, i) { let d = 0, j = i; for (; j < s.length; j++) { if (s[j] === "{") d++; else if (s[j] === "}") { d--; if (d === 0) break; } } return [s.slice(i + 1, j), j + 1]; }
+  function tex(s) {
+    let o = "", i = 0;
+    const rep = [["approx", " ≈ "], ["div", " ÷ "], ["+-", "±"], ["<=", "≤"], [">=", "≥"], ["!=", "≠"]];
+    while (i < s.length) {
+      const r = s.slice(i);
+      if (r.startsWith("frac{")) { const [a, j] = group(s, i + 4); const [b, k] = group(s, j); o += `<span class="fr"><span class="nu">${tex(a)}</span><span class="de">${tex(b)}</span></span>`; i = k; continue; }
+      if (r.startsWith("sqrt{")) { const [a, j] = group(s, i + 4); o += `<span class="rad"><span class="rs">√</span><span class="ri">${tex(a)}</span></span>`; i = j; continue; }
+      const hit = rep.find((p) => r.startsWith(p[0])); if (hit) { o += hit[1]; i += hit[0].length; continue; }
+      const c = s[i];
+      if (c === "^") { if (s[i + 1] === "{") { const [a, j] = group(s, i + 1); o += `<sup>${tex(a)}</sup>`; i = j; } else { o += `<sup>${tex(s[i + 1] || "")}</sup>`; i += 2; } continue; }
+      if (c === "-") o += "−"; else if (c === "*") o += "·"; else if (c === "<") o += "&lt;"; else if (c === ">") o += "&gt;"; else if (c === "&") o += "&amp;";
+      else if (/[A-Za-z]/.test(c)) o += `<i>${c}</i>`; else o += c;
+      i++;
+    }
+    return o;
+  }
+  const m = (str) => String(str == null ? "" : str).split("$").map((p, k) => (k % 2 ? `<span class="mx">${tex(p)}</span>` : esc(p))).join("");
+  const num = (v) => { const r = Math.round(v * 100) / 100; return (r < 0 ? "−" : "") + Math.abs(r); };
+  const polyTex = (a, b, c, v = "x") => { let s = (a === 1 ? "" : a === -1 ? "-" : a) + v + "^2"; if (b) s += (b < 0 ? " - " : " + ") + (Math.abs(b) === 1 ? "" : Math.abs(b)) + v; if (c) s += (c < 0 ? " - " : " + ") + Math.abs(c); return s; };
+
+  /* ---------- graphs ---------- */
+  let gid = 0;
+  function graph(g, cls = "") {
+    const [a, b, c] = g.f || [0, 0, 0], F = (x) => a * x * x + b * x + c;
+    const hx = a ? -b / (2 * a) : 0, ky = F(hx), D = b * b - 4 * a * c;
+    const roots = a && D >= 0 ? [(-b - Math.sqrt(D)) / (2 * a), (-b + Math.sqrt(D)) / (2 * a)] : [];
+    let xr = g.xr, yr = g.yr;
+    if (!xr) { const xs = [hx - 4, hx + 4].concat(roots, (g.pts || []).map((p) => p[0])); xr = [Math.floor(Math.min(...xs)) - 1, Math.ceil(Math.max(...xs)) + 1]; if (xr[1] - xr[0] < 10) { const mid = (xr[0] + xr[1]) / 2; xr = [Math.floor(mid - 5), Math.ceil(mid + 5)]; } }
+    if (!yr) { const ys = [0, ky].concat((g.pts || []).map((p) => p[1])); yr = a > 0 ? [Math.floor(Math.min(...ys)) - 2, Math.ceil(Math.max(...ys)) + 6] : [Math.floor(Math.min(...ys)) - 6, Math.ceil(Math.max(...ys)) + 2]; }
+    const W = 320, H = 250, pad = 6, X = (x) => pad + ((x - xr[0]) / (xr[1] - xr[0])) * (W - 2 * pad), Y = (y) => H - pad - ((y - yr[0]) / (yr[1] - yr[0])) * (H - 2 * pad);
+    const span = Math.max(xr[1] - xr[0], yr[1] - yr[0]), st = span <= 16 ? 1 : span <= 40 ? 5 : 10, lab = span <= 16 ? 2 : st;
+    const id = "gc" + ++gid;
+    let s = `<svg viewBox="0 0 ${W} ${H}" class="graph ${cls}" role="img" aria-label="Graph"><defs><clipPath id="${id}"><rect x="${pad}" y="${pad}" width="${W - 2 * pad}" height="${H - 2 * pad}"/></clipPath></defs>`;
+    for (let x = Math.ceil(xr[0] / st) * st; x <= xr[1]; x += st) s += `<line x1="${X(x)}" y1="${pad}" x2="${X(x)}" y2="${H - pad}" class="gl"/>`;
+    for (let y = Math.ceil(yr[0] / st) * st; y <= yr[1]; y += st) s += `<line x1="${pad}" y1="${Y(y)}" x2="${W - pad}" y2="${Y(y)}" class="gl"/>`;
+    if (yr[0] <= 0 && yr[1] >= 0) s += `<line x1="${pad}" y1="${Y(0)}" x2="${W - pad}" y2="${Y(0)}" class="ga"/>`;
+    if (xr[0] <= 0 && xr[1] >= 0) s += `<line x1="${X(0)}" y1="${pad}" x2="${X(0)}" y2="${H - pad}" class="ga"/>`;
+    const y0 = yr[0] <= 0 && yr[1] >= 0 ? Y(0) : H - pad, x0 = xr[0] <= 0 && xr[1] >= 0 ? X(0) : pad;
+    for (let x = Math.ceil(xr[0] / lab) * lab; x <= xr[1]; x += lab) if (x) s += `<text x="${X(x)}" y="${Math.min(H - 8, y0 + 13)}" class="gt" text-anchor="middle">${num(x)}</text>`;
+    for (let y = Math.ceil(yr[0] / lab) * lab; y <= yr[1]; y += lab) if (y) s += `<text x="${Math.max(14, x0 - 4)}" y="${Y(y) + 3.5}" class="gt" text-anchor="end">${num(y)}</text>`;
+    if (g.sign && a) {
+      const segs = [], R = roots.slice().sort((p, q) => p - q), want = g.sign === ">" ? 1 : -1, cuts = [xr[0]].concat(R.filter((r) => r > xr[0] && r < xr[1]), [xr[1]]);
+      for (let k = 0; k < cuts.length - 1; k++) { const mid = (cuts[k] + cuts[k + 1]) / 2; if (Math.sign(F(mid)) === want) segs.push([cuts[k], cuts[k + 1]]); }
+      segs.forEach(([p, q]) => { let d = `M${X(p)} ${Y(0)}`; for (let k = 0; k <= 40; k++) { const x = p + ((q - p) * k) / 40; d += `L${X(x).toFixed(1)} ${Y(F(x)).toFixed(1)}`; } d += `L${X(q)} ${Y(0)}Z`; s += `<path d="${d}" class="gsh" clip-path="url(#${id})"/><line x1="${X(p)}" y1="${Y(0)}" x2="${X(q)}" y2="${Y(0)}" class="gseg" clip-path="url(#${id})"/>`; });
+      R.forEach((r) => s += `<circle cx="${X(r)}" cy="${Y(0)}" r="4.5" class="gopen"/>`);
+    }
+    if (g.axis && a) s += `<line x1="${X(hx)}" y1="${pad}" x2="${X(hx)}" y2="${H - pad}" class="gsym"/>`;
+    if (a || b || c) { let d = ""; for (let k = 0; k <= 160; k++) { const x = xr[0] + ((xr[1] - xr[0]) * k) / 160; d += (k ? "L" : "M") + X(x).toFixed(1) + " " + Math.max(-500, Math.min(800, Y(F(x)))).toFixed(1); } s += `<path d="${d}" class="gc" clip-path="url(#${id})"/>`; }
+    if (g.line) { const [mm, kk] = g.line; s += `<line x1="${X(xr[0])}" y1="${Y(mm * xr[0] + kk)}" x2="${X(xr[1])}" y2="${Y(mm * xr[1] + kk)}" class="gline" clip-path="url(#${id})"/>`; }
+    if (g.vertex && a) s += `<circle cx="${X(hx)}" cy="${Y(ky)}" r="5" class="gv"/><text x="${X(hx) + 8}" y="${Y(ky) + (a > 0 ? 16 : -8)}" class="gl2">(${num(hx)}, ${num(ky)})</text>`;
+    (g.pts || []).forEach((p) => { s += `<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="4.5" class="gp"/>`; if (p[2]) s += `<text x="${X(p[0]) + 7}" y="${Y(p[1]) - 7}" class="gl2">${esc(p[2])}</text>`; });
+    return s + "</svg>";
+  }
+  function tilesSVG(b) {
+    const h = b / 2, u = 22, X = 120, w = h * u;
+    return `<svg viewBox="0 0 ${X + w + 40} ${X + w + 40}" class="graph tiles" role="img" aria-label="Algebra tiles for completing the square">
+      <rect x="20" y="20" width="${X}" height="${X}" class="t1"/><text x="${20 + X / 2}" y="${20 + X / 2 + 6}" class="tt">x²</text>
+      <rect x="${20 + X}" y="20" width="${w}" height="${X}" class="t2"/><text x="${20 + X + w / 2}" y="${20 + X / 2 + 6}" class="tt">${h}x</text>
+      <rect x="20" y="${20 + X}" width="${X}" height="${w}" class="t2"/><text x="${20 + X / 2}" y="${20 + X + w / 2 + 6}" class="tt">${h}x</text>
+      <rect x="${20 + X}" y="${20 + X}" width="${w}" height="${w}" class="t3"/><text x="${20 + X + w / 2}" y="${20 + X + w / 2 + 6}" class="tt gold">${h * h}</text>
+      <text x="${20 + X / 2}" y="14" class="ts">x</text><text x="${20 + X + w / 2}" y="14" class="ts">${h}</text>
+      <text x="10" y="${20 + X / 2}" class="ts">x</text><text x="10" y="${20 + X + w / 2}" class="ts">${h}</text></svg>`;
+  }
+  function cycleSVG() {
+    const L = ["i", "−1", "−i", "1"], P2 = [[150, 40], [260, 130], [150, 220], [40, 130]], E = ["i¹ = i", "i² = −1", "i³ = −i", "i⁴ = 1"];
+    return `<svg viewBox="0 0 300 260" class="graph" role="img" aria-label="Cycle of powers of i"><circle cx="150" cy="130" r="90" class="cyc"/>${P2.map((p, k) => `<circle cx="${p[0]}" cy="${p[1]}" r="30" class="cyn"/><text x="${p[0]}" y="${p[1] - 2}" class="cyt">${L[k]}</text><text x="${p[0]}" y="${p[1] + 14}" class="cys">${E[k]}</text>`).join("")}<text x="150" y="136" class="cys">× i each step</text></svg>`;
+  }
+  const visualHTML = (v) => `<figure class="vis">${v.g ? graph(v.g) : v.tiles ? tilesSVG(v.tiles) : v.cycle ? cycleSVG() : ""}${v.cap ? `<figcaption>${m(v.cap)}</figcaption>` : ""}</figure>`;
+
+  /* ---------- profile ---------- */
+  function askProfile(then) {
+    const p = profile() || { name: "", grade: SETTINGS.grades[0], section: "" };
+    const dlg = $("#dlg");
+    dlg.innerHTML = `<form class="dlg-body" id="pform">
+        <h2>Who is studying?</h2>
+        <p class="muted">Your name goes on your results and certificates, and your teacher sees it.</p>
+        <label>Full name<input name="name" required maxlength="60" value="${esc(p.name)}" autocomplete="name"></label>
+        <div class="row2">
+          <label>Grade<select name="grade">${SETTINGS.grades.map((g) => `<option ${g === p.grade ? "selected" : ""}>${g}</option>`).join("")}</select></label>
+          <label>Class<input name="section" maxlength="12" placeholder="e.g. 12-3" value="${esc(p.section)}"></label>
+        </div>
+        <p class="muted small">Teacher: ${esc(SETTINGS.teacher)}</p>
+        <div class="actions"><button type="button" class="btn ghost" id="pcancel">Cancel</button><button class="btn" type="submit">Save</button></div>
+      </form>`;
+    $("#pcancel").onclick = () => dlg.close();
+    $("#pform").onsubmit = (e) => {
+      e.preventDefault();
+      const f = new FormData(e.target), name = String(f.get("name")).trim();
+      if (!name) return;
+      store.set("profile", { name, grade: String(f.get("grade")), section: String(f.get("section")).trim() });
+      dlg.close(); paintWho(); if (then) then();
+    };
+    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", "");
+  }
+  function paintWho() {
+    const p = profile();
+    $("#who").innerHTML = `<button class="chip" id="whoBtn">${p ? `${esc(p.name)}, ${esc(p.section || "Grade " + p.grade)}` : "Add your name"}</button>`;
+    $("#whoBtn").onclick = () => askProfile(() => route());
+  }
+
+  /* ---------- progress and certificates ---------- */
+  const bestOf = (type, ref) => { const r = history().filter((x) => x.type === type && x.refId === ref); return r.length ? Math.max(...r.map((x) => x.percent)) : null; };
+  const postPassed = (id) => (bestOf("post", id) || 0) >= P();
+  const level = (p) => (p >= SETTINGS.distinctionMark ? "Distinction" : p >= SETTINGS.meritMark ? "Merit" : "Achievement");
+  function moduleStatus(u) { const core = coreLessons(u), missing = core.filter((l) => !postPassed(l.id)), best = bestOf("unit", u.id); return { core, missing, best, testOk: (best || 0) >= P(), ok: (best || 0) >= P() && !missing.length }; }
+  function termStatus() { const mods = COURSE.map((u) => ({ u, s: moduleStatus(u) })), best = bestOf("final", "ALL"); return { mods, best, ok: mods.every((x) => x.s.ok) && (best || 0) >= P(), modsOk: mods.every((x) => x.s.ok) }; }
+  function updateCerts() {
+    const c = store.get("certs", {}), p = profile() || {}, fresh = [];
+    const put = (key, pct, name) => { if (!c[key]) { c[key] = { at: Date.now(), percent: pct, id: (key + Date.now().toString(36)).toUpperCase().slice(-8) }; fresh.push(name); } else if (pct > c[key].percent) c[key].percent = pct; c[key].name = p.name; };
+    COURSE.forEach((u) => { const s = moduleStatus(u); if (s.ok) put(u.id, s.best, `${u.code} certificate`); });
+    const t = termStatus(); if (t.ok) put("TERM", t.best, "Term certificate");
+    store.set("certs", c); return fresh;
+  }
+
+  /* ---------- home ---------- */
+  function archSVG() {
+    const u = COURSE[0], ls = u.lessons, done = studied(), n = ls.length;
+    const pts = ls.map((l, i) => { const t = -0.92 + (1.84 * i) / (n - 1); return { l, x: 300 + t * 270, y: 206 - 168 * (1 - t * t) }; });
+    let d = ""; for (let i = 0; i <= 60; i++) { const t = -1 + i / 30; d += (i ? "L" : "M") + (300 + t * 270).toFixed(1) + " " + (206 - 168 * (1 - t * t)).toFixed(1); }
+    return `<svg viewBox="0 0 600 236" class="arch" role="img" aria-label="Your path through ${esc(u.code)}">
+      <line x1="10" y1="206" x2="590" y2="206" class="axis"/><path d="${d}" class="curve"/>
+      ${pts.map((p) => { const badge = postPassed(p.l.id), st = done.includes(p.l.id); return `<a href="#/study/${p.l.id}" aria-label="Lesson ${esc(p.l.code)} ${esc(p.l.title)}${badge ? ", badge earned" : st ? ", studied" : ""}"><circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="17" class="node ${badge ? "badge" : st ? "done" : ""} ${p.l.enrichment ? "extra" : ""}"/><text x="${p.x.toFixed(1)}" y="${(p.y + 4).toFixed(1)}" class="nlab">${badge ? "★" : esc(p.l.code)}</text></a>`; }).join("")}
+    </svg>`;
+  }
+  function dailyQ() {
+    const pool = allLessons().flatMap((l) => l.practice.map((q) => Object.assign({ lid: l.id, lcode: l.code }, q)));
+    const d = new Date(), seed = d.getFullYear() * 400 + d.getMonth() * 31 + d.getDate(), q = pool[seed % pool.length];
+    const order = [0, 1, 2, 3].slice(0, q.o.length).sort((x, y) => ((x * 7 + seed) % 5) - ((y * 7 + seed) % 5));
+    return { q, order };
+  }
+  function viewHome() {
+    const p = profile(), core = coreLessons(), done = studied();
+    const badges = core.filter((l) => postPassed(l.id)).length, studiedN = core.filter((l) => done.includes(l.id)).length;
+    const t = termStatus(), certs = store.get("certs", {});
+    const dq = dailyQ();
+    const step = (ok, title, txt, link) => `<li class="${ok ? "got" : ""}"><span class="dot">${ok ? "✓" : ""}</span><div><b>${title}</b><p>${txt}</p>${link || ""}</div></li>`;
+    const m1 = COURSE[0], s1 = moduleStatus(m1);
+    return `
+    <section class="sky">
+      <div class="sky-txt">
+        <p class="kicker light">${esc(SETTINGS.subject)}</p>
+        <h1>${p ? "Ready, " + esc(firstName()) + "?" : "Every launch is a parabola."}</h1>
+        <p>Choose a launch speed and watch the firework follow ${m("$h(t) = -5t^2 + vt$")}. Where does it burst? At the vertex.</p>
+        <div class="launch">
+          <label for="vRange">Launch speed <b id="vOut">30</b> m/s</label>
+          <input type="range" id="vRange" min="20" max="45" step="1" value="30">
+          <button class="btn gold" id="fire">Launch</button>
+        </div>
+        <p class="readout" id="readout"></p>
+      </div>
+      <div class="sky-canvas"><canvas id="fw" aria-label="Firework following a parabola over a UAE skyline" role="img"></canvas></div>
+    </section>
+
+    <section class="prog-row">
+      <div class="ring-wrap">${ring(Math.round((badges / core.length) * 100))}<div><b>${badges} of ${core.length}</b><span>lesson badges</span></div></div>
+      <div class="mini"><b>${studiedN}/${core.length}</b><span>lessons studied</span></div>
+      <div class="mini"><b>${history().length}</b><span>quizzes taken</span></div>
+      <div class="mini"><b>${Object.keys(certs).length}</b><span>certificates</span></div>
+    </section>
+
+    <section class="home-grid">
+      <div class="card path">
+        <h2>Your path through ${esc(m1.code)}</h2>
+        ${archSVG()}
+        <p class="legend"><span class="lg s"></span>studied <span class="lg b"></span>badge earned <span class="lg e"></span>challenge lesson</p>
+      </div>
+      <div class="card dq" id="dq">
+        <h2>Question of the day</h2>
+        <p class="muted small">Lesson ${esc(dq.q.lcode)}</p>
+        ${dq.q.g ? graph(dq.q.g, "small") : ""}
+        <p class="dqq">${m(dq.q.q)}</p>
+        <div class="dqo">${dq.order.map((k) => `<button class="opt" data-k="${k}">${m(dq.q.o[k])}</button>`).join("")}</div>
+        <p class="dqf" id="dqf" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="card ladder">
+      <h2>How you earn certificates</h2>
+      <ol class="steps">
+        ${step(badges === core.length, "1. Lesson badges", `Pass the post-assessment of a lesson with ${P()}% or more. You have ${badges} of ${core.length}.`)}
+        ${step(s1.ok, `2. ${esc(m1.code)} certificate`, `Earn every lesson badge in the module, then pass the unit test. Levels: Achievement, Merit (${SETTINGS.meritMark}%+), Distinction (${SETTINGS.distinctionMark}%+).`, s1.ok ? `<a href="#/cert/${m1.id}">View certificate</a>` : "")}
+        ${step(t.ok, "3. Term certificate", "Earn every module certificate, then pass the final exam.", t.ok ? `<a href="#/cert/TERM">View certificate</a>` : "")}
+      </ol>
+    </section>
+
+    <section class="grid4">
+      <a class="tile" href="#/study"><span class="ico">${ICON.book}</span><h3>Study</h3><p>Notes, graphs, solved examples and videos.</p></a>
+      <a class="tile" href="#/practice"><span class="ico">${ICON.target}</span><h3>Practise</h3><p>Lesson question banks, unit test and final exam.</p></a>
+      <a class="tile" href="#/class"><span class="ico">${ICON.class}</span><h3>In class</h3><p>Pre- and post-assessments, worksheets, activities.</p></a>
+      <a class="tile" href="#/results"><span class="ico">${ICON.medal}</span><h3>My results</h3><p>Scores, feedback, badges and certificates.</p></a>
+    </section>`;
+  }
+  const ICON = {
+    book: `<svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5z"/><path d="M8 7h7M8 11h7"/></svg>`,
+    target: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg>`,
+    class: `<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M8 20h8M12 16v4M7 12l3-3 3 2 4-4"/></svg>`,
+    medal: `<svg viewBox="0 0 24 24"><circle cx="12" cy="14" r="6"/><path d="M8 3l4 5 4-5M12 11.5l1 2 2 .3-1.5 1.4.4 2-1.9-1-1.9 1 .4-2L9 13.8l2-.3z"/></svg>`
+  };
+  const ring = (pct) => `<svg viewBox="0 0 120 120" class="ring" aria-hidden="true"><circle cx="60" cy="60" r="50" class="rb"/><circle cx="60" cy="60" r="50" class="rf" style="stroke-dasharray:${(pct / 100) * 314.2} 400"/><text x="60" y="67" class="rt">${pct}%</text></svg>`;
+
+  function wireHome() {
+    const cv = $("#fw"); if (!cv) return;
+    const dq = dailyQ();
+    $$("#dq .opt").forEach((b) => b.onclick = () => {
+      const ok = +b.dataset.k === 0;
+      $$("#dq .opt").forEach((x) => { x.disabled = true; if (+x.dataset.k === 0) x.classList.add("yes"); });
+      if (!ok) b.classList.add("no");
+      $("#dqf").innerHTML = (ok ? "<b>Correct!</b> " : "<b>Not quite.</b> ") + m(dq.q.why) + ` <a href="#/quiz/practice/${dq.q.lid}">Practise this lesson</a>`;
+    });
+    const ctx = cv.getContext("2d"), reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let W = 0, H = 0, trail = [], parts = [], flight = null, v = 30;
+    const size = () => { const r = cv.getBoundingClientRect(), d = window.devicePixelRatio || 1; W = r.width; H = r.height; cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0); };
+    const L = 34, B = 30, T = 18;
+    const sx = (t) => L + (t / 9.4) * (W - L - 12), sy = (h) => H - B - (h / 105) * (H - B - T);
+    const css = getComputedStyle(document.documentElement);
+    function skyline() {
+      ctx.save(); ctx.fillStyle = "rgba(255,255,255,.07)"; const g = H - B;
+      ctx.beginPath(); ctx.moveTo(0, g); ctx.quadraticCurveTo(W * 0.2, g - 22, W * 0.42, g - 6); ctx.quadraticCurveTo(W * 0.6, g - 26, W * 0.82, g - 8); ctx.quadraticCurveTo(W * 0.92, g - 16, W, g - 4); ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.fill();
+      const tx = W * 0.72, th = (H - B - T) * 0.62; ctx.beginPath(); ctx.moveTo(tx - 13, g); ctx.lineTo(tx - 10, g - th * 0.35); ctx.lineTo(tx - 7, g - th * 0.6); ctx.lineTo(tx - 4, g - th * 0.82); ctx.lineTo(tx - 1, g - th); ctx.lineTo(tx + 1, g - th); ctx.lineTo(tx + 3, g - th * 0.8); ctx.lineTo(tx + 7, g - th * 0.55); ctx.lineTo(tx + 11, g - th * 0.3); ctx.lineTo(tx + 14, g); ctx.fill();
+      [[0.84, 70], [0.88, 48], [0.62, 56], [0.66, 38], [0.56, 30]].forEach(([fx, hh]) => ctx.fillRect(W * fx - 9, g - hh, 18, hh));
+      const mx = W * 0.3; ctx.beginPath(); ctx.arc(mx, g - 26, 22, Math.PI, 0); ctx.fill(); ctx.fillRect(mx - 26, g - 26, 52, 26);
+      [-38, 38].forEach((o) => { ctx.fillRect(mx + o - 3, g - 70, 6, 70); ctx.beginPath(); ctx.arc(mx + o, g - 70, 4, Math.PI, 0); ctx.fill(); });
+      [[0.1, 1], [0.16, 0.8], [0.93, 0.9]].forEach(([fx, s]) => { const px = W * fx; ctx.fillRect(px - 2, g - 46 * s, 4, 46 * s); for (let k = -2; k <= 2; k++) { ctx.beginPath(); ctx.ellipse(px + k * 7 * s, g - 46 * s + Math.abs(k) * 4, 9 * s, 3 * s, k * 0.5, 0, Math.PI * 2); ctx.fill(); } });
+      ctx.restore();
+    }
+    function axes() {
+      ctx.save(); ctx.strokeStyle = "rgba(255,255,255,.22)"; ctx.fillStyle = "rgba(255,255,255,.6)"; ctx.font = "11px Readex Pro, sans-serif"; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(L, T); ctx.lineTo(L, H - B); ctx.lineTo(W - 8, H - B); ctx.stroke();
+      for (let h = 25; h <= 100; h += 25) { ctx.fillText(h, 6, sy(h) + 4); ctx.beginPath(); ctx.moveTo(L - 4, sy(h)); ctx.lineTo(L, sy(h)); ctx.stroke(); }
+      for (let t = 1; t <= 9; t++) ctx.fillText(t, sx(t) - 3, H - B + 14);
+      ctx.fillText("h (m)", 6, T - 4 > 8 ? T - 4 : 10); ctx.fillText("t (s)", W - 34, H - 6); ctx.restore();
+    }
+    function frame(now) {
+      ctx.clearRect(0, 0, W, H); skyline(); axes();
+      if (flight) {
+        const tp = flight.v / 10, el = (now - flight.start) / 1000, tt = Math.min(tp, el * 1.9);
+        if (flight.ghost) { ctx.save(); ctx.setLineDash([4, 6]); ctx.strokeStyle = "rgba(255,255,255,.28)"; ctx.beginPath(); for (let k = 0; k <= 60; k++) { const t = (2 * tp * k) / 60; ctx[k ? "lineTo" : "moveTo"](sx(t), sy(-5 * t * t + flight.v * t)); } ctx.stroke(); ctx.restore(); }
+        ctx.save(); ctx.strokeStyle = "#f2c766"; ctx.lineWidth = 3; ctx.lineCap = "round"; ctx.shadowColor = "#f2c766"; ctx.shadowBlur = 10; ctx.beginPath();
+        for (let k = 0; k <= 60; k++) { const t = (tt * k) / 60; ctx[k ? "lineTo" : "moveTo"](sx(t), sy(-5 * t * t + flight.v * t)); } ctx.stroke(); ctx.restore();
+        if (tt >= tp && !flight.burst) { flight.burst = true; flight.ghost = true; const cx = sx(tp), cy = sy((flight.v * flight.v) / 20), cols = ["#f2c766", "#ffffff", "#2fd08f", "#ff5a6e"]; for (let k = 0; k < 90; k++) { const an = Math.random() * Math.PI * 2, sp = 40 + Math.random() * 120; parts.push({ x: cx, y: cy, vx: Math.cos(an) * sp, vy: Math.sin(an) * sp, c: cols[k % 4], life: 1 }); } showReadout(flight.v, true); }
+        if (flight.burst) { const cx = sx(tp), cy = sy((flight.v * flight.v) / 20); ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(cx, cy, 4, 0, 7); ctx.fill(); ctx.font = "600 12px Readex Pro, sans-serif"; ctx.fillText(`vertex (${num(tp)}, ${num((flight.v * flight.v) / 20)})`, Math.min(cx + 8, W - 130), Math.max(cy - 10, 14)); }
+      }
+      const dt = 1 / 60; parts = parts.filter((p) => p.life > 0);
+      parts.forEach((p) => { p.x += p.vx * dt; p.y += p.vy * dt; p.vy += 60 * dt; p.vx *= 0.985; p.life -= 0.012; ctx.globalAlpha = Math.max(0, p.life); ctx.fillStyle = p.c; ctx.beginPath(); ctx.arc(p.x, p.y, 2.2, 0, 7); ctx.fill(); });
+      ctx.globalAlpha = 1;
+      if ((flight && !flight.burst) || parts.length) raf = requestAnimationFrame(frame); else raf = 0;
+    }
+    function showReadout(vv, done) { $("#readout").innerHTML = m(`$h(t) = -5t^2 + ${vv}t$`) + (done ? ` &nbsp; Highest point after ${m("$t = frac{" + vv + "}{10} = " + num(vv / 10) + "$")} s, at ${m("$h = " + num((vv * vv) / 20) + "$")} m.` : ""); }
+    function launch() { v = +$("#vRange").value; flight = { v, start: performance.now(), burst: false, ghost: false }; parts = []; if (reduce) { flight.start = -1e9; } cancelAnimationFrame(raf); raf = requestAnimationFrame(frame); }
+    $("#vRange").oninput = (e) => { $("#vOut").textContent = e.target.value; showReadout(+e.target.value, false); };
+    $("#fire").onclick = launch;
+    size(); showReadout(30, false); frame(performance.now());
+    window.onresize = () => { if ($("#fw")) { size(); if (!raf) frame(performance.now()); } };
+    setTimeout(() => { if ($("#fw")) launch(); }, 500);
+  }
+
+  /* ---------- study ---------- */
+  const comingSoon = () => `<p class="muted soon">More modules from the Term 1 scope will appear here.</p>`;
+  function viewStudyIndex() {
+    const done = studied();
+    return `<h1 class="pg">Study</h1><p class="lead">Read the key ideas, look at the graphs, try the solved examples yourself, then watch a video.</p>` +
+      COURSE.map((u) => `<section class="unit"><h2>${esc(u.code)}: ${esc(u.title)}</h2><p class="muted">${esc(u.weeks)}. ${esc(u.blurb)}</p>
+      <ol class="lessons">${u.lessons.map((l) => `<li><a href="#/study/${l.id}"><span class="code">${esc(l.code)}</span><span class="t">${esc(l.title)}</span>${l.enrichment ? '<span class="tag gold">Challenge</span>' : ""}${postPassed(l.id) ? '<span class="tag ok">★ Badge</span>' : done.includes(l.id) ? '<span class="tag ok">Studied</span>' : ""}</a></li>`).join("")}</ol></section>`).join("") + comingSoon();
+  }
+  function videosHTML(l) {
+    const list = (l.videos || []).concat(l.video ? [{ title: "Lesson video", url: l.video }] : []);
+    if (!list.length) return `<p class="muted">Your teacher will add videos for this lesson soon.</p>`;
+    return `<div class="vids">${list.map((v) => { const id = ytId(v.url); return id ? `<div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/${id}" title="${esc(v.title)}" loading="lazy" allowfullscreen></iframe></div>` :
+      `<a class="vcard" href="${esc(v.url)}" target="_blank" rel="noopener"><span class="play">▶</span><span><b>${esc(v.title || "Watch the video")}</b><small>${/khanacademy/.test(v.url) ? "Khan Academy, opens in a new tab" : "Opens in a new tab"}</small></span></a>`; }).join("")}</div>`;
+  }
+  function viewLesson(id) {
+    const l = findLesson(id); if (!l) return notFound();
+    const isDone = studied().includes(l.id);
+    return `<a class="back" href="#/study">All lessons</a>
+    <header class="lhead"><p class="kicker">${esc(l.unit.code)}, Lesson ${esc(l.code)}${l.enrichment ? ", challenge lesson" : ""}</p><h1 class="pg">${esc(l.title)}</h1><p class="goal">${m(l.goal)}</p></header>
+    <section class="block"><h2>Key ideas</h2><div class="ideas-wrap"><ul class="ideas">${l.summary.map((s) => `<li>${m(s)}</li>`).join("")}</ul>
+      ${(l.visuals || []).length ? `<div class="visuals n${l.visuals.length}">${l.visuals.map(visualHTML).join("")}</div>` : ""}</div></section>
+    <section class="block"><h2>Key words</h2><dl class="terms">${l.terms.map((t) => `<div><dt>${m(t[0])}</dt><dd>${m(t[1])}</dd></div>`).join("")}</dl></section>
+    <section class="block"><h2>Solved examples</h2><p class="muted small">Try each one first. Then tap to see the steps.</p>
+      ${l.examples.map((e, i) => `<details class="ex"><summary><span class="exn">Example ${i + 1}</span> ${m(e.q)}</summary><div class="exb"><ol>${e.steps.map((s) => `<li>${m(s)}</li>`).join("")}</ol>${e.g ? `<figure class="vis">${graph(e.g)}</figure>` : ""}</div></details>`).join("")}</section>
+    <section class="block"><h2>Videos</h2>${videosHTML(l)}</section>
+    <div class="btns sticky-actions">
+      <button class="btn ${isDone ? "ghost" : ""}" id="markBtn">${isDone ? "✓ Marked as studied" : "Mark as studied"}</button>
+      <a class="btn ghost" href="#/quiz/practice/${l.id}">Practise this lesson</a>
+      <a class="btn ghost" href="#/class/${l.id}">In-class work</a>
+    </div>`;
+  }
+
+  /* ---------- practice ---------- */
+  function viewPractice() {
+    const fmt = (v) => (v == null ? "" : v + "%");
+    return `<h1 class="pg">Practise</h1><p class="lead">Practise one lesson at a time with instant feedback. You can try as many times as you like. When you are ready, take the unit test.</p>` +
+      COURSE.map((u) => { const s = moduleStatus(u); return `<section class="unit"><h2>${esc(u.code)}: ${esc(u.title)}</h2>
+        <ol class="lessons">${u.lessons.map((l) => `<li><a href="#/quiz/practice/${l.id}"><span class="code">${esc(l.code)}</span><span class="t">${esc(l.title)}</span>${l.enrichment ? '<span class="tag gold">Challenge</span>' : ""}<span class="best">${fmt(bestOf("practice", l.id))}</span></a></li>`).join("")}</ol>
+        <a class="exam" href="#/quiz/unit/${u.id}"><div><h3>${esc(u.code)} unit test</h3><p>${coreLessons(u).length * 3} mixed questions. Feedback at the end. ${s.missing.length ? `For the certificate you also need ${s.missing.length} more lesson badge${s.missing.length > 1 ? "s" : ""}.` : "All lesson badges earned!"}</p></div><span class="best">${fmt(s.best) || "Start"}</span></a>
+      </section>`; }).join("") +
+      `<a class="exam final" href="#/quiz/final/ALL"><div><h3>Final exam practice</h3><p>Questions from every module. Pass it after your module certificates to earn the term certificate.</p></div><span class="best">${fmt(bestOf("final", "ALL")) || "Start"}</span></a>` + comingSoon();
+  }
+
+  /* ---------- in class ---------- */
+  function viewClassIndex() {
+    return `<h1 class="pg">In class</h1><p class="lead">Choose today's lesson. Your teacher will tell you which task to do.</p>` +
+      COURSE.map((u) => `<section class="unit"><h2>${esc(u.code)}: ${esc(u.title)}</h2><ol class="lessons">${u.lessons.map((l) => `<li><a href="#/class/${l.id}"><span class="code">${esc(l.code)}</span><span class="t">${esc(l.title)}</span>${postPassed(l.id) ? '<span class="tag ok">★ Badge</span>' : ""}</a></li>`).join("")}</ol></section>`).join("");
+  }
+  function viewClass(id, tab) {
+    const l = findLesson(id); if (!l) return notFound();
+    tab = tab || "pre";
+    const tabs = [["pre", "Pre-assessment"], ["post", "Post-assessment"], ["worksheet", "Worksheet"], ["activity", "Activity"], ["real", "Real-world problems"]];
+    let body = "";
+    if (tab === "pre") body = `<div class="panel"><h2>Pre-assessment</h2><p>Do this before the lesson. It shows what you already know. There is no pass or fail, and your teacher uses it to plan the lesson.</p><p class="muted">${l.pre.length} questions</p><a class="btn" href="#/quiz/pre/${l.id}">Start pre-assessment</a></div>`;
+    if (tab === "post") body = `<div class="panel"><h2>Post-assessment</h2><p>Do this at the end of the lesson. Score ${P()}% or more to earn the <b>★ lesson badge</b>. Badges unlock your module certificate.</p><p class="muted">5 questions${postPassed(l.id) ? ". You already have this badge." : ""}</p><a class="btn" href="#/quiz/post/${l.id}">Start post-assessment</a></div>`;
+    if (tab === "worksheet") body = `<div class="panel ws" id="ws"><div class="ws-head"><img src="${LOGO}" alt=""><div><b>${esc(SETTINGS.school)}</b><br>${esc(l.unit.code)}, Lesson ${esc(l.code)}: ${esc(l.title)}<br>Teacher: ${esc(SETTINGS.teacher)}</div></div>
+      <p class="ws-name">Name: ____________________ Class: ________ Date: ________</p>
+      <ol class="wsq">${l.worksheet.map((w) => `<li><p>${m(w.q)}</p><p class="ans" hidden>Answer: ${m(w.a)}</p><div class="space"></div></li>`).join("")}</ol></div>
+      <div class="btns noprint"><button class="btn" id="printWs">Print worksheet</button><button class="btn ghost" id="ansWs">Show answers</button></div>`;
+    if (tab === "activity") body = activityHTML(l.activity);
+    if (tab === "real") body = `<div class="panel"><h2>Real-world problems</h2>${l.realWorld.map((r) => `<article class="rw"><h3>${esc(r.title)}</h3><p>${m(r.text)}</p>${r.g ? `<figure class="vis">${graph(r.g)}</figure>` : ""}<details><summary>Show the solution</summary><p>${m(r.a)}</p></details></article>`).join("")}</div>`;
+    return `<a class="back" href="#/class">All lessons</a><header class="lhead"><p class="kicker">${esc(l.unit.code)}, Lesson ${esc(l.code)}</p><h1 class="pg">${esc(l.title)}</h1></header>
+      <nav class="tabs" aria-label="In-class tasks">${tabs.map((t) => `<a href="#/class/${l.id}/${t[0]}" class="${t[0] === tab ? "on" : ""}" ${t[0] === tab ? 'aria-current="page"' : ""}>${t[1]}</a>`).join("")}</nav>${body}`;
+  }
+  function activityHTML(a) {
+    if (!a) return `<div class="panel"><p class="muted">No activity yet.</p></div>`;
+    if (a.type === "lab") return `<div class="panel"><h2>${m(a.title)}</h2><p>${m(a.prompt)}</p>
+      <div class="lab"><div id="labG"></div>
+      <div class="lab-ctrl"><p class="eq" id="labEq"></p>
+        <label>${m("$a$")} <output id="oa"></output><input type="range" id="la" min="-3" max="3" step="0.5" value="1"></label>
+        <label>${m("$b$")} <output id="ob"></output><input type="range" id="lb" min="-10" max="10" step="1" value="-2"></label>
+        <label>${m("$c$")} <output id="oc"></output><input type="range" id="lc" min="-10" max="10" step="1" value="-3"></label>
+        <dl class="labout" id="labOut"></dl></div></div></div>`;
+    if (a.type === "sort") return `<div class="panel"><h2>${m(a.title)}</h2><p>${m(a.prompt)}</p>
+      <div class="sort">${shuffle(a.items).map((it) => `<div class="sitem" data-c="${it.c}"><p class="st">${m(it.t)}</p><div class="sopts">${a.categories.map((c, ci) => `<button data-ci="${ci}">${m(c)}</button>`).join("")}</div></div>`).join("")}</div>
+      <p class="sscore" id="sScore" aria-live="polite"></p><button class="btn ghost" id="sReset">Start again</button></div>`;
+    return "";
+  }
+  function wireActivity() {
+    if ($("#labG")) {
+      const draw = () => {
+        let a = +$("#la").value; const b = +$("#lb").value, c = +$("#lc").value;
+        if (a === 0) { a = 0.5; $("#la").value = 0.5; }
+        $("#oa").textContent = num(a); $("#ob").textContent = num(b); $("#oc").textContent = num(c);
+        const hx = -b / (2 * a), ky = a * hx * hx + b * hx + c, D = b * b - 4 * a * c;
+        const R = D >= 0 ? [(-b - Math.sqrt(D)) / (2 * a), (-b + Math.sqrt(D)) / (2 * a)].sort((p, q) => p - q) : [];
+        $("#labG").innerHTML = graph({ f: [a, b, c], vertex: true, axis: true, pts: R.map((r) => [r, 0, ""]), xr: [-10, 10], yr: [-10, 10] }, "lab-g");
+        $("#labEq").innerHTML = m(`$f(x) = ${polyTex(a, b, c)}$`);
+        const roots = D > 0 ? m(`$x = ${num(R[0])}$ and $x = ${num(R[1])}$`) : D === 0 ? m(`$x = ${num(hx)}$`) + " (one root)" : "no real roots " + m(`$(${num(hx)} +- ${num(Math.sqrt(-D) / (2 * Math.abs(a)))}i)$`);
+        let sign;
+        if (D > 0) sign = a > 0 ? m(`$f(x) > 0$ for $x < ${num(R[0])}$ or $x > ${num(R[1])}$; $f(x) < 0$ for $${num(R[0])} < x < ${num(R[1])}$`) : m(`$f(x) > 0$ for $${num(R[0])} < x < ${num(R[1])}$; $f(x) < 0$ for $x < ${num(R[0])}$ or $x > ${num(R[1])}$`);
+        else sign = a > 0 ? "never below the x-axis" : "never above the x-axis";
+        $("#labOut").innerHTML = [["Opens", a > 0 ? "up (minimum)" : "down (maximum)"], ["Vertex", m(`$(${num(hx)}, ${num(ky)})$`)], ["Axis of symmetry", m(`$x = ${num(hx)}$`)], [a > 0 ? "Minimum value" : "Maximum value", m(`$${num(ky)}$`)], ["y-intercept", m(`$${num(c)}$`)], ["Discriminant", m(`$b^2 - 4ac = ${num(D)}$`)], ["Real roots", roots], ["Sign", sign]].map((p) => `<div><dt>${p[0]}</dt><dd>${p[1]}</dd></div>`).join("");
+      };
+      ["#la", "#lb", "#lc"].forEach((s) => $(s).addEventListener("input", draw)); draw();
+    }
+    if ($(".sort")) {
+      const upd = () => { const all = $$(".sitem"), ok = $$(".sitem.right").length; $("#sScore").textContent = `${ok} of ${all.length} correct` + (ok === all.length ? ". Brilliant, all done!" : ""); };
+      $$(".sitem").forEach((it) => $$("button", it).forEach((bt) => bt.onclick = () => {
+        if (it.classList.contains("right")) return;
+        $$("button", it).forEach((x) => x.classList.remove("no"));
+        if (bt.dataset.ci === it.dataset.c) { it.classList.add("right"); bt.classList.add("yes"); } else bt.classList.add("no");
+        upd();
+      }));
+      $("#sReset").onclick = () => route(); upd();
+    }
+    if ($("#printWs")) {
+      $("#printWs").onclick = () => { document.body.classList.add("print-ws"); window.print(); setTimeout(() => document.body.classList.remove("print-ws"), 500); };
+      $("#ansWs").onclick = (e) => { const show = e.target.textContent === "Show answers"; $$(".ans").forEach((a) => a.hidden = !show); e.target.textContent = show ? "Hide answers" : "Show answers"; };
+    }
+  }
+
+  /* ---------- quizzes ---------- */
+  let Q = null;
+  function buildQuiz(type, ref) {
+    let qs = [], label = "", unitId = "", lessonId = "";
+    const tag = (l) => (q) => Object.assign({ lid: l.id, ltitle: l.title, lcode: l.code }, q);
+    if (type === "practice" || type === "pre" || type === "post") {
+      const l = findLesson(ref); if (!l) return null;
+      unitId = l.unit.id; lessonId = l.id;
+      if (type === "practice") { qs = l.practice.map(tag(l)); label = `Lesson ${l.code} practice: ${l.title}`; }
+      if (type === "pre") { qs = l.pre.map(tag(l)); label = `Lesson ${l.code} pre-assessment: ${l.title}`; }
+      if (type === "post") { qs = shuffle(l.practice).slice(0, 5).map(tag(l)); label = `Lesson ${l.code} post-assessment: ${l.title}`; }
+    } else if (type === "unit") {
+      const u = findUnit(ref); if (!u) return null; unitId = u.id;
+      coreLessons(u).forEach((l) => qs.push(...shuffle(l.practice).slice(0, 3).map(tag(l))));
+      label = `${u.code} unit test: ${u.title}`;
+    } else if (type === "final") {
+      const core = coreLessons(), per = Math.max(1, Math.ceil(20 / core.length));
+      core.forEach((l) => qs.push(...shuffle(l.practice).slice(0, per).map(tag(l))));
+      label = "Final exam practice"; unitId = "ALL";
+    } else return null;
+    qs = shuffle(qs).map((q) => Object.assign({}, q, { opts: shuffle(q.o.map((t, i) => ({ t, ok: i === 0 }))) }));
+    const timer = type === "pre" ? SETTINGS.preTimer : type === "post" ? SETTINGS.postTimer : 0;
+    return { type, ref, label, unitId, lessonId, qs, i: 0, picks: [], instant: type === "practice", checked: false, timer, timeLeft: timer, startTime: 0 };
+  }
+  function viewQuiz(type, ref) {
+    if (!profile()) { setTimeout(() => askProfile(() => route()), 0); return `<div class="panel"><h2>Add your name first</h2><p>Your teacher needs your name to see your results.</p><button class="btn" id="needName">Add my name</button></div>`; }
+    if (!Q || Q.type !== type || Q.ref !== ref || Q.done) Q = buildQuiz(type, ref);
+    return Q ? quizHTML() : notFound();
+  }
+  function quizHTML() {
+    const q = Q.qs[Q.i], n = Q.qs.length, pick = Q.picks[Q.i], showFb = Q.instant && Q.checked;
+    const tLeft = Q.timer ? Q.timeLeft : 0, tMin = Math.floor(tLeft / 60), tSec = tLeft % 60, tWarn = Q.timer && tLeft <= 30;
+    return `<div class="quiz"><p class="kicker">${esc(Q.label)}</p>${Q.timer ? `<div class="timer ${tWarn ? "warn" : ""}" id="timer" aria-live="polite">${tMin}:${String(tSec).padStart(2, "0")}</div>` : ""}
+      <div class="prog" role="progressbar" aria-valuemin="0" aria-valuemax="${n}" aria-valuenow="${Q.i + 1}"><span style="width:${((Q.i + 1) / n) * 100}%"></span></div>
+      <p class="muted small">Question ${Q.i + 1} of ${n}${Q.instant ? "" : ". Your feedback comes at the end."}</p>
+      <h2 class="qtext">${m(q.q)}</h2>${q.g ? `<figure class="vis qg">${graph(q.g)}</figure>` : ""}
+      <div class="opts" role="radiogroup">${q.opts.map((o, i) => { let cls = pick === i ? "sel" : ""; if (showFb) cls = o.ok ? "yes" : pick === i ? "no" : ""; return `<button role="radio" aria-checked="${pick === i}" class="opt ${cls}" data-i="${i}" ${showFb ? "disabled" : ""}>${m(o.t)}</button>`; }).join("")}</div>
+      ${showFb ? `<div class="fb ${q.opts[pick].ok ? "good" : "bad"}" aria-live="polite"><b>${q.opts[pick].ok ? "Correct!" : "Not quite."}</b> ${m(q.why || "")}</div>` : ""}
+      <div class="btns qnav">${Q.i > 0 && !Q.instant ? `<button class="btn ghost" id="qPrev">Back</button>` : ""}
+        ${Q.instant && !Q.checked ? `<button class="btn" id="qCheck" ${pick == null ? "disabled" : ""}>Check</button>` : `<button class="btn" id="qNext" ${pick == null ? "disabled" : ""}>${Q.i === n - 1 ? "Finish" : "Next"}</button>`}</div></div>`;
+  }
+  function wireQuiz() {
+    if (!$(".quiz")) return;
+    if (Q && Q.timer && !Q.done && !Q.timerRunning) {
+      Q.timerRunning = true; Q.startTime = Q.startTime || Date.now();
+      const tick = () => {
+        if (!Q || Q.done || !$(".quiz")) { Q && (Q.timerRunning = false); return; }
+        Q.timeLeft = Math.max(0, Q.timer - Math.floor((Date.now() - Q.startTime) / 1000));
+        const el = $("#timer"); if (el) { const m = Math.floor(Q.timeLeft / 60), s = Q.timeLeft % 60; el.textContent = m + ":" + String(s).padStart(2, "0"); el.classList.toggle("warn", Q.timeLeft <= 30); }
+        if (Q.timeLeft <= 0) { Q.timerRunning = false; Q.timeUp = true; finishQuiz(); return; }
+        setTimeout(tick, 1000);
+      };
+      setTimeout(tick, 1000);
+    }
+    $$(".opt", $(".quiz")).forEach((b) => b.onclick = () => { Q.picks[Q.i] = +b.dataset.i; paint(quizHTML()); });
+    if ($("#qCheck")) $("#qCheck").onclick = () => { Q.checked = true; paint(quizHTML()); };
+    if ($("#qPrev")) $("#qPrev").onclick = () => { Q.i--; paint(quizHTML()); };
+    if ($("#qNext")) $("#qNext").onclick = () => { if (Q.i < Q.qs.length - 1) { Q.i++; Q.checked = false; paint(quizHTML()); window.scrollTo(0, 0); } else finishQuiz(); };
+  }
+  function finishQuiz() {
+    Q.done = true;
+    const p = profile(), n = Q.qs.length;
+    const res = Q.qs.map((q, i) => ({ q: q.q, lid: q.lid, ltitle: q.ltitle, lcode: q.lcode, chosen: q.opts[Q.picks[i]].t, right: q.opts.find((o) => o.ok).t, ok: q.opts[Q.picks[i]].ok, why: q.why }));
+    const correct = res.filter((r) => r.ok).length, percent = Math.round((correct / n) * 100);
+    const byL = {}; res.forEach((r) => { (byL[r.lid] = byL[r.lid] || { id: r.lid, title: r.ltitle, code: r.lcode, c: 0, t: 0 }); byL[r.lid].t++; if (r.ok) byL[r.lid].c++; });
+    const lessons = Object.values(byL).sort((x, y) => x.code.localeCompare(y.code, undefined, { numeric: true })).map((x) => Object.assign(x, { pct: Math.round((x.c / x.t) * 100) }));
+    const weak = lessons.filter((x) => x.pct < P());
+    const status = Q.type === "pre" ? "baseline" : percent >= P() ? "pass" : percent >= SETTINGS.almostMark ? "almost" : "fail";
+    const rec = { id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), at: Date.now(), name: p.name, grade: p.grade, section: p.section, type: Q.type, refId: Q.ref, label: Q.label, unitId: Q.unitId, lessonId: Q.lessonId, correct, total: n, percent, status, weak: weak.map((w) => `${w.code} ${w.title} (${w.pct}%)`), lessons, answers: res };
+    rec.badge = Q.type === "post" && status === "pass" && !postPassed(Q.ref);
+    if (Q.type === "pre") { const preScores = store.get("preScores", {}); preScores[Q.ref] = { percent, at: Date.now() }; store.set("preScores", preScores); }
+    if (Q.type === "post") { rec.preScore = (store.get("preScores", {})[Q.ref] || {}).percent; }
+    const h = history(); h.unshift(rec); store.set("history", h.slice(0, 300));
+    rec.unlocked = updateCerts();
+    rec.feedback = feedbackText(rec, weak);
+    if (Q.timeUp) rec.feedback = "Time is up. " + rec.feedback;
+    const h2 = history(); h2[0] = rec; store.set("history", h2);
+    sendResult(rec);
+    location.hash = "#/result/" + rec.id;
+  }
+  function feedbackText(r, weak) {
+    const name = firstName(), ws = weak.slice().sort((x, y) => x.pct - y.pct), list = ws.slice(0, 3).map((w) => `Lesson ${w.code} ${w.title}`).join(", ") + (ws.length > 3 ? `, and ${ws.length - 3} more lesson${ws.length > 4 ? "s" : ""} listed below` : "");
+    if (r.status === "baseline") { const strong = r.lessons ? r.lessons.filter(l => l.pct >= P()).map(l => "Lesson " + l.code).join(", ") : ""; const toLearn = r.lessons ? r.lessons.filter(l => l.pct < P()).map(l => "Lesson " + l.code + " " + l.title).join(", ") : ""; return `Thank you, ${name}. You scored ${r.percent}% before the lesson. This helps ${SETTINGS.teacher} plan the class for you.${r.percent >= P() ? " You already know a lot, so look out for the challenge questions today!" : " Don't worry, this is exactly what today's lesson is for."}${toLearn ? " Focus on: " + toLearn + "." : ""}${strong ? " You are already strong in: " + strong + "." : ""}`; }
+    if (r.status === "pass") { const preS = r.preScore != null ? (r.percent > r.preScore ? ` You improved from ${r.preScore}% to ${r.percent}%, a gain of ${r.percent - r.preScore} points!` : "") : ""; return `Excellent work, ${name}! You scored ${r.percent}% and passed.${preS}${r.badge ? " You earned a new lesson badge!" : ""}${r.unlocked && r.unlocked.length ? ` You unlocked your ${r.unlocked.join(" and ")}!` : ""}${weak.length ? ` To make your understanding even stronger, look again at ${list}.` : " You showed strong understanding in every part. Keep it up!"}`; }
+    if (r.status === "almost") { const gap = P() - r.percent; return `You are very close, ${name}! You scored ${r.percent}% and you need just ${gap} more point${gap > 1 ? "s" : ""} to pass. Focus on ${list || "the questions you missed below"}: read the key ideas and the solved examples step by step, then try once more. You can do this!`; }
+    return `Good effort, ${name}. You scored ${r.percent}%. Every mistake shows you exactly what to learn next. Here is your plan: 1. Read the key ideas for ${list || "the topics you missed"}. 2. Work through the solved examples. 3. Try the lesson practice. 4. Come back and take this again. ${SETTINGS.teacher} is here to help you, so ask in class about anything you are stuck on.`;
+  }
+  function certHint(r) {
+    if (r.type === "unit" && r.status === "pass") { const u = findUnit(r.refId), s = moduleStatus(u); if (s.ok) return `<div class="banner gold-b">${ICON.medal}<div><b>Your ${esc(u.code)} certificate is ready.</b><br><a href="#/cert/${u.id}">Open my certificate</a></div></div>`; if (s.testOk) return `<div class="banner">${ICON.medal}<div><b>One more step to your ${esc(u.code)} certificate.</b> Earn the lesson badge for: ${s.missing.map((l) => `<a href="#/class/${l.id}/post">Lesson ${esc(l.code)}</a>`).join(", ")}.</div></div>`; }
+    if (r.type === "final" && r.status === "pass") { const t = termStatus(); if (t.ok) return `<div class="banner gold-b">${ICON.medal}<div><b>Your term certificate is ready.</b><br><a href="#/cert/TERM">Open my certificate</a></div></div>`; if ((t.best || 0) >= P()) return `<div class="banner">${ICON.medal}<div><b>Great score!</b> Earn all module certificates to unlock the term certificate.</div></div>`; }
+    if (r.unlocked && r.unlocked.length) return `<div class="banner gold-b">${ICON.medal}<div><b>You unlocked your ${esc(r.unlocked.join(" and "))}!</b><br><a href="#/results">See my certificates</a></div></div>`;
+    if (r.badge) return `<div class="banner">${ICON.medal}<div><b>★ New badge:</b> Lesson ${esc(findLesson(r.refId).code)}.</div></div>`;
+    return "";
+  }
+  function viewResult(id) {
+    const r = history().find((x) => x.id === id); if (!r) return notFound();
+    const weakL = (r.lessons || []).filter((l) => l.pct < P());
+    const head = { pass: "Passed", almost: "Almost there", fail: "Keep going", baseline: "Before the lesson" }[r.status];
+    const progressHTML = r.type === "post" && r.preScore != null ? `<div class="progress-compare"><h3>Your progress</h3><div class="pc-bars"><div class="pc-bar"><span class="pc-label">Pre-assessment</span><span class="pc-fill" style="width:${r.preScore}%"><b>${r.preScore}%</b></span></div><div class="pc-bar"><span class="pc-label">Post-assessment</span><span class="pc-fill post" style="width:${r.percent}%"><b>${r.percent}%</b></span></div></div><p class="pc-msg">${r.percent > r.preScore ? "You improved by " + (r.percent - r.preScore) + " percentage points. Great progress!" : r.percent === r.preScore ? "Same score. Review the topics below and try again." : "Your score went down. That can happen when questions are different. Focus on the weak topics below."}</p></div>` : r.type === "pre" ? `<div class="progress-compare"><p class="pc-msg">After the lesson, take the post-assessment to see how much you learned.</p><a class="btn" href="#/class/${r.lessonId}/post">Go to post-assessment</a></div>` : "";
+    const sent = r.sent === true ? "Sent to your teacher." : SETTINGS.resultsUrl ? "Sending to your teacher…" : "Saved on this device.";
+    const mail = SETTINGS.teacherEmail ? `<a class="btn ghost" href="mailto:${esc(SETTINGS.teacherEmail)}?subject=${encodeURIComponent(`${r.label}: ${r.name} ${r.percent}%`)}&body=${encodeURIComponent(mailBody(r))}">Email my result</a>` : "";
+    const retry = r.type === "pre" ? `<a class="btn ghost" href="#/study/${r.lessonId}">Open the lesson</a>` : `<a class="btn ${r.status === "pass" ? "ghost" : ""}" href="#/quiz/${r.type}/${r.refId}">Try again</a>`;
+    return `<div class="result ${r.status}"><p class="kicker">${esc(r.label)}</p>
+      <div class="score">${ring(r.percent)}<div><b>${r.correct} of ${r.total}</b><span>correct</span></div></div>
+      <h1 class="pg">${head}</h1><p class="fbtext">${esc(r.feedback)}</p>${progressHTML}${certHint(r)}
+      <p class="muted small" id="sentNote">${sent}</p>
+      <div class="btns">${retry}${mail}</div>
+      ${weakL.length ? `<section class="block"><h2>What to review</h2><div class="support">${weakL.map((w) => `<article><h3>Lesson ${esc(w.code)}: ${esc(w.title)}</h3><p class="muted">${w.c} of ${w.t} correct (${w.pct}%)</p><div class="btns"><a class="btn small" href="#/study/${w.id}">Study notes and examples</a><a class="btn ghost small" href="#/quiz/practice/${w.id}">Practise this lesson</a><a class="btn ghost small" href="#/class/${w.id}/activity">Try the activity</a></div></article>`).join("")}</div></section>` : ""}
+      ${(r.lessons || []).length > 1 ? `<section class="block"><h2>Score by lesson</h2><div class="bars">${r.lessons.map((l) => `<div class="bar"><span class="bl">${esc(l.code)}</span><span class="btr"><i style="width:${l.pct}%" class="${l.pct >= P() ? "ok" : "lo"}"></i></span><span class="bv">${l.pct}%</span></div>`).join("")}</div></section>` : ""}
+      <section class="block"><h2>Check your answers</h2><ol class="review">${r.answers.map((a) => `<li class="${a.ok ? "ok" : "lo"}"><p>${m(a.q)}</p><p>Your answer: <b>${m(a.chosen)}</b>${a.ok ? " ✓" : ` ✗ &nbsp;Correct answer: <b>${m(a.right)}</b>`}</p>${a.ok ? "" : `<p class="muted">${m(a.why || "")}</p>`}</li>`).join("")}</ol></section></div>`;
+  }
+  const plain = (s) => String(s || "").replace(/\$/g, "").replace(/\^\{?(\d+)\}?/g, "^$1");
+  const mailBody = (r) => `Student: ${r.name}\nGrade: ${r.grade} ${r.section || ""}\nTask: ${r.label}\nScore: ${r.correct}/${r.total} (${r.percent}%)\nResult: ${r.status}\nLessons to review: ${r.weak.join("; ") || "none"}\n\nFeedback given:\n${r.feedback}\n\nDate: ${new Date(r.at).toLocaleString("en-GB")}`;
+  function sendResult(r) {
+    if (!SETTINGS.resultsUrl) return;
+    const payload = { id: r.id, date: new Date(r.at).toISOString(), name: r.name, grade: r.grade, section: r.section, type: r.type, task: r.label, correct: r.correct, total: r.total, percent: r.percent, result: r.status, certificate: [r.badge ? "Lesson badge" : ""].concat(r.unlocked || []).filter(Boolean).join(", "), weakLessons: r.weak.join("; "), feedback: r.feedback, wrongQuestions: r.answers.filter((a) => !a.ok).map((a) => `${plain(a.q)} [chose: ${plain(a.chosen)}]`).join(" | ") };
+    const mark = (ok) => { const h = history(), x = h.find((y) => y.id === r.id); if (x) { x.sent = ok; store.set("history", h); } const n = $("#sentNote"); if (n) n.textContent = ok ? "Sent to your teacher." : "Could not send right now. It is saved on this device. Please tell your teacher."; };
+    try { fetch(SETTINGS.resultsUrl, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(payload) }).then(() => mark(true)).catch(() => mark(false)); } catch (e) { mark(false); }
+  }
+
+  /* ---------- my results + certificates ---------- */
+  function viewResults() {
+    const h = history(), p = profile(), certs = store.get("certs", {}), t = termStatus();
+    const cert = (key, title, s, how) => certs[key] ? `<a class="certcard got" href="#/cert/${key}"><span class="seal">${ICON.medal}</span><b>${title}</b><span>${level(certs[key].percent)}, ${certs[key].percent}%</span><span class="small">Open certificate</span></a>` : `<div class="certcard"><span class="seal off">${ICON.medal}</span><b>${title}</b><span>${how}</span></div>`;
+    return `<h1 class="pg">My results</h1><p class="lead">${p ? esc(p.name) + ", here" : "Here"} is everything you have done on this device.</p>
+      <section class="block"><h2>Badges</h2><div class="badges">${coreLessons().map((l) => `<a href="#/class/${l.id}/post" class="bdg ${postPassed(l.id) ? "on" : ""}" title="${esc(l.title)}"><span>★</span>${esc(l.code)}</a>`).join("")}</div><p class="muted small">Pass a lesson post-assessment with ${P()}% or more to earn its badge.</p></section>
+      <section class="block"><h2>Certificates</h2><div class="certs">${t.mods.map(({ u, s }) => cert(u.id, `${esc(u.code)} certificate`, s, `${s.core.length - s.missing.length} of ${s.core.length} badges. Unit test: ${s.best == null ? "not taken" : s.best + "%"}`)).join("")}${cert("TERM", "Term certificate", t, "Earn all module certificates, then pass the final exam.")}</div></section>
+      <section class="block"><h2>All attempts</h2>${h.length ? `<ol class="hist">${h.map((r) => `<li><a href="#/result/${r.id}"><span class="t">${esc(r.label)}</span><span class="muted small">${fmtDate(r.at)}</span><span class="pill ${r.status}">${r.percent}%</span></a></li>`).join("")}</ol>` : `<p>No attempts yet. Start with a lesson practice.</p><a class="btn" href="#/practice">Go to practice</a>`}</section>`;
+  }
+  function viewCert(key) {
+    const c = store.get("certs", {})[key], p = profile(); if (!c || !p) return notFound();
+    const u = findUnit(key), lv = level(c.percent);
+    const why = u ? `for completing every lesson of <i>${esc(u.code)}: ${esc(u.title)}</i>, earning all lesson badges, and passing the unit test with a score of <b>${c.percent}%</b>.` : `for completing ${esc(SETTINGS.term)} of ${esc(SETTINGS.subject)}, earning every module certificate, and passing the final exam with a score of <b>${c.percent}%</b>.`;
+    return `<div class="btns noprint"><a class="back" href="#/results">My results</a><button class="btn" id="printCert">Print or save as PDF</button></div>
+    <div class="cert" id="cert"><div class="flag" aria-hidden="true"><i></i><span><b></b><b></b><b></b></span></div>
+      <div class="cert-in"><img src="${LOGO}" alt="${esc(SETTINGS.school)} logo" class="clogo">
+        <p class="cschool">${esc(SETTINGS.school)}</p>
+        <h1>Certificate of ${lv}</h1>
+        <p class="cfor">This certificate is proudly presented to</p>
+        <p class="cname">${esc(p.name)}</p>
+        <p class="cgrade">Grade ${esc(p.grade)}${p.section ? ", class " + esc(p.section) : ""}</p>
+        <p class="cwhy">${why}</p>
+        <div class="csign"><div><span class="sl"></span><b>${esc(SETTINGS.teacher)}</b><small>Mathematics teacher</small></div><div class="cdate"><b>${fmtDate(c.at)}</b><small>Certificate no. ${esc(c.id)}</small></div><div><span class="sl"></span><b>${esc(SETTINGS.principal)}</b><small>School principal</small></div></div>
+      </div></div>`;
+  }
+
+  /* ---------- teacher area ---------- */
+  let TD = null;
+  function viewTeacher() {
+    if (TD) return dashHTML();
+    const noUrl = !SETTINGS.resultsUrl;
+    return `<h1 class="pg">Teacher area</h1>
+      <div class="panel narrow">
+        ${noUrl ? `<p>Results are not connected yet. Follow the steps in <b>results-script.gs</b>, then paste the web app link into <b>resultsUrl</b> at the top of this website file.</p>` : `<form id="tform"><label>Teacher password<input type="password" id="tkey" required autocomplete="current-password"></label><div class="btns"><button class="btn" type="submit">Open results</button></div><p class="muted small" id="terr" aria-live="polite"></p></form>`}
+        <p class="muted small">Want to see how it looks first? <button class="linkbtn" id="demo">Open a demo with sample students</button></p>
+      </div>`;
+  }
+  function wireTeacher() {
+    if ($("#demo")) $("#demo").onclick = () => { TD = { rows: demoRows(), demo: true, f: {} }; paint(dashHTML()); wireDash(); };
+    if ($("#tform")) {
+      const k = ses.get("tkey"); if (k) loadRows(k);
+      $("#tform").onsubmit = (e) => { e.preventDefault(); loadRows($("#tkey").value); };
+    }
+    wireDash();
+  }
+  function loadRows(key) {
+    const err = $("#terr"); if (err) err.textContent = "Loading…";
+    fetch(SETTINGS.resultsUrl + "?key=" + encodeURIComponent(key)).then((r) => r.json()).then((d) => {
+      if (!d.ok) { ses.set("tkey", null); if ($("#terr")) $("#terr").textContent = "Wrong password. Check the password in your script."; return; }
+      ses.set("tkey", key); TD = { rows: d.rows || [], demo: false, f: {} }; paint(dashHTML()); wireDash();
+    }).catch(() => { if ($("#terr")) $("#terr").textContent = "Could not reach the results sheet. Check your internet and the web app link."; });
+  }
+  const TYPES = { practice: "Lesson practice", pre: "Pre-assessment", post: "Post-assessment", unit: "Unit test", final: "Final exam" };
+  function filtered() { const f = TD.f; return TD.rows.filter((r) => (!f.cls || r.section === f.cls) && (!f.type || r.type === f.type) && (!f.q || String(r.name).toLowerCase().includes(f.q.toLowerCase()))); }
+  function dashHTML() {
+    const rows = filtered(), f = TD.f, classes = [...new Set(TD.rows.map((r) => r.section).filter(Boolean))].sort();
+    const scored = rows.filter((r) => r.type !== "pre"), avg = scored.length ? Math.round(scored.reduce((s, r) => s + +r.percent, 0) / scored.length) : 0;
+    const passRate = scored.length ? Math.round((scored.filter((r) => r.result === "pass").length / scored.length) * 100) : 0;
+    const students = {}; rows.forEach((r) => { const s = (students[r.name + "|" + r.section] = students[r.name + "|" + r.section] || { name: r.name, cls: r.section, n: 0, sum: 0, cnt: 0, last: 0, certs: [] }); s.n++; if (r.type !== "pre") { s.sum += +r.percent; s.cnt++; } s.last = Math.max(s.last, new Date(r.date).getTime()); if (r.certificate && /certificate/i.test(r.certificate)) s.certs.push(r.certificate.replace(/Lesson badge,?\s*/, "")); });
+    const weakCount = {}; rows.forEach((r) => String(r.weakLessons || "").split(";").map((x) => x.trim()).filter(Boolean).forEach((w) => { const code = w.split(" ")[0]; weakCount[code] = (weakCount[code] || 0) + 1; }));
+    const maxW = Math.max(1, ...Object.values(weakCount));
+    const lessonName = (code) => (allLessons().find((l) => l.code === code) || {}).title || "";
+    const sel = (id, opts, val, all) => `<select id="${id}"><option value="">${all}</option>${opts.map((o) => `<option value="${esc(o[0])}" ${o[0] === val ? "selected" : ""}>${esc(o[1])}</option>`).join("")}</select>`;
+    const list = rows.slice().sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, TD.more ? 1000 : 60);
+    return `<div class="dash-top"><h1 class="pg">Teacher area</h1><div class="btns">${TD.demo ? '<span class="tag gold">Demo data</span>' : '<button class="btn ghost small" id="tRefresh">Refresh</button>'}<button class="btn ghost small" id="tCsv">Download as CSV</button><button class="btn ghost small" id="tOut">${TD.demo ? "Close demo" : "Sign out"}</button></div></div>
+      <div class="filters">${sel("fCls", classes.map((c) => [c, c]), f.cls, "All classes")}${sel("fType", Object.entries(TYPES), f.type, "All tasks")}<input id="fQ" placeholder="Search a student" value="${esc(f.q || "")}"></div>
+      <section class="kpis"><div><b>${Object.keys(students).length}</b><span>students</span></div><div><b>${rows.length}</b><span>attempts</span></div><div><b>${avg}%</b><span>average score</span></div><div><b>${passRate}%</b><span>pass rate</span></div></section>
+      <section class="block card"><h2>Lessons to re-teach</h2><p class="muted small">How many attempts showed each lesson as weak (below ${P()}%).</p>
+        ${Object.keys(weakCount).length ? `<div class="bars">${Object.entries(weakCount).sort((a, b) => b[1] - a[1]).map(([c, n]) => `<div class="bar"><span class="bl">${esc(c)}</span><span class="btr"><i class="lo" style="width:${(n / maxW) * 100}%"></i></span><span class="bv">${n}</span></div><p class="bnm">${esc(lessonName(c))}</p>`).join("")}</div>` : "<p>No weak lessons in this view.</p>"}</section>
+      <section class="block card"><h2>Pre → Post progress</h2><p class="muted small">Students who took both a pre-assessment and a post-assessment for the same lesson.</p>
+        ${(() => { const prog = []; rows.forEach(r => { if (r.type !== "post" || !r.name) return; const pre = rows.find(p => p.type === "pre" && p.name === r.name && p.task && r.task && p.task.split(":")[0].replace("pre-assessment","").trim() === r.task.split(":")[0].replace("post-assessment","").trim()); if (pre) prog.push({ name: r.name, cls: r.section, lesson: r.task.split(":")[0].replace("post-assessment","").trim(), pre: +pre.percent, post: +r.percent, gain: (+r.percent) - (+pre.percent) }); }); if (!prog.length) return "<p>No matching pre and post results yet.</p>"; const avg = Math.round(prog.reduce((s, p) => s + p.gain, 0) / prog.length); return `<p>Average improvement: <b>${avg >= 0 ? "+" : ""}${avg} points</b> across ${prog.length} pair${prog.length > 1 ? "s" : ""}.</p><div class="tbl"><table><thead><tr><th>Student</th><th>Lesson</th><th>Pre</th><th>Post</th><th>Change</th></tr></thead><tbody>${prog.sort((a, b) => b.gain - a.gain).slice(0, 40).map(p => "<tr><td>" + esc(p.name) + "</td><td>" + esc(p.lesson) + "</td><td>" + p.pre + "%</td><td>" + p.post + "%</td><td class='" + (p.gain > 0 ? "ok" : p.gain < 0 ? "lo" : "") + "'>" + (p.gain >= 0 ? "+" : "") + p.gain + "</td></tr>").join("")}</tbody></table></div>`; })()}</section>
+      <section class="block"><h2>Students</h2><div class="tbl"><table><thead><tr><th>Name</th><th>Class</th><th>Attempts</th><th>Average</th><th>Last active</th><th>Certificates</th></tr></thead><tbody>
+        ${Object.values(students).sort((a, b) => a.name.localeCompare(b.name)).map((s) => `<tr><td><button class="linkbtn sname" data-n="${esc(s.name)}">${esc(s.name)}</button></td><td>${esc(s.cls)}</td><td>${s.n}</td><td>${s.cnt ? Math.round(s.sum / s.cnt) + "%" : "–"}</td><td>${s.last ? fmtDate(s.last) : ""}</td><td>${esc([...new Set(s.certs)].join(", ") || "–")}</td></tr>`).join("")}</tbody></table></div></section>
+      <section class="block"><h2>All attempts</h2><div class="att">${list.map((r, i) => `<details class="arow"><summary><span class="pill ${esc(r.result)}">${r.type === "pre" ? "pre " : ""}${r.percent}%</span><span class="an"><b>${esc(r.name)}</b> <span class="muted">${esc(r.section)}</span><br><span class="small">${esc(r.task)}</span></span><span class="muted small">${fmtDate(r.date)}</span></summary>
+        <div class="adet"><p><b>Score:</b> ${r.correct} of ${r.total}. <b>Result:</b> ${esc(r.result)}${r.certificate ? `. <b>Earned:</b> ${esc(r.certificate)}` : ""}</p><p><b>Lessons to review:</b> ${esc(r.weakLessons || "none")}</p><p><b>Feedback the student saw:</b> ${esc(r.feedback)}</p>${r.wrongQuestions ? `<p><b>Wrong answers:</b> ${esc(r.wrongQuestions)}</p>` : ""}</div></details>`).join("")}</div>
+        ${rows.length > list.length ? `<button class="btn ghost" id="tMore">Show all ${rows.length}</button>` : ""}</section>`;
+  }
+  function wireDash() {
+    if (!$("#fCls")) return;
+    const re = () => { paint(dashHTML()); wireDash(); };
+    $("#fCls").onchange = (e) => { TD.f.cls = e.target.value; re(); };
+    $("#fType").onchange = (e) => { TD.f.type = e.target.value; re(); };
+    $("#fQ").onchange = (e) => { TD.f.q = e.target.value; re(); };
+    $$(".sname").forEach((b) => b.onclick = () => { TD.f.q = b.dataset.n; re(); });
+    if ($("#tMore")) $("#tMore").onclick = () => { TD.more = true; re(); };
+    if ($("#tRefresh")) $("#tRefresh").onclick = () => loadRows(ses.get("tkey"));
+    $("#tOut").onclick = () => { if (!TD.demo) ses.set("tkey", null); TD = null; route(); };
+    $("#tCsv").onclick = () => {
+      const cols = ["date", "name", "grade", "section", "type", "task", "correct", "total", "percent", "result", "certificate", "weakLessons", "feedback", "wrongQuestions"];
+      const csv = [cols.join(",")].concat(filtered().map((r) => cols.map((c) => `"${String(r[c] == null ? "" : r[c]).replace(/"/g, '""')}"`).join(","))).join("\n");
+      const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob(["\ufeff" + csv], { type: "text/csv" })); a.download = "math-hub-results.csv"; document.body.appendChild(a); a.click(); a.remove();
+    };
+  }
+  function demoRows() {
+    const names = ["Mahra Al Ketbi", "Shamma Al Nuaimi", "Hessa Al Mazrouei", "Maryam Al Hammadi", "Fatima Al Dhaheri", "Noura Al Shamsi", "Alyazia Al Mansoori", "Reem Al Ameri", "Latifa Al Suwaidi", "Moza Al Kaabi", "Aisha Al Hosani", "Salama Al Falasi"];
+    const out = [], core = coreLessons(); let seed = 7; const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+    names.forEach((n, i) => { const cls = "12-" + ((i % 3) + 1), skill = 0.45 + rnd() * 0.5;
+      core.forEach((l, k) => { if (rnd() < 0.85) { const hard = l.code === "1-7" || l.code === "1-5" ? 0.2 : 0; const pc = Math.max(0, Math.min(100, Math.round((skill - hard + (rnd() - 0.5) * 0.3) * 5) * 20)); const res = pc >= P() ? "pass" : pc >= SETTINGS.almostMark ? "almost" : "fail";
+        out.push({ date: new Date(Date.now() - (30 - k * 3) * 864e5 - rnd() * 864e5).toISOString(), name: n, grade: "12", section: cls, type: "post", task: `Lesson ${l.code} post-assessment: ${l.title}`, correct: pc / 20, total: 5, percent: pc, result: res, certificate: res === "pass" ? "Lesson badge" : "", weakLessons: res === "pass" ? "" : `${l.code} ${l.title} (${pc}%)`, feedback: res === "pass" ? `Excellent work! You scored ${pc}% and passed.` : `Good effort. You scored ${pc}%. Start with Lesson ${l.code} ${l.title}, then try again.`, wrongQuestions: "" }); } });
+      if (rnd() < 0.7) { const pc = Math.round((skill + (rnd() - 0.4) * 0.2) * 18) / 18 * 100 | 0; out.push({ date: new Date(Date.now() - 2 * 864e5).toISOString(), name: n, grade: "12", section: cls, type: "unit", task: "Module 1 unit test: Quadratic Functions and Equations", correct: Math.round(pc * 0.18), total: 18, percent: pc, result: pc >= P() ? "pass" : "fail", certificate: pc >= P() && skill > 0.7 ? "Module 1 certificate" : "", weakLessons: pc >= 80 ? "" : "1-7 Quadratic Inequalities (33%); 1-5 Solving Quadratic Equations by Completing the Square (33%)", feedback: pc >= P() ? `Excellent work! You scored ${pc}% and passed.` : `You scored ${pc}%. Review Lessons 1-5 and 1-7, then try again.`, wrongQuestions: "" }); }
+    });
+    return out;
+  }
+
+  const notFound = () => `<div class="panel"><h2>Page not found</h2><p>This link does not match a lesson, result or certificate.</p><a class="btn" href="#/home">Go to the home page</a></div>`;
+
+  /* ---------- router ---------- */
+  function paint(html) {
+    $("#app").innerHTML = html; wireQuiz(); wireActivity(); wireHome();
+    const pc = $("#printCert"); if (pc) pc.onclick = () => { document.body.classList.add("print-cert"); window.print(); setTimeout(() => document.body.classList.remove("print-cert"), 500); };
+    const mb = $("#markBtn"); if (mb) mb.onclick = toggleStudied;
+    const nn = $("#needName"); if (nn) nn.onclick = () => askProfile(() => route());
+  }
+  function toggleStudied() { const id = location.hash.split("/")[2], s = studied(), i = s.indexOf(id); if (i >= 0) s.splice(i, 1); else s.push(id); store.set("studied", s); route(); }
+  function route() {
+    cancelAnimationFrame(raf); raf = 0; window.onresize = null;
+    const [p0, p1, p2] = (location.hash || "#/home").slice(2).split("/");
+    let html;
+    if (p0 === "study") html = p1 ? viewLesson(p1) : viewStudyIndex();
+    else if (p0 === "practice") html = viewPractice();
+    else if (p0 === "class") html = p1 ? viewClass(p1, p2) : viewClassIndex();
+    else if (p0 === "quiz") html = viewQuiz(p1, p2);
+    else if (p0 === "result") html = viewResult(p1);
+    else if (p0 === "results") html = viewResults();
+    else if (p0 === "cert") html = viewCert(p1);
+    else if (p0 === "teacher") html = viewTeacher();
+    else html = viewHome();
+    if (p0 !== "quiz") Q = null;
+    const sec = p0 === "result" || p0 === "cert" ? "results" : p0 === "quiz" ? "practice" : p0 || "home";
+    $$(".nav a").forEach((a) => { const on = a.dataset.s === sec; a.classList.toggle("on", on); if (on) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
+    paint(html);
+    if (p0 === "teacher") wireTeacher();
+    if (p0 !== "quiz") window.scrollTo(0, 0);
+  }
+
+  /* ---------- start ---------- */
+  document.title = SETTINGS.siteTitle + " | " + SETTINGS.school;
+  $("#brandSchool").textContent = SETTINGS.school;
+  $("#brandTeacher").textContent = `${SETTINGS.teacher}, teacher. ${SETTINGS.principal}, principal.`;
+  $("#foot").innerHTML = `${esc(SETTINGS.school)}. ${esc(SETTINGS.subject)}. ${esc(SETTINGS.book)}, ${esc(SETTINGS.term)}.<br>Teacher: ${esc(SETTINGS.teacher)}. Principal: ${esc(SETTINGS.principal)}. <a href="#/teacher">Teacher area</a>`;
+  $$("img.logo").forEach((i) => i.src = LOGO);
+  paintWho();
+  window.addEventListener("hashchange", route);
+  route();
+})();
+
+</script>
+</body>
+</html>
